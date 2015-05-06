@@ -1,0 +1,13 @@
+.help-inline { margin-bottom: 9px; color: #a94442; font-size: 85%;}
+.star {color: #a94442; font-size: 85%;}
+.error {color: #a94442;}
+
+input.ng-valid.ng-dirty {border: solid green 1px;}
+input.ng-invalid.ng-dirty {border: solid red 1px;}
+
+textarea.ng-valid.ng-dirty {border: solid green 1px;}
+textarea.ng-invalid.ng-dirty {border: solid red 1px;}
+
+select.ng-valid.ng-dirty {border: solid green 1px;}
+select.ng-invalid.ng-dirty {border: solid red 1px;}
+
