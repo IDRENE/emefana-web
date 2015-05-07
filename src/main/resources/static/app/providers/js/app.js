@@ -95,11 +95,12 @@ angular.module('providerApp', [
 				        return {
 				        	'request': function(config) {
 				        		var isRestCall = config.url.indexOf('api') == 0;
-				        		if (isRestCall) {
+				        		//console.log(isRestCall + " - " + JSON.stringify(config));
+				        		//if (isRestCall) {
 				        			var authToken = providerAppConfig.authToken;
 				        				config.headers['X-Auth-Token'] = authToken;
-				        			//	console.log(config);
-				        		}
+				        			//console.log(config);
+				        		//}
 				        		return config || $q.when(config);
 				        	}
 				        };

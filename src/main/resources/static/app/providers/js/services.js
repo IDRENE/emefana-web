@@ -4,7 +4,7 @@
 var providerServices = angular.module('providerServices', ['ngResource']);
 
 providerServices.factory('MetaService', ['$resource',function($resource){
-    return $resource('api/metadata', {},{
+    return $resource('http://localhost:8080/api/metadata', {},{
 			    query : {
 					method : 'GET',
 					headers : {'Accept': 'application/json'},
@@ -15,7 +15,7 @@ providerServices.factory('MetaService', ['$resource',function($resource){
 }]);
 
 providerServices.factory('ListingService', ['$resource',function($resource){
-    return $resource('api/provider', {},{
+    return $resource('http://localhost:8080/api/provider', {},{
 			    save : {
 					method : 'POST',
 					headers : {
