@@ -32,9 +32,9 @@
 							<div  ng-if="provider.uselocation">
 
 						<div class="white-row">
-						  	<h5>BUSINESS LOCATION</h5>
+						  	<h5>BUSINESS LOCATION {{provider.latitude}},{{provider.longitude}}</h5>
 							<div id="gmaps"><!-- google map -->
-							   <img alt="" ng-src="http://maps.googleapis.com/maps/api/staticmap?center={{$geolocation.position.coords.latitude}},{{$geolocation.position.coords.longitude}}&zoom=13&size=320x200&sensor=true&markers=label:E%7C{{$geolocation.position.coords.latitude}},{{$geolocation.position.coords.longitude}}"/>
+							   <img alt="" ng-src="http://maps.googleapis.com/maps/api/staticmap?center={{provider.latitude}},{{provider.longitude}}&zoom=13&size=320x200&sensor=true&markers=label:E%7C{{provider.latitude}}},{{provider.longitude}}"/>
 							</div>
 
 							<div class="divider white half-margins"><!-- divider -->

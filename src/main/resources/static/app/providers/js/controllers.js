@@ -1,6 +1,6 @@
 (function() {
 
-	var providerControllers = angular.module('providerControllers', ['ngGeolocation']);
+	var providerControllers = angular.module('providerControllers', ['ngGeolocation','cordovaGeolocationModule']);
 
 	  providerControllers.controller('RegisterController',
 			  ['$scope',
@@ -8,11 +8,13 @@
 			   '$geolocation',
 			   '$state',
 			   '$filter',
+			   'cordovaGeolocationService',
 			   'MetadataService',
 			   'ListingService', 
-			   function($scope,$rootScope,$geolocation,$state,$filter,MetadataService,ListingService) {
+			   function($scope,$rootScope,$geolocation,$state,$filter,cordovaGeolocationService, MetadataService,ListingService) {
 			
-		     $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;	
+		     $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
+
 		     
 		     MetadataService.$promise.then(function(result){
 		    	 //$scope.meatadata = angular.toJson(result, true);PROVIDER_REP_ROLES
@@ -33,6 +35,8 @@
 					  services : [ ],
 					  events : [ ],
 			  };
+			  
+			 
 			  
 
 			 $scope.getCssClasses = function(ngModelContoller) {
@@ -69,15 +73,43 @@
 					if($scope.provider.uselocation){
 						$scope.$geolocation = $geolocation;
 						// basic usage
-					    $geolocation.getCurrentPosition().then(function(location) {
-					      $scope.provider.location = location.coords;
-					    });
-						    $geolocation.watchPosition({
-						      timeout: 60000,
-						      maximumAge: 2,
-						      enableHighAccuracy: true
-						    });
+//					    $geolocation.getCurrentPosition().then(function(location) {
+//					      $scope.provider.location = location.coords;
+//					      console.log(JSON.stringify(location.coords.latitude ));
+//					    });
+//						    $geolocation.watchPosition({
+//						      timeout: 60000,
+//					      maximumAge: 250,
+//						      enableHighAccuracy: true
+//						    });
 					}
+					
+					
+					cordovaGeolocationService.getCurrentPosition(function(position){
+//				        alert(
+//				            'Latitude: '          + position.coords.latitude          + '\n' +
+//				            'Longitude: '         + position.coords.longitude         + '\n' +
+//				            'Altitude: '          + position.coords.altitude          + '\n' +
+//				            'Accuracy: '          + position.coords.accuracy          + '\n' +
+//				            'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+//				            'Heading: '           + position.coords.heading           + '\n' +
+//				            'Speed: '             + position.coords.speed             + '\n' +
+//				            'Timestamp: '         + position.timestamp                + '\n'
+//				        );
+						//console.log(JSON.stringify(position.coords.latitude  ));
+						$scope.provider.location = position.coords ;
+						$scope.provider.location.latitude = position.coords.latitude;
+						$scope.provider.latitude = position.coords.latitude;
+						$scope.provider.longitude = position.coords.longitude;
+						$scope.provider.location.longitude = position.coords.longitude;
+						
+						//console.log(JSON.stringify($scope.provider.location.longitude ));
+						//console.log(JSON.stringify($scope.provider.location.latitude ));
+					//	$scope.provider.location.longitude = position.coords.longitude ;
+						
+						
+				    });
+					//console.log(JSON.stringify($scope.provider.location.latitude));
 					   
 				};
 			 $scope.hasVenue = function(){
@@ -175,6 +207,8 @@
 //				}
 		$scope.submitListing = function(){
 			$scope.httpResponse = {};
+			//console.log(JSON.stringify($scope.provider.latitude ));
+			//console.log(JSON.stringify($scope.provider.longitude ));
 			$scope.listingSubmission = ListingService.save({},$scope.provider, function(httpResponse,responseHeaders){
 				$scope.httpResponse = httpResponse; // think of returning listing code , for future correspondence
 				$scope.provider = {};

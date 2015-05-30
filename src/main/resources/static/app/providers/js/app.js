@@ -4,6 +4,7 @@ angular.module('providerApp', [
 		'ui.router',
 		'ngCookies', 
 		'checklist-model',
+		'ngGeolocation',
 		'naif.base64',
 		'cgBusy',
         'providerControllers',
@@ -17,12 +18,12 @@ angular.module('providerApp', [
 				$stateProvider
 					.state('home', {
 					    url: '/',
-					    templateUrl: 'provider-index.html',
+					    templateUrl: '/app/providers/provider-index.html',
 					    controller: 'IndexController'
 					  })
 					  .state('register', {
 					    url: '/registration',
-					    templateUrl: 'partials/provider-signup.html',
+					    templateUrl: '/app/providers/partials/provider-signup.html',
 					    resolve:{
 //						    	metaDataFactory :function($http) {
 //						    		return  $http({method: 'GET', url: '../data/cities.json'})
@@ -35,32 +36,32 @@ angular.module('providerApp', [
 					  })
 					  .state('register.start', {
 					    url: '/listing-general-info',
-					    templateUrl: 'partials/provider-general-info.html',
+					    templateUrl: '/app/providers/partials/provider-general-info.html',
 					    
 					  })
 					  .state('register.features', {
 					    url: '/listing-features',
-					    templateUrl: 'partials/provider-features.html'
+					    templateUrl: '/app/providers/partials/provider-features.html'
 					  })
 					   .state('register.location', {
 					    url: '/provider-location',
-					    templateUrl: 'partials/provider-location.html'
+					    templateUrl: '/app/providers/partials/provider-location.html'
 					  })
 					   .state('register.services', {
 					    url: '/provider-service-offering',
-					    templateUrl: 'partials/provider-services.html'
+					    templateUrl: '/app/providers/partials/provider-services.html'
 					  })
 					  .state('register.photo', {
 					    url: '/provider-profile-photo',
-					    templateUrl: 'partials/provider-profile-photo.html'
+					    templateUrl: '/app/providers/partials/provider-profile-photo.html'
 					  })
 					   .state('register.registered', {
 					    url: '/thank-you-for-registering',
-					    templateUrl: 'partials/provider-thank-you.html'
+					    templateUrl: '/app/providers/partials/provider-thank-you.html'
 					  })
 					  .state('login', {
 					    url: '/login',
-					    templateUrl: 'partials/provider-signin.html',
+					    templateUrl: '/app/providers/partials/provider-signin.html',
 					    controller: 'LoginController'
 					  });
 				

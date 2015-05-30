@@ -9,7 +9,7 @@
 	  return {
 		  restrict :'E',
 		  transclude: true,
-		  templateUrl : 'partials/provider-header.html',
+		  templateUrl : '/app/providers/partials/provider-header.html',
 		  controller: 'IndexController'
 	  };
   })
@@ -17,7 +17,7 @@
 	  return {
 		  restrict :'E',
 		  transclude: true,
-		  templateUrl : 'partials/provider-footer.html'
+		  templateUrl : '/app/providers/partials/provider-footer.html'
 	  };
   })
   
@@ -25,14 +25,14 @@
 	  return {
 		  restrict :'E',
 		  transclude: true,
-		  templateUrl : 'partials/registration-header.html'
+		  templateUrl : '/app/providers/partials/registration-header.html'
 	  };
   })
 	.directive('providerWhyregister',function(){
 		  return {
 			  restrict :'E',
 			  transclude: true,
-			  templateUrl : 'partials/provider-whyregister.html'
+			  templateUrl : '/app/providers/partials/provider-whyregister.html'
 			  //controller: 'RegisterController'
 		  };
 	  });
