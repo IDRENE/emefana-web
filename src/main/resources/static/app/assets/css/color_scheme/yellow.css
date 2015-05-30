@@ -179,6 +179,12 @@
 		border-color:#EAA824;
 	}
 	
+	div.featured-box.nobg.border-only.ybk i.fa {
+		color:#EAA824;
+		border-color:#EAA824;
+		border:#EAA824 1px solid;
+	}
+	
 	/* Featured Icons */
 	i.featured-icon,
 	i.featured-icon:after {

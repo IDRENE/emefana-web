@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<!--[if IE 8]>			<html class="ie ie8" ng-app="ui.bootstrap.demo"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" ng-app="ui.bootstrap.demo"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html ng-app="ui.bootstrap.demo"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
 		<title>Atropos - Responsive Multipurpose</title>
@@ -155,9 +155,9 @@
 						<div class="form-group">
 
 							<div class="col-md-2 col-sm-6 col-xs-6">
-								<label>Beds</label>
+								<label>Event</label>
 								<select class="form-control" name="re_beds">
-									<option value="0">Any</option>
+									<option value="0">Event Type ?</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -170,10 +170,10 @@
 									<option value="10+">10+</option>
 								</select>
 							</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">
-								<label>Baths</label>
-								<select class="form-control" name="re_baths">
-									<option value="0">Any</option>
+								<div class="col-md-2 col-sm-6 col-xs-6">
+								<label>Where</label>
+								<select class="form-control" name="re_beds">
+									<option value="0">Which City ?</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -186,40 +186,27 @@
 									<option value="10+">10+</option>
 								</select>
 							</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">
-								<label>Price From</label>
-								<select class="form-control" name="re_price_from">
-									<option value="0">Any</option>
-									<option value="1000">$1000</option>
-									<option value="2000">$2000</option>
-									<option value="3000">$3000</option>
-									<option value="5000">$5000</option>
-									<option value="10000">$10000</option>
-									<option value="2000">$2000</option>
-									<option value="100000">$100000</option>
-									<option value="300000">$300000</option>
-									<option value="1000000+">1000000+</option>
-								</select>
-							</div>
-							<div class="col-md-2 col-sm-6 col-xs-6">
-								<label>Price To</label>
-								<select class="form-control" name="re_price_to">
-									<option value="0">Any</option>
-									<option value="1000">$1000</option>
-									<option value="2000">$2000</option>
-									<option value="3000">$3000</option>
-									<option value="5000">$5000</option>
-									<option value="10000">$10000</option>
-									<option value="2000">$2000</option>
-									<option value="100000">$100000</option>
-									<option value="300000">$300000</option>
-									<option value="1000000+">1000000+</option>
-								</select>
-							</div>
+									<div class="col-md-6 col-sm-6 col-xs-6" ng-controller="DatepickerDemoCtrl">
+										<label>Date To</label>
+										
+										<p class="input-group">
+											<input type="text" class="form-control"
+												datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
+												min-date="minDate" max-date="'2015-06-22'"
+												datepicker-options="dateOptions"
+												date-disabled="disabled(date, mode)" ng-required="true"
+												close-text="Close" /> <span class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div>
 
-							<div class="col-md-4 col-sm-12 col-xs-12">
+									<div class="col-md-2 col-sm-12 col-xs-12">
 								<label>&nbsp;</label>
-								<button class="btn btn-primary fullwidth">SEARCH NOW</button>
+								<button class="btn btn-primary fullwidth">SEARCH </button>
 							</div>
 						</div>
 					</div>
@@ -236,10 +223,52 @@
 
 			</section>
 			<!-- /SLIDER -->
-			
+
+			<!-- FEATURED BOXES 3 -->
+			<section class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="featured-box nobg border-only ybk">
+							<div class="box-content">
+								<i class="fa fa-users"></i>
+								<h4>For Everyone</h4>
+								<p>One stop shop for events service providers of all kind. Available anytime, anywhere</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="featured-box nobg border-only ybk left-separator">
+							<i class="fa fa-search"></i>
+							<h4>Search One and Done</h4>
+							<p>Compare them all at once , read reviews on their services,  pick the best priced provider for your perfect event.</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="featured-box nobg border-only ybk left-separator">
+							<i class="fa fa-book"></i>
+							<h4>Manage your bookings online</h4>
+							<p>It's easy to book, cancel, make changes or send a request to the provider.</p>
+						</div>
+					<!-- </div>
+					<div class="col-md-4">
+						<div class="featured-box nobg border-only ybk left-separator">
+							<i class="fa fa-cogs"></i>
+							<h4>Highly Customizable</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						</div>
+					</div> -->
+				</div>
+			</section>
+			<!-- /FEATURED BOXES 3 -->
+
+
+			<div class="container">
+				<hr class="no-lines" /><!-- hr line -->
+			</div>
 
 
 			<section class="container">
+				
 				<div class="row">
 
 					<!-- center column -->
@@ -709,9 +738,20 @@
 
 
 		<script type="text/javascript" src="/app/assets/plugins/mediaelement/build/mediaelement-and-player.min.js"></script>
-		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.12.0.min.js"></script>
-
 		<script type="text/javascript" src="/app/assets/js/scripts.js"></script>
+		
+			<!-- ANGULAR -->
+		<script type="text/javascript" src="/app/assets/js/angular.js"></script>
+		<script type="text/javascript" src="/app/assets/js/angular-resource.js"></script>
+		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+		<script type="text/javascript" src="/app/assets/js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="/app/assets/js/angular-cookies.js"></script>
+		<script type="text/javascript" src="/app/assets/js/ngGeolocation.js"></script>
+		<script type="text/javascript" src="/app/assets/js/checklist-model.js"></script>
+		<script type="text/javascript" src="/app/assets/js/angular-base64-upload.js"></script>
+		<script type="text/javascript" src="/app/assets/js/angular-busy.min.js"></script>
+		<script type="text/javascript" src="/app/js/controller.js"></script>
+		
 
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->
@@ -725,6 +765,12 @@
 			ga('send', 'pageview');
 		</script>
 		-->
-
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+    $( "#format" ).change(function() {
+      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
+    });
+  });
 	</body>
 </html>
