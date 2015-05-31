@@ -226,6 +226,7 @@
 	  providerControllers.controller('IndexController',
 			  ['$scope','$rootScope',
 			   function($scope,$rootScope) {
+				  $scope.backTopId="topHead";
 	} ]);
 	  
 	  providerControllers.controller('LoginController',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8" ng-app="ui.bootstrap.demo"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9" ng-app="ui.bootstrap.demo"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html ng-app="ui.bootstrap.demo"> <!--<![endif]-->
+<!--[if IE 8]>			<html class="ie ie8" ng-app="mainApp"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" ng-app="mainApp"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html ng-app="mainApp"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
 		<title>Atropos - Responsive Multipurpose</title>
@@ -145,8 +145,8 @@
 					<li>
 					
 						<div class="image-caption ">
-						<h1 style="color:#fff">Plan and Book Your Perferct Event
-						 <span class="subtitle ">Compare Venue Prices And Availability Countrywide at Once, For The Event</span>
+						<h1 style="color:#fff" class="hidden-sm hidden-xs">Plan and Book Your Perferct Event
+						 <span class="subtitle hidden-sm hidden-xs">Compare Venue Prices And Availability Countrywide at Once, For The Event</span>
 						</h1>
 					
 
@@ -154,8 +154,8 @@
 					<div class="row">
 						<div class="form-group">
 
-							<div class="col-md-2 col-sm-6 col-xs-6">
-								<label>Event</label>
+							<div class="col-md-2 col-sm-12 col-xs-12">
+								<label >Event</label>
 								<select class="form-control" name="re_beds">
 									<option value="0">Event Type ?</option>
 									<option value="1">1</option>
@@ -170,7 +170,7 @@
 									<option value="10+">10+</option>
 								</select>
 							</div>
-								<div class="col-md-2 col-sm-6 col-xs-6">
+								<div class="col-md-2 col-sm-12 col-xs-12">
 								<label>Where</label>
 								<select class="form-control" name="re_beds">
 									<option value="0">Which City ?</option>
@@ -186,27 +186,43 @@
 									<option value="10+">10+</option>
 								</select>
 							</div>
-									<div class="col-md-6 col-sm-6 col-xs-6" ng-controller="DatepickerDemoCtrl">
-										<label>Date To</label>
-										
-										<p class="input-group">
-											<input type="text" class="form-control"
-												datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
-												min-date="minDate" max-date="'2015-06-22'"
+							
+							<div class="col-md-2 col-sm-12 col-xs-12">
+								<label>Looking for</label>
+								<select class="form-control" name="re_beds">
+									<option value="0">Any</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10+">10+</option>
+								</select>
+							</div>
+							
+							<div class="col-md-3 col-sm-6 col-xs-6" ng-controller="DatepickerDemoCtrl">
+										<label>Event Date </label>
+											<input type="date" class="form-control"
+												datepicker-popup ng-model="dt" 
+												min-date="minDate" 
 												datepicker-options="dateOptions"
-												date-disabled="disabled(date, mode)" ng-required="true"
-												close-text="Close" /> <span class="input-group-btn">
-												<button type="button" class="btn btn-default"
-													ng-click="open($event)">
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-										</p>
-									</div>
+												close-text="Close" /> 
+
+						 </div>
+									
+							<div class="col-md-1 col-sm-12 col-xs-12">
+								<label>Days</label>
+								<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
+							</div>
+								
 
 									<div class="col-md-2 col-sm-12 col-xs-12">
 								<label>&nbsp;</label>
-								<button class="btn btn-primary fullwidth">SEARCH </button>
+								<button class="btn btn-primary fullwidth">SEARCH NOW</button>
 							</div>
 						</div>
 					</div>
@@ -227,7 +243,7 @@
 			<!-- FEATURED BOXES 3 -->
 			<section class="container">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4 hidden-sm hidden-xs">
 						<div class="featured-box nobg border-only ybk">
 							<div class="box-content">
 								<i class="fa fa-users"></i>
@@ -236,14 +252,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 hidden-sm hidden-xs">
 						<div class="featured-box nobg border-only ybk left-separator">
 							<i class="fa fa-search"></i>
 							<h4>Search One and Done</h4>
 							<p>Compare them all at once , read reviews on their services,  pick the best priced provider for your perfect event.</p>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 hidden-sm hidden-xs">
 						<div class="featured-box nobg border-only ybk left-separator">
 							<i class="fa fa-book"></i>
 							<h4>Manage your bookings online</h4>
@@ -633,86 +649,7 @@
 		<!-- FOOTER -->
 		<footer>
 
-			<!-- copyright , scrollTo Top -->
-			<div class="footer-bar">
-				<div class="container">
-					<span class="copyright">Copyright &copy; Your Company, LLC . All Rights Reserved.</span>
-					<a class="toTop" href="#topNav">BACK TO TOP <i class="fa fa-arrow-circle-up"></i></a>
-				</div>
-			</div>
-			<!-- copyright , scrollTo Top -->
-
-
-			<!-- footer content -->
-			<div class="footer-content">
-				<div class="container">
-
-					<div class="row">
-
-
-						<!-- FOOTER CONTACT INFO -->
-						<div class="column col-md-4">
-							<h3>CONTACT</h3>
-
-							<p class="contact-desc">
-								Atropos is a very powerful HTML5 template, you will be able to create an awesome website in a very simple way.										
-							</p>
-							<address class="font-opensans">
-								<ul>
-									<li class="footer-sprite address">
-										PO Box 21132<br />
-										Here Weare St, Melbourne<br />
-										Vivas 2355 Australia<br />
-									</li>
-									<li class="footer-sprite phone">
-										Phone: 1-800-565-2390
-									</li>
-									<li class="footer-sprite email">
-										<a href="mailto:support@yourname.com">support@yourname.com</a>
-									</li>
-								</ul>
-							</address>
-
-						</div>
-						<!-- /FOOTER CONTACT INFO -->
-
-
-						<!-- FOOTER LOGO -->
-						<div class="column logo col-md-4 text-center">
-							<div class="logo-content">
-								<img class="animate_fade_in" src="/app/assets/images/logo_footer.png" width="200" alt="" />
-								<h4>ATROPOS TEMPLATE</h4>
-							</div>											
-						</div>
-						<!-- /FOOTER LOGO -->
-
-
-						<!-- FOOTER LATEST POSTS -->
-						<div class="column col-md-4 text-right">
-							<h3>RECENT POSTS</h3>
-
-							<div class="post-item">
-								<small>JANUARY 2, 2014 BY ADMIN</small>
-								<h3><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-							</div>
-							<div class="post-item">
-								<small>JANUARY 2, 2014 BY ADMIN</small>
-								<h3><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-							</div>
-							<div class="post-item">
-								<small>JANUARY 2, 2014 BY ADMIN</small>
-								<h3><a href="blog-post.html">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></h3>
-							</div>
-
-							<a href="blog-masonry-sidebar.html" class="view-more pull-right">View Blog <i class="fa fa-arrow-right"></i></a>
-
-						</div>
-						<!-- /FOOTER LATEST POSTS -->
-
-					</div>
-
-				</div>
-			</div>
+		<public-footer></public-footer>
 			<!-- footer content -->
 
 		</footer>
@@ -746,11 +683,17 @@
 		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.12.0.min.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-ui-router.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-cookies.js"></script>
-		<script type="text/javascript" src="/app/assets/js/ngGeolocation.js"></script>
 		<script type="text/javascript" src="/app/assets/js/checklist-model.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-base64-upload.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-busy.min.js"></script>
-		<script type="text/javascript" src="/app/js/controller.js"></script>
+		<script type="text/javascript" src="/app/assets/js/cordovaGeolocationModule.js"></script>
+		<script type="text/javascript" src="/app/providers/js/config.js"></script>
+		<script type="text/javascript" src="/app/js/application.js"></script>
+		<script type="text/javascript" src="/app/js/controllers.js"></script>
+		<script type="text/javascript" src="/app/js/services.js"></script>
+		<script type="text/javascript" src="/app/js/directives.js"></script>
+		<script type="text/javascript" src="/app/js/filters.js"></script>
+		
 		
 
 
@@ -765,12 +708,6 @@
 			ga('send', 'pageview');
 		</script>
 		-->
-<script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-    $( "#format" ).change(function() {
-      $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
-    });
-  });
+
 	</body>
 </html>

@@ -1,0 +1,129 @@
+<!-- Top Bar -->
+		<header id="topHead"  class="fixed">
+			<div class="container">
+
+				<!-- PHONE/EMAIL -->
+				<span class="quick-contact pull-left">
+					<i class="fa fa-phone"></i> 1800-555-1234 &bull; 
+					<a class="hidden-xs" href="mailto:mail@e-mefana.com">info@e-mefana.com</a>
+				</span>
+				<!-- /PHONE/EMAIL -->
+
+				<!-- LANGUAGE -->
+				<div class="btn-group pull-right hidden-xs">
+					<button class="dropdown-toggle language" type="button" data-toggle="dropdown">
+						<img ng-src="/app/assets/images/flags/us.png" width="16" height="11" alt="EN Language" /> English <span class="caret"></span>
+					</button>
+
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">
+								<img ng-src="/app/assets/images/flags/us.png" width="16" height="11" alt="EN Language" /> [US] English
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img ng-src="/app/assets/images/flags/tz.png" width="16" height="11" alt="TZ Language" /> [TZ] Swahili
+							</a>
+						</li>
+						
+					</ul>
+				</div>
+				<!-- /LANGUAGE -->
+
+
+				<!-- SIGN IN -->
+				<div class="pull-right nav signin-dd">
+
+					<a ui-sref="register.start"><i class="fa fa-users"></i><span class="hidden-xs"> JOIN</span></a>
+					<a ui-sref="login" ><i class="fa fa-users"></i><span class="hidden-xs"> LOG IN</span></a>
+						
+				</div>
+				<!-- /SIGN IN -->
+				<!-- LINKS -->
+				<!-- <div class="pull-right nav hidden-xs">
+					<a href="page-about-us.html"><i class="fa fa-angle-right"></i> About</a>
+					<a href="contact-us.html"><i class="fa fa-angle-right"></i> Contact</a>
+				</div> -->
+				<!-- /LINKS -->
+
+			</div>
+		</header>
+		<!-- /Top Bar -->
+
+		<!-- TOP NAV -->
+		<header id="topNav" class="topHead"><!-- remove class="topHead" if no topHead used! -->
+			<div class="container">
+
+				<!-- Mobile Menu Button -->
+				<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+
+				<!-- Logo text or image -->
+				<a class="logo" ui-sref="home">
+					<img ng-src="/app/assets/images/logo.png" alt="Emefana" />
+				</a>
+
+				<!-- Top Nav -->
+				<div class="navbar-collapse nav-main-collapse collapse pull-right">
+					<nav class="nav-main mega-menu">
+						<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+							<li class="dropdown active">
+								<a class="dropdown-toggle"  ui-sref="register.start">
+									Add a listing to Emefana <i class="fa fa-angle-down"></i>
+								</a>
+								<!-- <ul class="dropdown-menu">
+									<li class="dropdown-submenu"><a href="#">Revolution Slider</a>
+										<ul class="dropdown-menu">
+											<li><a href="revolution-half-slider.html">Half Slider</a></li>
+											<li><a href="revolution-full-slider.html">Full Slider</a></li>
+											<li><a href="revolution-video.html">Full Video</a></li>
+											<li><a href="revolution-ken-burns.html">Ken Burns</a></li>
+											<li><a href="revolution-official-1.html">More Examples</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-submenu"><a href="#">Superslides Slider</a>
+										<ul class="dropdown-menu">
+											<li><a href="superslides-slider-half.html">Half Slider</a></li>
+											<li><a href="superslides-slider-full.html">Full Slider</a></li>
+											<li><a href="superslides-video.html">Half Video</a></li>
+											<li><a href="superslides-video-full.html">Full Video</a></li>
+										</ul>
+									</li>
+									<li class="divider"></li>
+									<li><a href="index-extended.html">Extended</a></li>
+									<li><a href="portfolio-home.html">Portfolio</a></li>
+									<li><a href="shop-home.html">Shop</a></li>
+									<li><a href="realestate-home.html">Real Estate</a></li>
+									<li><a href="church-home.html">Church</a></li>
+									<li><a href="medical-home.html">Medical</a></li>
+									<li><a href="college-home.html">College</a></li>
+									<li class="divider"></li>
+									<li><a href="onepage-superslides.html" target="_blank">Onepage - Superslides</a></li>
+									<li><a href="onepage-revolution.html" target="_blank">Onepage - Revolution</a></li>
+									<li><a href="index-more.html">More...</a></li>
+								</ul> -->
+							</li>
+							
+						
+							<li class="dropdown">
+								<a class="dropdown-toggle" href="#">
+									Already a partner <i class="fa fa-angle-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<!-- <li><a href="portfolio-2-columns.html">No, Join today</a></li> -->
+									<li><a ui-sref="login">Login to Control Center</a></li>
+								</ul>
+							</li>
+
+							
+						</ul>
+					</nav>
+				</div>
+				<!-- /Top Nav -->
+
+			</div>
+		</header>
+		<span id="header_shadow"></span>
+		<!-- /TOP NAV -->

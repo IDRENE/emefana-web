@@ -607,7 +607,7 @@ header#topNav li a i.fa {
 	box-shadow:#ddd 0 0 5px;
 	position:relative;
 	margin-top:-10px !important;
-	margin-bottom:60px !important;
+	/* margin-bottom:60px !important; */
 }
 
 #slider.full-screen {
@@ -635,7 +635,7 @@ header#topNav li a i.fa {
 }
 
 #slider li {
-	display:none;
+	/* display:block; */
 }
 .image-caption {
 	text-align:center;
@@ -644,6 +644,7 @@ header#topNav li a i.fa {
 	margin-top:20px; /* header height/2 */
     display: inline-block;
     max-width: 900px;
+    width: 80%;
 	z-index:2;
 	color:#fff;
 
