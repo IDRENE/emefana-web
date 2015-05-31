@@ -2,83 +2,112 @@
 
 	var publicControllers = angular.module('publicControllers', ['cordovaGeolocationModule']);
 	
-	   publicControllers.controller('IndexController', ['$scope','$rootScope',function($scope,$rootScope) {
+	   publicControllers.controller('IndexController', 
+			   ['$scope',
+			    '$rootScope',
+			    '$state',
+			    '$filter',
+			    'cordovaGeolocationService',
+			    'MetaService',
+			    function($scope,$rootScope,$state,$filter,cordovaGeolocationService, MetaService) {
 					  $scope.backTopId="topNav";
+					  
+					  //Drop Downs
+					  
+					//  console.log(JSON.stringify(MetaService.query()));
+					  
+					  MetaService.query(function(result){
+						 // console.log(JSON.stringify(result));
+					    	 //$scope.meatadata = angular.toJson(result, true);PROVIDER_REP_ROLES
+					    	 $scope.cities = $filter('filter')(result, { key: "CITIES" })[0].value;
+					    	// $scope.listingRoles = $filter('filter')(result, { key: "PROVIDER_REP_ROLES" })[0].value;
+					    	 $scope.countries = $filter('filter')(result, { key: "COUNTRIES" })[0].value;
+					    	 $scope.provider_categories = $filter('filter')(result, { key: "PROVIDER_CATEGORIES" })[0].value;
+					    	 $scope.events = $filter('filter')(result, { key: "EVENTS" })[0].value;
+					    	 //$scope.services = $filter('filter')(result, { key: "SERVICES" })[0].value;
+					    	 console.log(JSON.stringify($scope.cities));
+					    	 
+					     });
+						
+					  
+					/*
+					 * Date Picker
+					 */  
+					  $scope.today = function() {
+						     $scope.dt = new Date();
+						   };
+						   $scope.today();
+
+						   $scope.clear = function () {
+						     $scope.dt = null;
+						   };
+
+						   // Disable weekend selection
+						   $scope.disabled = function(date, mode) {
+						     return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+						   };
+
+						   $scope.toggleMin = function() {
+						     $scope.minDate = $scope.minDate ? null : new Date();
+						   };
+						   $scope.toggleMin();
+
+						   $scope.open = function($event) {
+						     $event.preventDefault();
+						     $event.stopPropagation();
+
+						     $scope.opened = true;
+						   };
+
+						   $scope.dateOptions = {
+						     formatYear: 'yy',
+						     startingDay: 1
+						   };
+
+						   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+						   $scope.format = $scope.formats[0];
+
+						   var tomorrow = new Date();
+						   tomorrow.setDate(tomorrow.getDate() + 1);
+						   var afterTomorrow = new Date();
+						   afterTomorrow.setDate(tomorrow.getDate() + 2);
+						   $scope.events =
+						     [
+						       {
+						         date: tomorrow,
+						         status: 'full'
+						       },
+						       {
+						         date: afterTomorrow,
+						         status: 'partially'
+						       }
+						     ];
+
+						   $scope.getDayClass = function(date, mode) {
+						     if (mode === 'day') {
+						       var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+						       for (var i=0;i<$scope.events.length;i++){
+						         var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+						         if (dayToCheck === currentDay) {
+						           return $scope.events[i].status;
+						         }
+						       }
+						     }
+
+						     return '';
+						   };
+						   
 		} ]);
+	   
 		  
 		   publicControllers.controller('LoginController',
 				  ['$scope','$rootScope','$location', '$cookieStore',
 				   function($scope, $rootScope, $location, $cookieStore) {
 		} ]);
 		   
-		   publicControllers.controller('DatepickerDemoCtrl', function ($scope) {
-			   $scope.today = function() {
-			     $scope.dt = new Date();
-			   };
-			   $scope.today();
-
-			   $scope.clear = function () {
-			     $scope.dt = null;
-			   };
-
-			   // Disable weekend selection
-			   $scope.disabled = function(date, mode) {
-			     return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-			   };
-
-			   $scope.toggleMin = function() {
-			     $scope.minDate = $scope.minDate ? null : new Date();
-			   };
-			   $scope.toggleMin();
-
-			   $scope.open = function($event) {
-			     $event.preventDefault();
-			     $event.stopPropagation();
-
-			     $scope.opened = true;
-			   };
-
-			   $scope.dateOptions = {
-			     formatYear: 'yy',
-			     startingDay: 1
-			   };
-
-			   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-			   $scope.format = $scope.formats[2];
-
-			   var tomorrow = new Date();
-			   tomorrow.setDate(tomorrow.getDate() + 1);
-			   var afterTomorrow = new Date();
-			   afterTomorrow.setDate(tomorrow.getDate() + 2);
-			   $scope.events =
-			     [
-			       {
-			         date: tomorrow,
-			         status: 'full'
-			       },
-			       {
-			         date: afterTomorrow,
-			         status: 'partially'
-			       }
-			     ];
-
-			   $scope.getDayClass = function(date, mode) {
-			     if (mode === 'day') {
-			       var dayToCheck = new Date(date).setHours(0,0,0,0);
-
-			       for (var i=0;i<$scope.events.length;i++){
-			         var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
-
-			         if (dayToCheck === currentDay) {
-			           return $scope.events[i].status;
-			         }
-			       }
-			     }
-
-			     return '';
-			   };
-			 });
-
+		 
 
 //	   publicControllers.controller('RegisterController',
 //			  ['$scope',

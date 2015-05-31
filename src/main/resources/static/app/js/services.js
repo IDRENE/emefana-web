@@ -1,10 +1,10 @@
 'use strict';
 
 /* Services */
-var providerServices = angular.module('publicServices', ['ngResource']);
+var publicServices = angular.module('publicServices', ['ngResource']);
 
-providerServices.factory('MetaService', ['$resource',function($resource){
-    return $resource('http://localhost:8080/api/metadata', {},{
+publicServices.factory('MetaService', ['$resource',function($resource){
+    return $resource('http://10.0.0.5:8080/api/metadata', {},{
 			    query : {
 					method : 'GET',
 					headers : {'Accept': 'application/json'},
@@ -14,8 +14,8 @@ providerServices.factory('MetaService', ['$resource',function($resource){
   
 }]);
 
-providerServices.factory('ListingService', ['$resource',function($resource){
-    return $resource('http://localhost:8080/api/provider', {},{
+publicServices.factory('ListingService', ['$resource',function($resource){
+    return $resource('http://10.0.0.5:8080/api/provider', {},{
 			    save : {
 					method : 'POST',
 					headers : {

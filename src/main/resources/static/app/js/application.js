@@ -6,9 +6,9 @@ angular.module('mainApp', [
 		'checklist-model',
 		'naif.base64',
 		'cgBusy',
-        'publicControllers',
         'publicFilters',
         'publicServices',
+        'publicControllers',
         'publicDirectives'
      ])
 	.config(
@@ -18,7 +18,12 @@ angular.module('mainApp', [
 					.state('home', {
 					    url: '/',
 					    templateUrl: '/app/index.html',
-					    controller: 'IndexController'
+     				    resolve:{
+//     				    	MetaService : function(MetaService) {
+//					      return MetaService.query();
+//				   }
+			    },
+					    controller: 'IndexController',
 					  });
 //					  .state('register', {
 //					    url: '/registration',

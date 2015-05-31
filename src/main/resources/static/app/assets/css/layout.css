@@ -635,7 +635,7 @@ header#topNav li a i.fa {
 }
 
 #slider li {
-	/* display:block; */
+	display:block; 
 }
 .image-caption {
 	text-align:center;
@@ -643,8 +643,8 @@ header#topNav li a i.fa {
     left: 50%; top: 50%;
 	margin-top:20px; /* header height/2 */
     display: inline-block;
-    max-width: 900px;
-    width: 80%;
+    max-width: 1000px;
+    width: 90%;
 	z-index:2;
 	color:#fff;
 
@@ -752,7 +752,7 @@ header#topNav li a i.fa {
 /* half screen height */
 #slider.half-screen,
 #slider.half-screen li {
-	height:600px !important;
+	height:560px !important;
 	margin:0;
 	padding:0;
 }
@@ -764,6 +764,22 @@ header#topNav li a i.fa {
 	#slider .slides-pagination {
 		bottom:60px !important;
 	}
+
+.text-center, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+	text-align: center;
+}
+
+
+#slider table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
 
 #slider.video {
 	background-position:center center;

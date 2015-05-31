@@ -44,7 +44,7 @@
 		<!-- Morenizr -->
 		<script type="text/javascript" src="/app/assets/plugins/modernizr.min.js"></script>
 	</head>
-	<body ><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+	<body ng-controller="IndexController"><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
 
 		<!-- TOP NAV -->
 		<header id="topNav" >
@@ -148,71 +148,55 @@
 						<h1 style="color:#fff" class="hidden-sm hidden-xs">Plan and Book Your Perferct Event
 						 <span class="subtitle hidden-sm hidden-xs">Compare Venue Prices And Availability Countrywide at Once, For The Event</span>
 						</h1>
-					
 
                  <form action="realestate-list.html" method="get" class="input-group yellow-row" id ="re-filter">
 					<div class="row">
 						<div class="form-group">
 
-							<div class="col-md-2 col-sm-12 col-xs-12">
+							<!-- <div class="col-md-2 col-sm-12 col-xs-12">
 								<label >Event</label>
-								<select class="form-control" name="re_beds">
-									<option value="0">Event Type ?</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10+">10+</option>
-								</select>
-							</div>
-								<div class="col-md-2 col-sm-12 col-xs-12">
+								<select class="form-control " name="event"
+											ng-model="search.event"
+											ng-options="event.eid for event in events" required>
+											<option value="">Select Event type</option>
+										</select>
+							</div> -->
+								<div class="col-md-3 col-sm-12 col-xs-12">
 								<label>Where</label>
-								<select class="form-control" name="re_beds">
-									<option value="0">Which City ?</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10+">10+</option>
-								</select>
-							</div>
+								 <select class="form-control " name="city"
+											ng-model="search.city"
+											ng-options="city.cid for city in cities" required>
+											<option value="">Select City</option>
+										</select>
+									</div>
 							
-							<div class="col-md-2 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-12 col-xs-12">
 								<label>Looking for</label>
-								<select class="form-control" name="re_beds">
-									<option value="0">Any</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10+">10+</option>
-								</select>
+								<select class="form-control " name="service"
+											ng-model="search.providerType"
+											ng-options="service.type for service in provider_categories" required>
+											<option value="">Select Service type</option>
+										</select>
 							</div>
 							
-							<div class="col-md-3 col-sm-6 col-xs-6" ng-controller="DatepickerDemoCtrl">
+							<div class="col-md-3 col-sm-12 col-xs-12"  >
 										<label>Event Date </label>
-											<input type="date" class="form-control"
-												datepicker-popup ng-model="dt" 
+										<p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
 												min-date="minDate" 
-												datepicker-options="dateOptions"
-												close-text="Close" /> 
-
-						 </div>
+												 show-button-bar="false"
+												  show-weeks="false"
+												datepicker-options="dateOptions" show-weeks="true"
+												close-text="Close" />
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-default"
+													ng-click="open($event)">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+										</p>
+									</div>
 									
 							<div class="col-md-1 col-sm-12 col-xs-12">
 								<label>Days</label>
@@ -463,6 +447,7 @@
 										<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/7.jpg" width="409" height="271" />
 									</figure>
 									<div class="item-box-desc">
+									
 										<h4>1903 Hollywood Blvd, Hollywood, FL</h4>
 										<small>$750.000</small>
 										<p>
@@ -482,6 +467,7 @@
 								<!-- /item -->
 
 							</div>
+                           	
 
 							<div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -666,6 +652,7 @@
 		<script type="text/javascript" src="/app/assets/plugins/masonry.js"></script>
 
 		<script type="text/javascript" src="/app/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
 		<script type="text/javascript" src="/app/assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<script type="text/javascript" src="/app/assets/plugins/owl-carousel/owl.carousel.min.js"></script>
 		<script type="text/javascript" src="/app/assets/plugins/stellar/jquery.stellar.min.js"></script>
@@ -680,7 +667,7 @@
 			<!-- ANGULAR -->
 		<script type="text/javascript" src="/app/assets/js/angular.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-resource.js"></script>
-		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.12.0.min.js"></script>
+		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-ui-router.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-cookies.js"></script>
 		<script type="text/javascript" src="/app/assets/js/checklist-model.js"></script>

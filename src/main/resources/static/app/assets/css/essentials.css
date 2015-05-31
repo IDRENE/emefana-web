@@ -899,7 +899,7 @@ span.progress-bar-tooltip:after {
 }
 
 .btn-default {
-	background:none !important;
+	/* background:none !important; */
 	border:#ddd 2px solid;
 	padding:8px 18px;
 }
@@ -1214,7 +1214,7 @@ form label {
 }
 
 .input-group-btn>button {
-	height: 46px;
+	/* height: 46px; */
 }
 
 
