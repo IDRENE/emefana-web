@@ -12,6 +12,18 @@
 			    function($scope,$rootScope,$state,$filter,cordovaGeolocationService, MetaService) {
 					  $scope.backTopId="topNav";
 					  
+					var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude
+				    var NE = new google.maps.LatLng(33.854, -5.307); 
+				    var boundss = new google.maps.LatLngBounds(SW, NE);
+					  
+					  $scope.city = '';
+					    $scope.cities = {
+						  bounds: boundss,
+					      country: 'tz',
+					      types: '(cities)'
+					    };  
+					    $scope.cityDetails = '';
+					  
 					  //Drop Downs
 					  
 					//  console.log(JSON.stringify(MetaService.query()));
@@ -25,7 +37,7 @@
 					    	 $scope.provider_categories = $filter('filter')(result, { key: "PROVIDER_CATEGORIES" })[0].value;
 					    	 $scope.events = $filter('filter')(result, { key: "EVENTS" })[0].value;
 					    	 //$scope.services = $filter('filter')(result, { key: "SERVICES" })[0].value;
-					    	 console.log(JSON.stringify($scope.cities));
+					    	// console.log(JSON.stringify($scope.cities));
 					    	 
 					     });
 						

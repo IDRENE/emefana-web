@@ -21,3 +21,11 @@ select.ng-invalid.ng-dirty {border: solid red 1px;}
     border-radius: 32px;
     color: black;
   }
+  
+  .indent {
+    margin-left: 50px;
+}
+
+.move-down {
+    margin-top: 100px;
+}
