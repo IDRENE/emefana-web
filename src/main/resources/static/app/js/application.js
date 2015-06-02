@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mainApp', [
-        'ngAutocomplete',                   
+        'ngAutocomplete',   
         'ui.bootstrap',
 		'ui.router',
 		'ngCookies', 

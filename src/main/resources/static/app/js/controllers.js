@@ -11,8 +11,8 @@
 			    'MetaService',
 			    function($scope,$rootScope,$state,$filter,cordovaGeolocationService, MetaService) {
 					  $scope.backTopId="topNav";
-					  
-					var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude
+
+					var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude for tz
 				    var NE = new google.maps.LatLng(33.854, -5.307); 
 				    var boundss = new google.maps.LatLngBounds(SW, NE);
 					  

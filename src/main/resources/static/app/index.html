@@ -4,10 +4,10 @@
 <!--[if gt IE 9]><!-->	<html ng-app="mainApp"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
-		<title>Atropos - Responsive Multipurpose</title>
+		<title>EMEFANA - Fanikisha Shughuli yako</title>
 		<meta name="keywords" content="HTML5,CSS3,Template" />
-		<meta name="description" content="" />
-		<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+		<meta name="description" content="Venues, Harusi, Kumbi, Tanzania,Meetings,weddings, birthdays" />
+		<meta name="Author" content="Iddy Magohe" />
 
 		<!-- mobile settings -->
 		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -47,80 +47,7 @@
 	<body ng-controller="IndexController"><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
 
 		<!-- TOP NAV -->
-		<header id="topNav" >
-			<div class="container">
-
-				<!-- Mobile Menu Button -->
-				<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
-					<i class="fa fa-bars"></i>
-				</button>
-
-				<!-- Logo text or image -->
-				<a class="logo" href="index.html">
-					<img src="/app/assets/images/logo.png" alt="Atropos" />
-				</a>
-
-				<!-- Top Nav -->
-				<div class="navbar-collapse nav-main-collapse collapse pull-right">
-					<nav class="nav-main mega-menu">
-						<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
-							<li class=" dropdown active">
-								<a href="#">
-									 <i class="fa fa-question"></i> 
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="providers"><i class="fa fa-plus"></i>Add Your Business to Emefana</a></li>
-									<li class="divider"></li>
-									<li><a href="shop-full-width.html">Shop Full Width</a></li>
-									<li><a href="shop-product-full-width.html">Shop Product Full Width</a></li>
-									<li class="divider"></li>
-									<li><a href="shop-sidebar.html">Shop Sidebar</a></li>
-									<li><a href="shop-product-sidebar.html">Shop Product Sidebar</a></li>
-									<li class="divider"></li>
-									<li><a href="shop-cart.html">Shop Cart</a></li>
-									<li><a href="shop-cc-pay.html">Shop Credit Card</a></li>
-								</ul>
-							</li>
-							
-							
-
-							<li class="dropdown active">
-								<a class="dropdown-toggle" href="#">
-									<i class="fa fa-user"></i> Sign In 
-								</a>
-
-							</li>
-							<li class="dropdown">
-								<a class="dropdown-toggle" href="#">
-									Manage booking 
-								</a>
-								
-
-							</li>
-
-
-
-							<!-- GLOBAL SEARCH -->
-							<li class="search">
-								<!-- search form -->
-								<form method="get" action="#" class="input-group pull-right">
-									<input type="text" class="form-control" name="k" id="k" value="" placeholder="Search">
-									<span class="input-group-btn">
-										<button class="btn btn-primary notransition"><i class="fa fa-search"></i></button>
-									</span>
-									
-								</form>
-								<!-- /search form -->
-							</li>
-							<!-- /GLOBAL SEARCH -->
-
-						</ul>
-					</nav>
-				</div>
-				<!-- /Top Nav -->
-
-			</div>
-		</header>
+		<public-header></public-header>
 
 		<span id="header_shadow"></span>
 		<!-- /TOP NAV -->
@@ -503,7 +430,7 @@
 								<!-- /item -->
 
 							
-							<div>result: {{city}} {{cityDetails.geometry}}</div>
+							<div>result: {{city}} {{cityDetails.geometry}}  {{countrySelected}}</div>
 
 						</div>
 							
@@ -680,7 +607,6 @@
 		<script type="text/javascript" src="/app/assets/js/angular-busy.min.js"></script>
 		<script type="text/javascript" src="/app/assets/js/cordovaGeolocationModule.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script> 
-		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
 		 <script type="text/javascript" src="/app/assets/js/ngAutocomplete.js"></script>
 		<script type="text/javascript" src="/app/providers/js/config.js"></script>
 		<script type="text/javascript" src="/app/js/application.js"></script>
