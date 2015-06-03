@@ -55,16 +55,13 @@
 
 
 		<!-- WRAPPER -->
-		<div id="wrapper">
+		
+                          <div id="wrapper"  ng-show="$state.includes('home')"> 
+                          
 
 			<!-- SLIDER -->
 			<section id="slider" class="half-screen" data-autoplay="false" data-mouseover-stop="false"><!-- data-autoplay = 'fals'e or miliseconds. Eg.: 5s = '5000' ; data-mouseover = stop on mouseover. 'true' or 'false') -->
 
-				<!-- slider navigation -->
-				<nav class="slides-navigation">
-					<a class="prev" href="#"></a>
-					<a class="next" href="#"></a>
-				</nav>
 
 				<ul class="slides-container">
 
@@ -76,7 +73,7 @@
 						 <span class="subtitle hidden-sm hidden-xs">Compare Venue Prices And Availability Countrywide at Once, For The Event</span>
 						</h1>
 
-                 <form action="realestate-list.html" method="get" class="input-group yellow-row" id ="re-filter">
+                 <form method="get" class="input-group yellow-row" id ="re-filter">
 					<div class="row">
 						<div class="form-group">
 
@@ -94,7 +91,7 @@
 								<label for="Autocomplete">Where in Tanzania</label> 
 								<input type="text" id="Autocomplete"
 									class="form-control" ng-autocomplete="city"
-									details="cityDetails" options="cities" />
+									details="cityDetails" options="optionsCities" />
 							      </div>
 							
 							<div class="col-md-3 col-sm-12 col-xs-12">
@@ -133,7 +130,7 @@
 
 									<div class="col-md-2 col-sm-12 col-xs-12">
 								<label>&nbsp;</label>
-								<button class="btn btn-primary fullwidth">SEARCH NOW</button>
+								<button class="btn btn-primary fullwidth" ng-click="search()">SEARCH NOW</button>
 							</div>
 						</div>
 					</div>
@@ -469,12 +466,8 @@
 						</div>
 						<!-- /No #1 Hot -->
 
-						<!-- video -->
-						<iframe src="http://player.vimeo.com/video/73221098" width="800" height="450"></iframe>
-						<h5 class="font300 padding10">
-							<small class="text-center block">(3287 views last 3 days)</small>
-						</h5>
-						<!-- /video -->
+					
+
 
 						<!-- small articles -->
 						<div class="row">
@@ -557,11 +550,12 @@
 				<!-- /CALLOUT -->
 
 			</section>
+                          
+                           </div>
+                            <div ui-view>  </div>
 
-
-		</div>
 		<!-- /WRAPPER -->
-
+		
 
 
 		<!-- FOOTER -->

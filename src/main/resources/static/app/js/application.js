@@ -18,27 +18,24 @@ angular.module('mainApp', [
 				$stateProvider
 					.state('home', {
 					    url: '/',
-					    templateUrl: '/app/index.html',
+					    templateUrl: '/app/index-home.html',
      				    resolve:{
 //     				    	MetaService : function(MetaService) {
 //					      return MetaService.query();
 //				   }
 			    },
 					    controller: 'IndexController',
-					  });
-//					  .state('register', {
-//					    url: '/registration',
-//					    templateUrl: '/app/providers/partials/provider-signup.html',
-//					    resolve:{
-////						    	metaDataFactory :function($http) {
-////						    		return  $http({method: 'GET', url: '../data/cities.json'})
-////						        },
+					  })
+					  .state('search', {
+					    url: '/search',
+					    templateUrl: '/app/provider-list.html',
+					    resolve:{
 //						       MetadataService :function(MetaService){
 //							      return MetaService.query();
 //						   }
-//					    },
-//					    controller:'RegisterController',
-//					  })
+					    },
+					    controller:'IndexController',
+					  });
 //					  .state('register.start', {
 //					    url: '/listing-general-info',
 //					    templateUrl: '/app/providers/partials/provider-general-info.html',

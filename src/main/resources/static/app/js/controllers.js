@@ -17,7 +17,7 @@
 				    var boundss = new google.maps.LatLngBounds(SW, NE);
 					  
 					  $scope.city = '';
-					    $scope.cities = {
+					    $scope.optionsCities = {
 						  bounds: boundss,
 					      country: 'tz',
 					      types: '(cities)'
@@ -110,6 +110,10 @@
 
 						     return '';
 						   };
+						   
+						 $scope.search = function(){
+							 $state.go("search");
+						 };
 						   
 		} ]);
 	   
