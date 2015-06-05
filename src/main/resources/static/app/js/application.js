@@ -35,12 +35,12 @@ angular.module('mainApp', [
 //						   }
 					    },
 					    controller:'IndexController',
+					  })
+					  .state('details', {
+					    url: '/provider-details/:providerId',
+					    templateUrl: '/app/provider-single.html',
+					    
 					  });
-//					  .state('register.start', {
-//					    url: '/listing-general-info',
-//					    templateUrl: '/app/providers/partials/provider-general-info.html',
-//					    
-//					  })
 //					  .state('register.features', {
 //					    url: '/listing-features',
 //					    templateUrl: '/app/providers/partials/provider-features.html'

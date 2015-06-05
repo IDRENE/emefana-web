@@ -11,6 +11,7 @@
 			    'MetaService',
 			    function($scope,$rootScope,$state,$filter,cordovaGeolocationService, MetaService) {
 					  $scope.backTopId="topNav";
+					  $scope.home = true;
 
 					var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude for tz
 				    var NE = new google.maps.LatLng(33.854, -5.307); 
@@ -113,6 +114,11 @@
 						   
 						 $scope.search = function(){
 							 $state.go("search");
+						 };
+						 
+						 $scope.viewDetails = function(providerID){
+							 $state.go('details', { providerId: providerID });
+							console.log(JSON.stringify( $state.params));
 						 };
 						   
 		} ]);
