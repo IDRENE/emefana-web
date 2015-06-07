@@ -56,13 +56,15 @@
 		
 
 		<link href="/app/assets/css/style.css" rel="stylesheet" type="text/css" />
+		 <link rel="stylesheet" type="text/css" media="all" href="/app/assets/css/daterangepicker-bs3.css" />
+		
 		
 
 
 		<!-- Morenizr -->
 		<script type="text/javascript" src="/app/assets/plugins/modernizr.min.js"></script>
 	</head>
-	<body ng-controller="IndexController"><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+	<body ><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
 
 		<!-- TOP NAV -->
 		<public-header></public-header>
@@ -74,7 +76,7 @@
 
 		<!-- WRAPPER -->
 		
-                          <div id="wrapper"  ng-show="$state.includes('home')"> 
+            <div id="wrapper"  ng-controller="IndexController" ng-show="$state.includes('home')"> 
                           
 
 			<!-- SLIDER -->
@@ -115,29 +117,25 @@
 							<div class="col-md-3 col-sm-12 col-xs-12">
 								<label>Looking for</label>
 								<select class="form-control " name="service"
-											ng-model="search.providerType"
+											ng-model="providerCategory"
 											ng-options="service.type for service in provider_categories" required>
 											<option value="">Select Service type</option>
-										</select>
+								</select>
 							</div>
 							
 							<div class="col-md-3 col-sm-12 col-xs-12"  >
 										<label>Event Date </label>
-										<p class="input-group">
+									      <p class="input-group">
 											<input type="text" class="form-control well well-sm" 
-												datepicker-popup="{{format}}" ng-model="dt" is-open="opened"
-												min-date="minDate" 
-												 show-button-bar="false"
-												  show-weeks="false"
-												datepicker-options="dateOptions" show-weeks="true"
-												close-text="Close" />
+												 ng-model="eventDate" name="eventDate" />
 												 <span class="input-group-btn">
-												<button type="button" class="btn btn-default"
-													ng-click="open($event)">
+												<button type="button" class="btn btn-default">
 													<i class="glyphicon glyphicon-calendar"></i>
 												</button>
 											</span>
-										</p>
+											</p>
+
+
 									</div>
 									
 							<div class="col-md-1 col-sm-12 col-xs-12">
@@ -445,7 +443,7 @@
 								<!-- /item -->
 
 							
-							<div>result: {{city}} {{cityDetails.geometry}}  {{countrySelected}}</div>
+							<div>result: {{city}} {{cityDetails.geometry}}  {{countrySelected}}   {{eventDate}}</div>
 
 						</div>
 							
@@ -571,6 +569,7 @@
                           
                            </div>
                             <div ui-view>  </div>
+                            
 
 		<!-- /WRAPPER -->
 		
@@ -607,11 +606,13 @@
 
 		<script type="text/javascript" src="/app/assets/plugins/mediaelement/build/mediaelement-and-player.min.js"></script>
 		<script type="text/javascript" src="/app/assets/js/scripts.js"></script>
+		<script type="text/javascript" src="/app/assets/js/moment.js"></script>
 		
 			<!-- ANGULAR -->
 		<script type="text/javascript" src="/app/assets/js/angular.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-resource.js"></script>
 		<script type="text/javascript" src="/app/assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+		<script type="text/javascript" src="/app/assets/js/daterangepicker.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-ui-router.js"></script>
 		<script type="text/javascript" src="/app/assets/js/angular-cookies.js"></script>
 		<script type="text/javascript" src="/app/assets/js/checklist-model.js"></script>
@@ -627,7 +628,20 @@
 		<script type="text/javascript" src="/app/js/directives.js"></script>
 		<script type="text/javascript" src="/app/js/filters.js"></script>
 		
-		
+		<script type="text/javascript">
+	$(function() {
+	    $('input[name="eventDate"]').daterangepicker({
+	        minDate: '06/01/2015',
+	        singleDatePicker: true,
+	        timePicker: true,
+	        format: 'MM/DD/YYYY h:mm ',
+	        timePickerIncrement: 30,
+	        timePicker12Hour: false,
+	        timePickerSeconds: false
+	       
+	    });
+	});
+</script>
 
 
 		<!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information. -->

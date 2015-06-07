@@ -27,3 +27,4 @@ publicServices.factory('ListingService', ['$resource',function($resource){
 	  });
   
 }]);
+

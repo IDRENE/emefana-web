@@ -19,22 +19,23 @@ angular.module('mainApp', [
 					.state('home', {
 					    url: '/',
 					    templateUrl: '/app/index-home.html',
-     				    resolve:{
-//     				    	MetaService : function(MetaService) {
-//					      return MetaService.query();
-//				   }
-			    },
-					    controller: 'IndexController',
+     				  //  resolve:{
+     				 //   	MetadataService : function(MetaService) {
+					   //   return MetaService.query();
+				//   }
+			   // },
+			   // controller: 'IndexController', 
+
 					  })
 					  .state('search', {
-					    url: '/search',
+					    url: '^/providers.html?providerCategory&city&eventDate&eventDays',
 					    templateUrl: '/app/provider-list.html',
 					    resolve:{
-//						       MetadataService :function(MetaService){
-//							      return MetaService.query();
-//						   }
+					       MetadataService :function(MetaService){
+							      return MetaService.query();
+						   }
 					    },
-					    controller:'IndexController',
+					    controller:'ProvidersController',
 					  })
 					  .state('details', {
 					    url: '/provider-details/:providerId',
