@@ -80,7 +80,13 @@
 						    $scope.provider_type= $state.params.providerCategory;
 						    $scope.eventDate = $state.params.eventDate;
 						   
-						    
+						 // set available range
+						    $scope.minPrice = 100;//TODO populate thus from back-end providers
+						    $scope.maxPrice = 999;//TODO populate thus from back-end providers
+
+						    // default the user's values to the available range
+						    $scope.userMinPrice = $scope.minPrice;
+						    $scope.userMaxPrice = $scope.maxPrice;
 
 						  
 						   console.log(JSON.stringify($state.params));
@@ -103,6 +109,14 @@
 								 $state.go('details', { providerId: providerID });
 								console.log(JSON.stringify( $state.params));
 							 };
+							 
+							 /*
+							  * To be used in as provider filter pass prov item
+							  * ng-repeat='item in items|filter:priceRange'
+							  */
+							 $scope.priceRange = function(item) {
+								    return (parseInt(item['min-acceptable-price']) >= $scope.minPrice && parseInt(item['max-acceptable-price']) <= $scope.maxPrice);
+								  };
 					  
 		} ]);
 	   

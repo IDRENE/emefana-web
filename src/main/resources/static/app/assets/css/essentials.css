@@ -101,7 +101,7 @@ input[type="checkbox"] {
 	display:inline-block;
 	cursor:pointer;
 	width:15px;
-	height:15px;
+	height:10px;
 	border:0;
 }
 
@@ -1293,7 +1293,7 @@ div.tabs ul.nav-tabs a i.fa {
 /** 22. Accordion
  **************************************************************** **/
 .panel-group {
-	padding: 3px;
+
 	background: #fff;
 	border: 0;
 
@@ -1312,36 +1312,38 @@ div.tabs ul.nav-tabs a i.fa {
 }
 
 .panel-default > .panel-heading {
-    background: #F5F7F7;
-	padding: 11px 15px;
+    background: transparent;
+	
 
-	-webkit-border-radius: 6px;
-	   -moz-border-radius: 6px;
-			border-radius: 6px;
+	-webkit-border-radius: 0px;
+	   -moz-border-radius: 0px;
+			border-radius: 0px;
 }
 
 .panel-heading .fa {
     display: inline-block;
-    font-size: 14px;
+    font-size: 10px;
     font-style: normal;
-    font-weight: normal;
+    font-weight: small;
     height: 25px;
     margin-right: 2px;
-    padding: 5px;
+    padding: 0px;
     position: relative;
     text-align: right;
-    top: -1px;
+    top: 0px;
     width: 25px;
+    
 }
 
 .panel-title a {
 	text-decoration:none;
 	display:block;
 	color:#333;
+	font-size:12px
 }
 
 .panel-body {
-	padding: 21px;
+	padding: 15px;
 }
 
 
@@ -2789,8 +2791,8 @@ table,
 .stroke-black {
   stroke: #111 !important; }
 
-  
-  
+
+
  
 /**	--. Printable Div
 	If want to dismiss these rules, 

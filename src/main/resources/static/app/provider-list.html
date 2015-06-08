@@ -1,118 +1,10 @@
-
 <!-- WRAPPER -->
 		<div id="wrapper">
 
 			<section class="container top-no-header">
 				<div class="row">
 				
-						<div class="col-md-3">
-
-						<form id="re-filter"  class="white-row">
-
-							<!-- FILTER / SEARCH -->
-							<h5>
-								Find The Best <strong class="styleColor"> Providers </strong>
-							</h5>
-
-							<div class="row">
-								<div class="form-group">
-
-									<div class="col-md-12 col-sm-6">
-										<label for="Autocomplete">Where in Tanzania</label> 
-								<input type="text" id="Autocomplete" 
-									class="form-control" ng-autocomplete="city"
-									details="cityDetails" options="optionsCities" />
-									</div>
-
-									<div class="col-md-12 col-sm-6">
-										<label>Looking for</label>
-										<select class="form-control " name="service"
-											ng-model="providerCategory"
-											ng-options="service.type for service in provider_categories" required>
-											<option value="">Select Service type</option>
-								</select>
-									</div>
-									<div class="col-md-12 col-sm-6">
-										<label>Event Date</label>
-										 <p class="input-group">
-											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate" />
-												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info">
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-											</p>   
-											
-									</div>
-									<div class="col-md-12 col-sm-6">
-										<label>Event Days</label>
-										<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
-									</div>
-									<div class="col-md-12">
-										<label>&nbsp;</label>
-										<button class="btn btn-info fullwidth">SEARCH NOW</button>
-									</div>
-								</div>
-							</div>
-
-						</form>
-
-						<!-- HOT -->
 						
-
-						<!-- No #1 Hot -->
-						
-						<form id="filter_box" class="box_filters" action="">
-						
-							<h3 class=" filter_by ">Filter by:</h3>
-						
-
-							<div class="item-box-list-desc">
-								<h4 class="wrap"><a class="styleColor" href="#">1903 Hollywood Blvd, FL</a></h4>
-								<small class="font300 text-center block">~ $112.000 ~</small>
-							</div>
-							</form>
-						
-						
-						<!-- /small articles -->
-
-
-
-						<!-- TWEETS -->
-						<h3 class="page-header">
-							<i class="fa fa-twitter"></i> 
-							Latest <strong class="styleColor">Tweets</strong> 
-						</h3>
-
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-
-						<!-- SOCIALS -->
-						<h3 class="page-header">
-							<i class="fa fa-twitter"></i> 
-							<strong class="styleColor">Follow</strong> Us
-						</h3>
-
-						<a href="#" class="social fa fa-facebook"></a>
-						<a href="#" class="social fa fa-twitter"></a>
-						<a href="#" class="social fa fa-google-plus"></a>
-						<a href="#" class="social fa fa-linkedin"></a>
-						<a href="#" class="social fa fa-pinterest"></a>
-						<a href="#" class="social fa fa-flickr"></a>
-
-					</div>
-					
 
 					<!-- center column -->
 					<div class="col-md-9">
@@ -488,6 +380,136 @@
 					</div>
 					
 					<!-- side column -->
+					<div class="col-md-3">
+
+						<form id="re-filter"  class="white-row">
+
+							<!-- FILTER / SEARCH -->
+							<h5>
+								Find The Best <strong class="styleColor"> Providers </strong>
+							</h5>
+
+							<div class="row">
+								<div class="form-group">
+
+									<div class="col-md-12 col-sm-6">
+										<label for="Autocomplete">Where in Tanzania</label> 
+								<input type="text" id="Autocomplete" 
+									class="form-control" ng-autocomplete="city"
+									details="cityDetails" options="optionsCities" />
+									</div>
+
+									<div class="col-md-12 col-sm-6">
+										<label>Looking for</label>
+										<select class="form-control " name="service"
+											ng-model="providerCategory"
+											ng-options="service.type for service in provider_categories" required>
+											<option value="">Select Service type</option>
+								</select>
+									</div>
+									<div class="col-md-12 col-sm-6">
+										<label>Event Date</label>
+										 <p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate" />
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-info">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</p>   
+											
+									</div>
+									<div class="col-md-12 col-sm-6">
+										<label>Event Days</label>
+										<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
+									</div>
+									<div class="col-md-12">
+										<label>&nbsp;</label>
+										<button class="btn btn-info fullwidth">SEARCH NOW</button>
+									</div>
+								</div>
+							</div>
+
+						</form>
+
+						<!-- HOT -->
+						
+
+						<!-- No #1 Hot -->
+						
+						<form id="filter_box" class="box_filters" action="">
+						
+							<h3 class=" filter_by ">Filter by: <i class="fa fa-info-circle" tooltip="Filters help our customers save time when choosing their providers. Try clicking on a few now..."></i></h3>
+							    <span>&nbsp;</span>
+							       	    
+							<div class="filtercategory"> 
+							       <h5><strong class="styleColor">  Price</strong></h5>
+                                       <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="10" filter="currency" filter-options="USD$" show-values="true"></div>
+							       </div>
+							
+							<span>&nbsp;</span>
+							<div class="filtercategory"> 
+							   <h5> <strong class="styleColor">  Star Rating</strong></h5>
+
+							<div class="filterelement" style="color: #009fe3;font-size:12px">
+							 
+							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+							   <span class="filterLabel">   5 Stars  </span> 
+							     <span class="filterCount">(0)</span>
+
+                               </div>
+                               
+                             <div class="filterelement" style="color: #009fe3;font-size:12px">
+ 
+							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+							   <span class="filterLabel">   5 Stars  </span> 
+							     <span class="filterCount">(0)</span>
+
+
+                               </div>
+                             <div class="filterelement" style="color: #009fe3;font-size:12px">
+
+							<input class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+							   <span class="filterLabel">   5 Stars  </span> 
+							     <span class="filterCount">(0)</span>
+
+
+                               </div>
+							       </div>
+							       
+							   
+							       
+							       <span>&nbsp;</span>
+							<div class="filtercategory"> 
+							   <h5> <strong class="styleColor">  Events</strong></h5>
+
+							<div ng-repeat="event in events" class="filterelement" style="color: #009fe3;font-size:12px">
+
+							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+							   <span class="filterLabel">  {{event.eid}} </span> 
+							     <span class="filterCount">(0)</span>
+
+                               </div>
+
+
+							       </div>
+							       
+
+
+				</form>
+						
+						
+						<!-- /small articles -->
+
+
+
+						<!-- TWEETS -->
+						
+
+
+					</div>
+					
 
 
 				</div>

@@ -1474,12 +1474,71 @@ span.js_loader {
 }
 
 .box_filters  {
-  background: 0;
+  background: #fff;
   border-radius: 3px;
   border: 1px solid #009fe3;
   margin: 0 0 10px;
   padding: 5px;
   }
+  
+  
+
+
+.box_filters.filterTitle {
+  font-size: .8823529411764706em;
+  font-weight: normal;
+  margin: 0 0 .4em 0;
+  padding-top: 0;
+  color: #58738a;
+  width: 100%;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.box_filters fieldset.filterContainer {
+  margin-bottom: 0;
+}
+
+.filterHeader {
+  font-size: 1em;
+  padding: 0;
+  margin: 0 0 1.05882353em 0;
+}
+
+.box_filters .filtercategory h5 {
+  color: #003580;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 0 2px;
+}
+
+
+.box_filters.filterelement .filter_label {
+  color: #009fe3;
+}
+
+.box_filters.filterelement .filter_count {
+  color: #009fe3;
+}
+
+.box_filters.filterelement {
+  /* background-image: url('../images/16aed1fd5001eb7b6a4627273fb405f2abd6144d.png'); */
+  background-position: 6px 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 14px;
+  padding: 5px 2px 5px 24px;
+  text-decoration: none;
+  zoom: 1;
+}
+  
 
 /* hover */
 .item-box-list .item-hover,

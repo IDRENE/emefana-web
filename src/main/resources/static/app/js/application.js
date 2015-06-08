@@ -2,6 +2,7 @@
 angular.module('mainApp', [
         'ngAutocomplete',   
         'ui.bootstrap',
+        'ui-rangeSlider',
 		'ui.router',
 		'ngCookies', 
 		'checklist-model',
