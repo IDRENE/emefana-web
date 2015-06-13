@@ -4,7 +4,7 @@
 		<section class="container top-no-header">
 		<div id="mypanel" class="ddpanel">
 		
-		<div class="ddpanelcontent" ng-show="collapsed" style="padding:20px; margin-bottom:5px;">
+		<div class="slide ddpanelcontent"  ng-show="collapsed" style="padding:20px; margin-bottom:5px;">
 
 		<form id="re-filter white-row " >
 
@@ -59,7 +59,7 @@
 						</div>
 						<div id="mypaneltab" class="ddpaneltab">
 						
-						<a href="#" ng-model="collapsed" ng-click="collapsed=!collapsed">
+						<a ng-model="collapsed" ng-click="collapsed=!collapsed">
 						  <span ng-show="collapsed">Advanced Search<img src="/app/assets/images/arrow-up.gif" class="pointerimage" style="border-width: 0px; visibility: visible;"></span>
 						  <span ng-show="!collapsed">Advanced Search<img src="/app/assets/images/arrow-down.gif" class="pointerimage" style="border-width: 0px; visibility: visible;"></span>
 						</a>
@@ -76,7 +76,7 @@
 
 						<!-- CATEGORY TITLE -->
 						<h3 class="page-header nomargin-top">
-							<strong class="styleColor">4 </strong> Result for 
+							<strong class="styleColor">4 </strong> Result for {{provider_type}}Providers near {{city}}
 						</h3>
 
 
@@ -453,56 +453,62 @@
 							<div class="filtercategory"> 
 							       <h5><strong class="styleColor">  Price</strong></h5>
                                        <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="10" filter="currency" filter-options="USD$" show-values="true"></div>
-							       </div>
+							 </div>
 							
 							<span>&nbsp;</span>
 							<div class="filtercategory"> 
-							   <h5> <strong class="styleColor">  Star Rating</strong></h5>
-
-							<div class="filterelement" style="color: #009fe3;font-size:12px">
-							 
-							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
-							   <span class="filterLabel">   5 Stars  </span> 
-							     <span class="filterCount">(0)</span>
-
-                               </div>
-                               
-                             <div class="filterelement" style="color: #009fe3;font-size:12px">
- 
-							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
-							   <span class="filterLabel">   5 Stars  </span> 
-							     <span class="filterCount">(0)</span>
-
-
-                               </div>
-                             <div class="filterelement" style="color: #009fe3;font-size:12px">
-
-							<input class="filterelement" type="checkbox" id="star5" name="star" value="50" >
-							   <span class="filterLabel">   5 Stars  </span> 
-							     <span class="filterCount">(0)</span>
+								   <h5> <strong class="styleColor">  Star Rating</strong></h5>
+	
+							 <div class="filterelement" style="color: #009fe3;font-size:12px">
+								<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+								   <span class="filterLabel">   5 Stars  </span> 
+								     <span class="filterCount">(0)</span>
+	                           </div>
+	                           <div class="filterelement" style="color: #009fe3;font-size:12px">
+								<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+								   <span class="filterLabel">   5 Stars  </span> 
+								     <span class="filterCount">(0)</span>
+	                          </div>
+	                         <div class="filterelement" style="color: #009fe3;font-size:12px">
+								<input class="filterelement" type="checkbox" id="star5" name="star" value="50" >
+								   <span class="filterLabel">   5 Stars  </span> 
+								     <span class="filterCount">(0)</span>
+	                           </div>
+						</div>
 
 
-                               </div>
-							       </div>
-							       
-							   
-							       
-							       <span>&nbsp;</span>
 							<div class="filtercategory"> 
-							   <h5> <strong class="styleColor">  Events</strong></h5>
+								   <h5><a ng-click="categoring = !categoring" >
+								   <span ng-show="!categoring"><i class="fa fa-caret-right fa-lg"></i></span>
+								 <span ng-show="categoring"><i class="fa fa-caret-down fa-lg"></i></span>
+								 <strong class="styleColor"> Categories</strong></span>
+								  </a></h5>
+								   <div class="slide" ng-show="categoring">
+								<div ng-repeat="service in provider_categories" class="filterelement" style="color: #009fe3;font-size:12px">
+								   <input  class="filterelement" type="checkbox" id="star5" name="star" value="50" />
+								   <span class="filterLabel">  {{service.type}} </span> 
+								     <span class="filterCount">(0)</span>
+	                             </div>
+	                              </div>
+							   </div>
+							   
+							<div class="filtercategory"> 
+								 <h5><a ng-click="eventing = !eventing" >
+								 <span ng-show="!eventing"><i class="fa fa-caret-right fa-lg" ></i></span>
+								 <span ng-show="eventing"><i class="fa fa-caret-down fa-lg"></i></span>
+								 <strong class="styleColor"> Events</strong>
 
-							<div ng-repeat="event in events" class="filterelement" style="color: #009fe3;font-size:12px">
-
-							<input  class="filterelement" type="checkbox" id="star5" name="star" value="50" >
-							   <span class="filterLabel">  {{event.eid}} </span> 
-							     <span class="filterCount">(0)</span>
-
-                               </div>
-
-
-							       </div>
-							       
-
+								  </a></h5>
+								 <div class="slide" ng-show="eventing">
+								<div ng-repeat="event in events" class="filterelement" style="color: #009fe3;font-size:12px">
+								   <input  class="filterelement" type="checkbox" id="star5" name="star" value="50" />
+								   <span class="filterLabel">  {{event.eid}} </span> 
+								     <span class="filterCount">(0)</span>
+	                             </div>
+	                             </div>
+							   </div>
+							   
+							   
 
 				</form>
 						

@@ -1,5 +1,6 @@
 'use strict';
 angular.module('mainApp', [
+        'ngAnimate',
         'ngAutocomplete',   
         'ui.bootstrap',
         'ui-rangeSlider',

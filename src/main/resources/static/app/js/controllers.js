@@ -2,6 +2,22 @@
 
 	var publicControllers = angular.module('publicControllers', ['cordovaGeolocationModule']);
 	
+	   publicControllers .animation('.slide', function() {
+			var NG_HIDE_CLASS = 'ng-hide';
+			return {
+				beforeAddClass: function(element, className, done) {
+					if(className === NG_HIDE_CLASS) {
+						element.slideUp(done);
+					}
+				},
+				removeClass: function(element, className, done) {
+					if(className === NG_HIDE_CLASS) {
+						element.hide().slideDown(done);
+					}
+				}
+			}
+		});
+	
 	   publicControllers.controller('IndexController', 
 			   ['$scope',
 			    '$rootScope',
@@ -47,7 +63,8 @@
 							 $state.go("search",{ city : $scope.city,
 								                  eventDate : $scope.eventDate,
 								                  eventDays : $scope.days,
-								                  providerCategory : $scope.providerCategory.type
+								                  providerCategory : $scope.providerCategory.type,
+								                  cityDetails : $scope.cityDetails
 								                  
 								 } );
 						 };
@@ -75,7 +92,7 @@
 						      country: 'tz',
 						      types: '(cities)'
 						    };  
-						    $scope.cityDetails = '';
+						    $scope.cityDetails = $state.params.cityDetails;
 						    $scope.city = $state.params.city;
 						    $scope.provider_type= $state.params.providerCategory;
 						    $scope.eventDate = $state.params.eventDate;
@@ -125,6 +142,7 @@
 				  ['$scope','$rootScope','$location', '$cookieStore',
 				   function($scope, $rootScope, $location, $cookieStore) {
 		} ]);
+		   
 		
 })();
 

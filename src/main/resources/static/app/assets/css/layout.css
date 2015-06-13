@@ -1516,6 +1516,11 @@ fieldset {
   padding: 3px 0 2px;
 }
 
+.filtercategory a {
+ text-decoration: none;	
+ cursor: pointer;
+}
+
 
 .box_filters.filterelement .filter_label {
   color: #009fe3;
