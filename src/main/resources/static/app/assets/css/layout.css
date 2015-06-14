@@ -971,6 +971,17 @@ div.e404 {
 .white-row {
 	padding:20px; margin-bottom:20px;
 	background-color:#fff;
+	/* background: #ffbb39; */
+	color: #003580;
+
+	-webkit-border-radius:6px;
+	   -moz-border-radius:6px;
+			border-radius:6px;
+}
+
+.white-row-list {
+	padding:20px; margin-bottom:20px;
+	background-color:#fff;
 	border: 1px solid #daa300;
 	/* background: #ffbb39; */
 	color: #003580;

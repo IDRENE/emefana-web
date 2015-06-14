@@ -56,15 +56,14 @@
 					    	 //console.log(JSON.stringify($scope.provider_categories));
 					    	 
 					     });
-						
-
+					   // var res = str.replace(/blue|house|car/gi, function myFunction(x){return x.toUpperCase();});
 						   
 						 $scope.search = function(){
 							 $state.go("search",{ city : $scope.city,
 								                  eventDate : $scope.eventDate,
 								                  eventDays : $scope.days,
 								                  providerCategory : $scope.providerCategory.type,
-								                  cityDetails : $scope.cityDetails
+								                  nearLocation : $scope.cityDetails.geometry.location
 								                  
 								 } );
 						 };
@@ -86,7 +85,7 @@
 					    var boundss = new google.maps.LatLngBounds(SW, NE);
 						  
 						
-						  console.log($scope.city);
+						  
 						    $scope.optionsCities = {
 							  bounds: boundss,
 						      country: 'tz',
@@ -96,10 +95,11 @@
 						    $scope.city = $state.params.city;
 						    $scope.provider_type= $state.params.providerCategory;
 						    $scope.eventDate = $state.params.eventDate;
+						    console.log($scope.cityDetails);
 						   
 						 // set available range
-						    $scope.minPrice = 100;//TODO populate thus from back-end providers
-						    $scope.maxPrice = 999;//TODO populate thus from back-end providers
+						    $scope.minPrice = 100;//TODO populate this from back-end providers
+						    $scope.maxPrice = 999;//TODO populate this from back-end providers
 
 						    // default the user's values to the available range
 						    $scope.userMinPrice = $scope.minPrice;

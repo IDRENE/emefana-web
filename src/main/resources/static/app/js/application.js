@@ -30,7 +30,7 @@ angular.module('mainApp', [
 
 					  })
 					  .state('search', {
-					    url: '^/providers.html?providerCategory&city&eventDate&eventDays',
+					    url: '^/providers.html?providerCategory&city&eventDate&eventDays&nearLocation',
 					    templateUrl: '/app/provider-list.html',
 					    resolve:{
 					       MetadataService :function(MetaService){

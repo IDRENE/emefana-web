@@ -3,5 +3,5 @@ var providerAppConfig = {
 	 * This might be desirable if headers don't work correctly in some
 	 * environments and is still secure when using https. */
 	useAuthTokenHeader: true,
-	authToken: "QEZJ22pp9OKN0C8yLmnG+Nvcm09TRZ2um0v3yAYCdQgHNmHMC8JHQFX7ctNQvzO0GWNC9QGH41t8zYHiunWHLaMNInKY/3Lk7qeRqORerdI="
+	authToken: "QEZJ22pp9OKN0C8yLmnG+P7GWdISU8QBVnQvpiFjqg9LS3D758UsrVfdvkXmi7xCf5SfT2Cim+OBmSxaJQEEhR7NhZXjbCwEysEOD3npn+Q="
 };
