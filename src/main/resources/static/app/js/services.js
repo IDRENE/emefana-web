@@ -1,10 +1,12 @@
 'use strict';
 
+
 /* Services */
-var publicServices = angular.module('publicServices', ['ngResource']);
+(function() {
+ var publicServices = angular.module('publicServices', ['ngResource']);
 
 publicServices.factory('MetaService', ['$resource',function($resource){
-    return $resource('http://10.0.0.5:8080/api/metadata', {},{
+    return $resource('http://10.0.0.17:8080/api/metadata', {},{
 			    query : {
 					method : 'GET',
 					headers : {'Accept': 'application/json'},
@@ -15,7 +17,7 @@ publicServices.factory('MetaService', ['$resource',function($resource){
 }]);
 
 publicServices.factory('ListingService', ['$resource',function($resource){
-    return $resource('http://10.0.0.5:8080/api/provider', {},{
+    return $resource('http://10.0.0.17:8080/api/provider', {},{
 			    save : {
 					method : 'POST',
 					headers : {
@@ -25,6 +27,41 @@ publicServices.factory('ListingService', ['$resource',function($resource){
 					isArray: false
 			  }
 	  });
-  
 }]);
+    
+    publicServices.factory('ProviderService', ['$resource',function($resource){
+        return $resource('http://10.0.0.17:8080/api/search/providers/:referenceId', 
+        		{
+        	      referenceId: '@providerId',
+        	      
+        		},
+        		
+        		{
+    			 query : {
+    					method : 'GET',
+    					headers : {'Accept': 'application/json'},
+    					isArray: false
+    			  },
+    			  get :{
+    				    method : 'GET',
+      					headers : {'Accept': 'application/json'},
+      					isArray: false
 
+    				  }
+    	  });
+
+}]);
+    
+    publicServices.factory('ProviderServiceByTerm', ['$resource',function($resource){
+        return $resource('http://10.0.0.17:8080/api/search-term/providers', {},
+        		{
+    			 query : {
+    					method : 'GET',
+    					headers : {'Accept': 'application/json'},
+    					isArray: false
+    			  }
+    	  });
+
+}]);
+    
+})();

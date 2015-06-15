@@ -9,8 +9,8 @@
 	  return {
 		  restrict :'E',
 		  transclude: true,
-		  templateUrl : '/app/partials/public-header.html'
-		 // controller: 'IndexController'
+		  templateUrl : '/app/partials/public-header.html',
+		  controller: 'IndexController'
 	  };
   })
   .directive('publicFooter',function(){

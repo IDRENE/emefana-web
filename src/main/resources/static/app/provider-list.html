@@ -1,6 +1,7 @@
 <!-- WRAPPER -->
 <link rel="stylesheet" type="text/css" href="/app/assets/css/dddropdownpanel.css" />
-		<div id="wrapper">
+		<div id="wrapper" >
+
 		<section class="container top-no-header">
 		<div id="mypanel" class="ddpanel">
 		
@@ -50,7 +51,7 @@
 									</div>
 									<div class="col-md-2">
 										<label>&nbsp;</label>
-										<button class="btn btn-info fullwidth">SEARCH NOW</button>
+										<button class="btn btn-info fullwidth" ng-click="search()">SEARCH NOW</button>
 									</div>
 								</div>
 							</div>
@@ -68,7 +69,7 @@
 
 		</section>
 
-			<section class="container">
+			<section class="container ng-cloak" >
 				<div class="row">
 
 					<!-- center column -->
@@ -82,7 +83,7 @@
 
 
 						<!-- article summary -->
-						<div class="row " >
+						<div class="row " ng-repeat="provider in providerResult.providers" >
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
@@ -98,10 +99,10 @@
 
 							</div>
 							<div class="col-md-8">
-								<h4><a class="styleColor"  ng-click="viewDetails('3754357345734')">27523 Pacific Coast</a></h4>
+								<h4><a class="styleColor"  ng-click="viewDetails('3754357345734')">{{provider.providerName}}</a></h4>
 								<p>
 									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
+									{{provider.businessDescription}}
 								</p>
 								<p>
 									<span class="fsize12 pull-right">
@@ -110,292 +111,12 @@
 										<i class="furnished-ico" title="furnished"></i>
 									</span>
 
-									<i class="home-ico"></i> 300m<sup>2</sup>
+									<i class="home-ico"></i> {{provider.distance.value | distance}}
 								</p>
 							 </div>
 							</div>
 						</div>
 						<!-- /article summary -->
-
-
-
-						<!-- article summary -->
-						<div class="row">
-						   <div class="item-box-list">
-							<div class="col-md-4 text-center">
-							<figure>
-							    <a class="item-hover" ng-click="viewDetails('3754357345734')">
-											<span class="overlay color2"></span>
-											<span class="inner">
-												<span class="block fa fa-plus fsize20"></span>
-												<strong>VIEW</strong> PROVIDER
-											</span>
-										</a>
-								<img alt="" class="img-responsive" src="/app/assets/images/noimg.png" />
-								</figure>
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor"  ng-click="viewDetails('3754357345734')">700 Front Street, Key West, FL</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							 </div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-
-
-						<!-- article summary -->
-						<div class="row"  >
-						   <div class="item-box-list">
-							<div class="col-md-4 text-center">
-							<figure>
-							    <a class="item-hover" href="realestate-single.html">
-											<span class="overlay color2"></span>
-											<span class="inner">
-												<span class="block fa fa-plus fsize20"></span>
-												<strong>VIEW</strong> PROVIDER
-											</span>
-										</a>
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/4.jpg" />
-								</figure>
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">27523 Pacific Coast</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-						
-
-
-						<!-- article summary -->
-						<div class="row ">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-							<figure>
-							    <a class="item-hover" href="realestate-single.html">
-											<span class="overlay color2"></span>
-											<span class="inner">
-												<span class="block fa fa-plus fsize20"></span>
-												<strong>VIEW</strong> PROVIDER
-											</span>
-										</a>
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/6.jpg" />
-								</figure>
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">700 Front Street, Key West, FL</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-												
-						<!-- CALLOUT -->
-					<!-- 	<div class="row bs-callout">
-							<div class="col-md-8 text-center">
-								<h3 class="padding20">Subscribe <strong>now</strong> and get the <strong>latest</strong> news.</h3>
-							</div>
-							<div class="col-md-4">
-
-								<p class="nomargin">Type your best E-mail Address</p>
-
-								<form method="get" action="#" class="input-group">
-									<input type="text" class="form-control" name="k" id="k" value="" placeholder="E-mail Address" />
-									<span class="input-group-btn">
-										<button class="btn btn-primary"><i class="fa fa-search"></i></button>
-									</span>
-								</form>
-
-							</div>
-						</div> -->
-						<!-- /CALLOUT -->
-
-
-						<!-- article summary -->
-						<div class="row">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/7.jpg" />
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">1903 Hollywood Blvd, Hollywood, FL</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-						
-												
-						
-
-
-						<!-- article summary -->
-						<div class="row">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/8.jpg" />
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">27523 Pacific Coast</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-
-
-
-						<!-- article summary -->
-						<div class="row">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/1.jpg" />
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">1903 Hollywood Blvd, Hollywood, FL</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-
-
-						<!-- article summary -->
-						<div class="row">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/2.jpg" />
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">27523 Pacific Coast</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-
-						<hr class="half-margins" /><!-- separator -->
-
-
-						<!-- article summary -->
-						<div class="row">
-						 <div class="item-box-list">
-							<div class="col-md-4 text-center">
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/3.jpg" />
-							</div>
-							<div class="col-md-8">
-								<h4><a class="styleColor" href="realestate-single.html">1903 Hollywood Blvd, Hollywood, FL</a></h4>
-								<p>
-									<small class="block styleSecondColor fsize20">$350.000</small>
-									Dramatic pictures are released showing the destruction wrought by a huge boulder that smashed through a farm in northern Italy after being dislodged by a landslide.
-								</p>
-								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
-									</span>
-
-									<i class="home-ico"></i> 300m<sup>2</sup>
-								</p>
-							</div>
-							</div>
-						</div>
-						<!-- /article summary -->
-
-
-						<hr /><!-- final separator -->
 
 
 						<!-- PAGINATION -->
@@ -433,10 +154,10 @@
 						  <div class="col-md-12 col-sm-6">
 								<label>Search By Provider Name</label>
 								<p class="input-group">
-								<input class="form-control " name="providerName"
+								<input class="form-control " ng-model="searchterm" 
 									ng-model="providerName"/>
 									 <span class="input-group-btn">
-									<button class="btn btn-info ">GO</button>
+									<button class="btn btn-info "  ng-click="searchByTerm(searchterm)">GO</button>
 									</span>
 									</p>
 									</div>

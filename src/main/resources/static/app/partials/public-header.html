@@ -52,13 +52,19 @@
 
 							</li>
 							
-							<!-- <li>
-							  <select class="form-control " name="countrySelected"
-											ng-model="countrySelected"
-											ng-options="country for country in countries" >
-										</select>
-							
-							</li> -->
+							<!-- GLOBAL SEARCH -->
+							<li class="search">
+								<!-- search form -->
+								<form class="input-group pull-right">
+								 {{searchterm}}
+									<input type="text" class="form-control" ng-model="searchterm" placeholder="Search Providers by their names">
+									<span class="input-group-btn">
+										<button class="btn btn-primary notransition" ng-click="searchByTerm(searchterm)"><i class="fa fa-search"></i></button>
+									</span>
+								</form>
+								<!-- /search form -->
+							</li>
+							<!-- /GLOBAL SEARCH -->
 
                    
 						</ul>
@@ -67,4 +73,6 @@
 				<!-- /Top Nav -->
 
 			</div>
+			
+		<script type="text/javascript" src="/app/assets/js/scripts.js"></script>
 		</header>

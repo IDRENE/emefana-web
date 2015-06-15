@@ -63,9 +63,13 @@
 								                  eventDate : $scope.eventDate,
 								                  eventDays : $scope.days,
 								                  providerCategory : $scope.providerCategory.type,
-								                  nearLocation : $scope.cityDetails.geometry.location
+								                  nearLocationStr : $scope.cityDetails.geometry.location
 								                  
 								 } );
+						 };
+						 
+						 $scope.searchByTerm = function(searchingTerm){
+							 $state.go("searchByTerm",{ searchTerm : searchingTerm });
 						 };
 						 
 						   
@@ -76,7 +80,9 @@
 				   '$state','$filter',
 				    'cordovaGeolocationService',
 				    'MetadataService',
-				   function($scope, $rootScope, $cookieStore,$state,$filter,cordovaGeolocationService,MetadataService) {
+				    'ProvidersContainer',
+				    'ProviderServiceByTerm',
+				   function($scope, $rootScope, $cookieStore,$state,$filter,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
 					  
 					  $scope.backTopId="topNav";
 
@@ -106,7 +112,7 @@
 						    $scope.userMaxPrice = $scope.maxPrice;
 
 						  
-						   console.log(JSON.stringify($state.params));
+						  // console.log(JSON.stringify($state.params));
 						  
 						   MetadataService.$promise.then(function(result){
 							  //console.log(JSON.stringify(result));
@@ -121,10 +127,31 @@
 						    	 //console.log(JSON.stringify($scope.provider_categories));
 						    	 
 						     });
+						   
+						   if (! $state.current.data.searchByName){
+							   ProvidersContainer.$promise.then(function(results){
+								   $scope.providerResult = results;
+							   });
+						   }else {
+							   ProviderServiceByTerm.query({searchingTerm : $state.params.searchTerm}).$promise.then(function(results){
+								   $scope.providerResult = results;
+							   });
+						   }
+						   
 							
 						   $scope.viewDetails = function(providerID){
 								 $state.go('details', { providerId: providerID });
 								console.log(JSON.stringify( $state.params));
+							 };
+							 
+							 $scope.search = function(){
+								 $state.go("search",{ city : $scope.city,
+									                  eventDate : $scope.eventDate,
+									                  eventDays : $scope.days,
+									                  providerCategory : $scope.providerCategory.type,
+									                  nearLocationStr : $scope.cityDetails.geometry.location
+									                  
+									 } );
 							 };
 							 
 							 /*

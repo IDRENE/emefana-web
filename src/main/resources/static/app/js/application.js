@@ -30,13 +30,43 @@ angular.module('mainApp', [
 
 					  })
 					  .state('search', {
-					    url: '^/providers.html?providerCategory&city&eventDate&eventDays&nearLocation',
+					    url: '^/providers.html?providerCategory&city&eventDate&eventDays&nearLocationStr',
 					    templateUrl: '/app/provider-list.html',
 					    resolve:{
 					       MetadataService :function(MetaService){
 							      return MetaService.query();
+						   },
+						   ProvidersContainer : function($stateParams, ProviderService){
+							   return ProviderService.query({ 
+								      city : $stateParams.city,
+					                  eventDate : $stateParams.eventDate,
+					                  eventDays : $stateParams.eventDays,
+					                  providerType : $stateParams.providerCategory,
+					                  nearLocationStr : $stateParams.nearLocationStr
+					 });
 						   }
 					    },
+					    data: {
+					        searchByName: false
+
+					    } ,
+					    controller:'ProvidersController',
+					  })
+					   .state('searchByTerm', {
+					    url: '^/providers.html?searchTerm',
+					    templateUrl: '/app/provider-list.html',
+					    resolve:{
+					       MetadataService :function(MetaService){
+							      return MetaService.query();
+						   },
+						   ProvidersContainer : "ProviderService"
+
+					    },
+					    
+					    data: {
+					        searchByName: true
+
+					    } ,
 					    controller:'ProvidersController',
 					  })
 					  .state('details', {
