@@ -1,7 +1,8 @@
 'use strict';
 angular.module('mainApp', [
         'ngAnimate',
-        'ngAutocomplete',   
+        'ngAutocomplete', 
+        'angularUtils.directives.dirPagination',
         'ui.bootstrap',
         'ui-rangeSlider',
 		'ui.router',

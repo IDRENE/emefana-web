@@ -70,20 +70,36 @@
 		</section>
 
 			<section class="container ng-cloak" >
+			   
+			
 				<div class="row">
 
 					<!-- center column -->
 					<div class="col-md-9">
 
 						<!-- CATEGORY TITLE -->
-						<h3 class="page-header nomargin-top">
+						<!-- <h3 class="page-header nomargin-top">
 							<strong class="styleColor">4 </strong> Result for {{provider_type}}Providers near {{city}}
-						</h3>
+						</h3> -->
+						
+							<!-- PAGINATION -->
+			     <div class="row">
+							<div class="col-md-8 text-left" ng-show="total > 0">
+								<p class="hidden-xs pull-left nomargin padding20"><strong>Showing</strong> {{resultFrom}} - {{resultTo }} of {{total}} {{provider_type}} Providers near {{city}} </p>
+							</div>
+
+							<div class="col-md-4 responsive-text-center text-right">
+								<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/dirPagination.tpl.html"></dir-pagination-controls>
+							</div>
+
+						</div>
+						<!-- /PAGINATION -->
 
 
 
 						<!-- article summary -->
-						<div class="row " ng-repeat="provider in providerResult.providers" >
+						<!--  "provider in providerResult.providers | filter:q | itemsPerPage: pageSize" -->
+						<div class="row " dir-paginate="provider in providerResult.providers | itemsPerPage: pageSize" current-page="currentPage"  >
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
@@ -122,20 +138,14 @@
 						<!-- PAGINATION -->
 						<div class="row">
 
-							<div class="col-md-6 text-left">
-								<p class="hidden-xs pull-left nomargin padding20">Showing 1-10 of 38 results.</p>
+							<div class="col-md-6 text-left" ng-show="total > 0">
+								<p class="hidden-xs pull-left nomargin padding20">Showing {{resultFrom}} - {{resultTo }} of {{total}} providers.</p>
 							</div>
+		
+
 
 							<div class="col-md-6 responsive-text-center text-right">
-								<ul class="pagination">
-									<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-								</ul>
+								<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/dirPagination.tpl.html"></dir-pagination-controls>
 							</div>
 
 						</div>
