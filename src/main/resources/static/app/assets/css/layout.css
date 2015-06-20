@@ -872,10 +872,10 @@ body.boxed #slider .image-caption {
 /* page title */
 header#page-title {
 	color:#fff;
-	padding:20px 0;
+	/* padding:20px 0; */
 	background:#ddd;
 	position:relative;
-	margin-bottom:40px;
+	/* margin-bottom:40px; */
 
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
@@ -1619,7 +1619,97 @@ fieldset {
   margin: 0 0 20px;
 }
 
+#provider-plate {
+  margin-bottom: .35294118em;
+  padding: 25px;
+  border-bottom:gold solid 1px;
+}
 
+#provider-name {
+  margin-right: .24em;
+  vertical-align: middle;
+}
+
+.section-header-main {
+  margin-bottom: 0;
+  color: #00355f;
+}
+
+#provider-plate .address {
+  font-size: .8823529411764706em;
+  margin: .4em 0 .4em 0;
+}
+
+
+
+
+.address {
+  margin: .4em 0 .4em 0;
+  clear: both;
+  font-size: .8823529411764706em;
+  line-height: 1.2;
+  display: inline-block;
+}
+
+.phone-number {
+  white-space: nowrap;
+   display: inline-block;
+}
+
+/*  
+*
+ Provider Navigation
+
+*/
+.pr_nav_bar_wrapper {
+  display: table;
+  width: 100%;
+}
+
+.pr_nav_bar_wrapper #pr_nav_bar {
+  background-color: #e6edf6;
+  display: table-row;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  }
+
+  #pr_nav_bar a:visited {
+  color: #0096ff;
+}
+
+#pr_nav_bar a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: normal;
+  border-right: 1px solid #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+.selected {
+  color: #067acc;
+  border-right: 2px solid #fff;
+}
+
+/* 
+BACK TO SEARCH
+ */
+ 
+ .back-to-search-results {
+  font-size: .8647058823529411em;
+  margin-top: .8em;
+  margin-right:.8em;
+  position: relative;
+  float: left;
+  zoom: 1;
+  padding: 5px;
+  background: #ffffff;
+  border-bottom: 1px solid #c7c7c7;
+  max-width: 89.41176471em;
+
+}
 
 /** 09. Comments
  **************************************************************** **/

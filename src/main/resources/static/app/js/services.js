@@ -32,7 +32,7 @@ publicServices.factory('ListingService', ['$resource',function($resource){
     publicServices.factory('ProviderService', ['$resource',function($resource){
         return $resource('http://10.0.0.17:8080/api/search/providers/:referenceId', 
         		{
-        	      referenceId: '@providerId',
+        	      referenceId: '@referenceId',
         	      
         		},
         		

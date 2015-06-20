@@ -107,7 +107,7 @@
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
-							    <a class="item-hover" ng-click="viewDetails('3754357345734')">
+							    <a class="item-hover" ng-click="viewDetails(provider.providerId)">
 											<span class="overlay color2"></span>
 											<span class="inner">
 												<span class="block fa fa-plus fsize20"></span>
@@ -119,7 +119,7 @@
 
 							</div>
 							<div class="col-md-8">
-								<h4><a class="styleColor"  ng-click="viewDetails('3754357345734')">{{provider.providerName}}</a></h4>
+								<h4><a class="styleColor"  ng-click="viewDetails(provider.providerId)">{{provider.providerName}}</a></h4>
 								<p>
 									<small class="block styleSecondColor fsize17">$350.000</small>
 									{{provider.businessDescription}}

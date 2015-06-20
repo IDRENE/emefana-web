@@ -43,12 +43,13 @@ angular.module('mainApp', [
 					                  eventDate : $stateParams.eventDate,
 					                  eventDays : $stateParams.eventDays,
 					                  providerType : $stateParams.providerCategory,
-					                  nearLocationStr : $stateParams.nearLocationStr
-					 });
+					                  nearLocationStr : $stateParams.nearLocationStr });
 						   }
+
 					    },
 					    data: {
-					        searchByName: false
+					        searchByName: false,
+					        detailsPage : false
 
 					    } ,
 					    controller:'ProvidersController',
@@ -65,14 +66,32 @@ angular.module('mainApp', [
 					    },
 					    
 					    data: {
-					        searchByName: true
+					        searchByName: true,
+					        detailsPage : false
 
 					    } ,
 					    controller:'ProvidersController',
 					  })
 					  .state('details', {
-					    url: '/provider-details/:providerId',
+					    url: '^/provider-details/:providerId',
 					    templateUrl: '/app/provider-single.html',
+					    
+					    resolve:{
+						       MetadataService :function(MetaService){
+								      return MetaService.query();
+							   },
+							   ProvidersContainer : function($stateParams, ProviderService){
+								   return ProviderService.get({referenceId : $stateParams.providerId });
+							   }
+							  
+						    },
+					    
+					    data: {
+					        searchByName: false,
+					        detailsPage : true
+
+					    } ,
+					    controller:'ProvidersController',
 					    
 					  })
 					  .state('privacy', {
