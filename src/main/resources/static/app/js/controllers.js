@@ -93,7 +93,8 @@
 					 
 
 					  
-					  $scope.filters = { };
+					  $scope.typefilter = [];
+					  $scope.eventfilter =[];
 					  
 					  
 					  
@@ -138,20 +139,48 @@
 						    	 $scope.events = $filter('filter')(result, { key: "EVENTS" })[0].value;
 						    	 //$scope.services = $filter('filter')(result, { key: "SERVICES" })[0].value;
 						    	 //console.log(JSON.stringify($scope.provider_categories));
+						    	
+						    	 $scope.eventsCounts = $scope.events.map(function(e){
+						    		 return {key : e.eid, count : 0 };
+						    	 });
 						    	 
+						    	 $scope.providerCounts = $scope.provider_categories.map(function(p){
+						    		 return {key : p.type, count : 0}
+						    	 });
+						    	 
+
 						     });
+						   
+						   function updateCounts(providers){
+							   /*
+							    * update provider category Count
+							    */
+							   for(index in $scope.providerCounts){
+								   $scope.providerCounts[index].count = $filter('filter')(providers, {providerCategories :{type: $scope.providerCounts[index].key}}).length;
+							   }
+							   
+							   /*
+							    * update provider events Count
+							    */
+							   for(index in $scope.eventsCounts ){
+								   $scope.eventsCounts[index].count = $filter('filter')(providers, {providerEvents :{eventId: $scope.eventsCounts[index].key}}).length;
+							   }
+						   }
 						   
 						   if (! $state.current.data.searchByName){
 							   ProvidersContainer.$promise.then(function(results){
 								   $scope.providerResult = results;
 								   $scope.total =  $scope.providerResult.providers.length;
 								   $scope.resultTo = $scope.resultTo > $scope.total ? $scope.total : $scope.resultTo;
+								   updateCounts($scope.providerResult.providers)
 							   });
 						   }else {
 							   ProviderServiceByTerm.query({searchingTerm : $state.params.searchTerm}).$promise.then(function(results){
 								   $scope.providerResult = results;
 								   $scope.total =  $scope.providerResult.providers.length;
 								   $scope.resultTo = $scope.resultTo > $scope.total ? $scope.total : $scope.resultTo;
+								   updateCounts($scope.providerResult.providers)
+
 							   });
 						   }
 						   
@@ -167,6 +196,8 @@
 							   }
 
 							  };
+
+
 						   $scope.viewDetails = function(providerID){
 								 $state.go('details', { providerId: providerID });
 								console.log(JSON.stringify( $state.params));
@@ -186,9 +217,38 @@
 							  * To be used in as provider filter pass prov item
 							  * ng-repeat='item in items|filter:priceRange'
 							  */
+							 $scope.provType = function(provider){
+								 return $scope.typefilter.length > 0 ? $filter('filter')($scope.typefilter, provider.providerCategories[0]).length > 0 : true;
+							 };
+							 
+							 $scope.prvEvents = function(provider){
+								 if ($scope.eventfilter.length == 0 ) return true;
+
+								//Map provider events to Array of String for easy comparison
+								 var providerEvents = provider.providerEvents.map(function(e){
+									return e.eventId;
+								});
+
+								//check that provider events contains all the checked events
+								 for (index in $scope.eventfilter) {
+									    if($filter('filter')(providerEvents, $scope.eventfilter[index]).length == 0) return false;
+									}
+								 
+								 return true;
+							 };
+							 
 							 $scope.priceRange = function(item) {
 								    return (parseInt(item['min-acceptable-price']) >= $scope.minPrice && parseInt(item['max-acceptable-price']) <= $scope.maxPrice);
 								  };
+								  
+							//Results count
+						   $scope.typeCount	= function(type)  {
+							   return $scope.countries = $filter('filter')($scope.providerCounts, { key: type })[0].count;
+						   };
+						   
+						   $scope.eventCount = function(event)  {
+							   return $scope.countries = $filter('filter')($scope.eventsCounts, { key: event })[0].count;
+						   };
 					  
 		} ]);
 	   

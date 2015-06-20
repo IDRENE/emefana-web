@@ -1533,6 +1533,7 @@ fieldset {
 }
 
 
+
 .box_filters.filterelement .filter_label {
   color: #009fe3;
 }
@@ -1555,6 +1556,14 @@ fieldset {
   zoom: 1;
 }
   
+.box_filters.filterelement  input[type=checkbox] + label {
+  color: #ccc;
+  font-style: italic;
+} 
+.box_filters.filterelement.filterLabel input[type=checkbox]:checked + label {
+  color: #f00;
+  font-style: normal;
+} 
 
 /* hover */
 .item-box-list .item-hover,
@@ -1595,6 +1604,7 @@ fieldset {
 	opacity: 1;
 	filter: alpha(opacity=100);
 }
+
 
 
 /** 09. Comments

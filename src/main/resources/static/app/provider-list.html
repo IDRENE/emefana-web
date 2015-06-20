@@ -84,8 +84,9 @@
 						
 							<!-- PAGINATION -->
 			     <div class="row">
+
 							<div class="col-md-8 text-left" ng-show="total > 0">
-								<p class="hidden-xs pull-left nomargin padding20"><strong>Showing</strong> {{resultFrom}} - {{resultTo }} of {{total}} {{provider_type}} Providers near {{city}} </p>
+								<p class="hidden-xs pull-left nomargin padding20"><strong>Showing</strong> {{resultFrom}} - {{resultTo }} of {{filteredResult.length}} {{provider_type}} Providers near {{city}} </p>
 							</div>
 
 							<div class="col-md-4 responsive-text-center text-right">
@@ -99,7 +100,7 @@
 
 						<!-- article summary -->
 						<!--  "provider in providerResult.providers | filter:q | itemsPerPage: pageSize" -->
-						<div class="row " dir-paginate="provider in providerResult.providers | itemsPerPage: pageSize" current-page="currentPage"  >
+						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:provType | filter:prvEvents | itemsPerPage: pageSize)" current-page="currentPage"  >
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
@@ -139,7 +140,7 @@
 						<div class="row">
 
 							<div class="col-md-6 text-left" ng-show="total > 0">
-								<p class="hidden-xs pull-left nomargin padding20">Showing {{resultFrom}} - {{resultTo }} of {{total}} providers.</p>
+								<p class="hidden-xs pull-left nomargin padding20">Showing {{resultFrom}} - {{resultTo }} of {{filteredResult.length}} providers.</p>
 							</div>
 		
 
@@ -216,9 +217,9 @@
 								  </a></h5>
 								   <div class="slide" ng-show="categoring">
 								<div ng-repeat="service in provider_categories" class="filterelement" style="color: #009fe3;font-size:12px">
-								   <input  class="filterelement" type="checkbox" id="star5" name="star" value="50" />
+								   <input  class="filterelement" type="checkbox" checklist-model="typefilter" checklist-value="service" ng-click="updateTotalCountAfterFilter()" >
 								   <span class="filterLabel">  {{service.type}} </span> 
-								     <span class="filterCount">(0)</span>
+								     <span class="filterCount">({{typeCount(service.type)}})</span>
 	                             </div>
 	                              </div>
 							   </div>
@@ -231,18 +232,16 @@
 
 								  </a></h5>
 								 <div class="slide" ng-show="eventing">
-								<div ng-repeat="event in events" class="filterelement" style="color: #009fe3;font-size:12px">
-								   <input  class="filterelement" type="checkbox" id="star5" name="star" value="50" />
+								<div ng-repeat="event in events" class="filterelement" style="color: #009fe3;font-size:12px;">
+								   <input  class="filterelement" type="checkbox" checklist-model="eventfilter" checklist-value="event.eid" ng-click="updateTotalCountAfterFilter()"/>
 								   <span class="filterLabel">  {{event.eid}} </span> 
-								     <span class="filterCount">(0)</span>
+								     <span class="filterCount">({{eventCount(event.eid)}})</span>
 	                             </div>
 	                             </div>
 							   </div>
-							   
-							   
 
 				</form>
-						
+					
 						
 						<!-- /small articles -->
 
