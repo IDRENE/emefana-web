@@ -62,13 +62,26 @@
 
 				<!-- Logo text or image -->
 				<a class="logo" ui-sref="home">
-					<img ng-src="/app/assets/images/logo.png" alt="Emefana" />
+					<img src="/app/assets/images/148x80.png" height="65" width="148" alt="E-mefana"/>
 				</a>
 
 				<!-- Top Nav -->
 				<div class="navbar-collapse nav-main-collapse collapse pull-right">
 					<nav class="nav-main mega-menu">
 						<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+						<li class=" dropdown ">
+								<a href="#">
+									 <i class="fa fa-question"></i> 
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/"><i class="fa fa-plus"></i>Search for listings</a></li>
+									<li class="divider"></li>
+									<li><a ui-sref="privacy">Privacy Policy</a></li>
+									<li class="divider"></li>
+									<li><a ui-sref="terms">Terms &amp; Conditions</a></li>
+									<li class="divider"></li>
+								</ul>
+							</li>
 							<li class="dropdown active">
 								<a class="dropdown-toggle"  ui-sref="register.start">
 									Add a listing to Emefana <i class="fa fa-angle-down"></i>

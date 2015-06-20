@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/app/assets/css/dddropdownpanel.css" />
 		<div id="wrapper" >
 
-		<section class="container top-no-header">
+		<section class="hidden-xs container top-no-header">
 		<div id="mypanel" class="ddpanel">
 		
 		<div class="slide ddpanelcontent"  ng-show="collapsed" style="padding:20px; margin-bottom:5px;">
@@ -75,7 +75,7 @@
 				<div class="row">
 
 					<!-- center column -->
-					<div class="col-md-9">
+					<div class="col-md-9" >
 
 						<!-- CATEGORY TITLE -->
 						<!-- <h3 class="page-header nomargin-top">
@@ -83,10 +83,13 @@
 						</h3> -->
 						
 							<!-- PAGINATION -->
-			     <div class="row">
+			           <div class="row">
+			           <div class="notfound_page_title" ng-hide="filteredResult.length > 0">
+			              We did not find providers to match the search criteria/selected filters, try the advanced search or tweak the filters.
+			           </div>
 
-							<div class="col-md-8 text-left" ng-show="total > 0">
-								<p class="hidden-xs pull-left nomargin padding20"><strong>Showing</strong> {{resultFrom}} - {{resultTo }} of {{filteredResult.length}} {{provider_type}} Providers near {{city}} </p>
+							<div class="col-md-8 text-left" ng-show="filteredResult.length > 0">
+								<p class=" pull-left nomargin padding20"><strong>Showing</strong> {{resultFrom}} - {{resultTo }} of {{filteredResult.length}} {{provider_type}} Providers near {{city}} </p>
 							</div>
 
 							<div class="col-md-4 responsive-text-center text-right">
@@ -139,7 +142,7 @@
 						<!-- PAGINATION -->
 						<div class="row">
 
-							<div class="col-md-6 text-left" ng-show="total > 0">
+							<div class="col-md-6 text-left" ng-show="filteredResult.length > 0">
 								<p class="hidden-xs pull-left nomargin padding20">Showing {{resultFrom}} - {{resultTo }} of {{filteredResult.length}} providers.</p>
 							</div>
 		

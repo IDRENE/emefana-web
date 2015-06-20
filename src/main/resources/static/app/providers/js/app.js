@@ -63,7 +63,15 @@ angular.module('providerApp', [
 					    url: '/login',
 					    templateUrl: '/app/providers/partials/provider-signin.html',
 					    controller: 'LoginController'
-					  });
+					  })
+					  .state('privacy', {
+						    url: '^/privace-policy',
+						    templateUrl: '/app/providers/partials/page-privacy-policy.html'
+						  })
+						   .state('terms', {
+						    url: '^/terms-conditions',
+						    templateUrl: '/app/providers/partials/page-terms-and-conditions.html'
+						  });
 				
 				 $urlRouterProvider.otherwise('/');
 				 

@@ -74,15 +74,15 @@ angular.module('mainApp', [
 					    url: '/provider-details/:providerId',
 					    templateUrl: '/app/provider-single.html',
 					    
+					  })
+					  .state('privacy', {
+					    url: '^/privace-policy',
+					    templateUrl: '/app/providers/partials/page-privacy-policy.html'
+					  })
+					   .state('terms', {
+					    url: '^/terms-conditions',
+					    templateUrl: '/app/providers/partials/page-terms-and-conditions.html'
 					  });
-//					  .state('register.features', {
-//					    url: '/listing-features',
-//					    templateUrl: '/app/providers/partials/provider-features.html'
-//					  })
-//					   .state('register.location', {
-//					    url: '/provider-location',
-//					    templateUrl: '/app/providers/partials/provider-location.html'
-//					  })
 //					   .state('register.services', {
 //					    url: '/provider-service-offering',
 //					    templateUrl: '/app/providers/partials/provider-services.html'
