@@ -87,6 +87,7 @@
 					 
 					  $scope.currentPage = 1;
 					  $scope.pageSize = 10;
+
 					  
 					  $scope.resultFrom = $scope.currentPage;
 					  $scope.resultTo =  $scope.pageSize; 
@@ -165,6 +166,7 @@
 							   for(index in $scope.eventsCounts ){
 								   $scope.eventsCounts[index].count = $filter('filter')(providers, {providerEvents :{eventId: $scope.eventsCounts[index].key}}).length;
 							   }
+
 						   }
 						   
 						 
@@ -172,22 +174,21 @@
 						   if($state.current.data.detailsPage){
 							   //Single Page
                              
-							   ProvidersContainer.$promise.then(function(result){
+							   $scope.listingSearch = ProvidersContainer.$promise.then(function(result){
 								   $scope.currentProvider = result;
-
 							   });
 							   
 						   }else{
 							   //Other pages
 							   if (! $state.current.data.searchByName){
-								   ProvidersContainer.$promise.then(function(results){
+								   $scope.listingSearch = ProvidersContainer.$promise.then(function(results){
 									   $scope.providerResult = results;
 									   $scope.total =  $scope.providerResult.providers.length;
 									   $scope.resultTo = $scope.resultTo > $scope.total ? $scope.total : $scope.resultTo;
 									   updateCounts($scope.providerResult.providers)
 								   });
 							   }else {
-								   ProviderServiceByTerm.query({searchingTerm : $state.params.searchTerm}).$promise.then(function(results){
+								   $scope.listingSearch = ProviderServiceByTerm.query({searchingTerm : $state.params.searchTerm}).$promise.then(function(results){
 									   $scope.providerResult = results;
 									   $scope.total =  $scope.providerResult.providers.length;
 									   $scope.resultTo = $scope.resultTo > $scope.total ? $scope.total : $scope.resultTo;

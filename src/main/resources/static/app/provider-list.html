@@ -84,7 +84,7 @@
 						
 							<!-- PAGINATION -->
 			           <div class="row">
-			           <div class="notfound_page_title" ng-hide="filteredResult.length > 0">
+			           <div class="notfound_page_title" ng-if="filteredResult.length <= 0">
 			              We did not find providers to match the search criteria/selected filters, try the advanced search or tweak the filters.
 			           </div>
 
