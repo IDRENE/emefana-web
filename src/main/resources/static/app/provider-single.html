@@ -43,20 +43,28 @@
 					<div class="pr_nav_bar_wrapper">
 					 <ul id="pr_nav_bar " class="nav navbar-nav">
 						<li >
-						  <a href="" class="selected"> Features</a>
+						 <a class="selected" ng-click="scrollTo('features')"> Features </a>
+						</li>
+						<li class="divider-vertical"></li>
+						
+						<li >
+						 <a class="selected" ng-click="scrollTo('venues')"> Venues </a>
 						</li>
 						<li class="divider-vertical"></li>
 						<li>
-						  <a href="" class="selected">Events</a>
+						  <a href="" class="selected"  ng-click="scrollTo('events')">Events</a>
 						</li>
 						<li class="divider-vertical"></li>
-						<li ><a href="" class="selected">Services</a></li>
+						<li ><a href="" class="selected" ng-click="servicesActive= true">Services</a></li>
 						<li class="divider-vertical"></li>
-						<li ><a href="" class="selected">The Fine Print</a></li>
+						<li >
+						  <a href="" class="selected" ng-click="scrollTo('map')"> Map</a>
+						</li>
 						<li class="divider-vertical"></li>
 						<li >
 						  <a href="" class="selected" > See all <strong>verified reviews</strong></a>
 						</li>
+						
 					 </ul>
 					</div>
 						<div class="white-row">
@@ -108,63 +116,25 @@
 							<p>{{currentProvider.businessDescription}}</p>
 
 							<!-- PROPERTY FEATURES -->
-							<h3 class="page-header margin-bottom40">
-								RH1001 <strong class="styleColor">Features</strong>
+							<h3 class="page-header margin-bottom40" id="events">
+								Caters to these <strong class="styleColor">Events</strong>
 							</h3>
 
 							<div class="row">
 								<!-- col 1 -->
-								<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="col-md-6 col-sm-6 col-xs-6">
 									<ul class="list-icon check-square">
-										<li class="x">Air conditioning</li>
-										<li>Balcony</li>
-										<li>Bedding</li>
-										<li class="x">Cable TV</li>
-										<li>Cleaning after exit</li>
-										<li>Cofee pot</li>
-										<li class="x">Computer</li>
-										<li>Cot</li>
+										<li ng-repeat="event in currentProvider.providerEvents" ng-if="!$even">{{event.eventId}}</li>
 									</ul>
 								</div>
 								<!-- col 2 -->
-								<div class="col-md-3 col-sm-6 col-xs-6">
+								<div class="col-md-6 col-sm-6 col-xs-6">
 									<ul class="list-icon check-square">
-										<li>Dishwasher</li>
-										<li class="x">DVD</li>
-										<li>Fan</li>
-										<li class="x">Fridge</li>
-										<li class="x">Grill</li>
-										<li>Hairdryer</li>
-										<li>Heating</li>
-										<li class="x">Hi-fi</li>
+										<li ng-repeat="event in currentProvider.providerEvents" ng-if="$even">{{event.eventId}}</li>
 									</ul>
 								</div>
 								<!-- col 3 -->
-								<div class="col-md-3 col-sm-6 col-xs-6">
-									<ul class="list-icon check-square">
-										<li>Internet</li>
-										<li>Iron</li>
-										<li class="x">Juicer</li>
-										<li>Lift</li>
-										<li class="x">Microwave</li>
-										<li>Oven</li>
-										<li>Parking</li>
-										<li>Parquet</li>
-									</ul>
-								</div>
-								<!-- col 4 -->
-								<div class="col-md-3 col-sm-6 col-xs-6">
-									<ul class="list-icon check-square">
-										<li>Radio</li>
-										<li>Roof terrace</li>
-										<li>Smoking allowed</li>
-										<li class="x">Terrace</li>
-										<li class="x">Toaster</li>
-										<li>Towelwes</li>
-										<li>Use of pool</li>
-										<li>Video</li>
-									</ul>
-								</div>
+
 							</div>
 
 
@@ -172,38 +142,64 @@
 
 
 
-					
+					<div class="row white-row"  id="features">
+                              <h3 class="page-header margin-bottom40">
+								UNIQUE <strong class="styleColor">Features</strong>
+							</h3>
+							  <div ng-repeat="feature in currentProvider.providerFeatures" class="col-md-6 col-sm-6 col-xs-12 " >
+						          <div class="panel panel-info"  style="border:0" >
+									  <div class="panel-heading">
+									    <h3 class="panel-title">{{feature.name}} </h3>
+									  </div>
+									  <div class="panel-body">
+									   <ul class="list-icon check">
+										   <li ng-repeat="fdesc in feature.description">{{fdesc}}</li>
+									    </ul>
+									  </div>
+								</div>
+							</div>
 
 
-						<div class="white-row">
+						</div><!-- /.white-row -->
+						
+						<div class="row white-row"  id="venues">
+                              <h3 class="page-header margin-bottom40">
+								OUR <strong class="styleColor">Venues</strong>
+							</h3>
+							     <div ng-repeat="venue in currentProvider.providerVenues"  class="col-md-6 col-sm-6 col-xs-12">
+						          <div class="panel panel-info"  >
+									  <div class="panel-heading">
+									    <h3 class="panel-title">{{venue.name}} </h3>
+									  </div>
+									  <div class="panel-body">
+									     <p>Venue specific description goes here</p>
+									  </div>
+									  <!-- List group -->
+								  <ul class="list-group">
+								    <li class="list-group-item">Capacity : {{venue.capacity}} </li>
+								    <li class="list-group-item">Price : {{venue.price.price |currency : venue.price.currency}}</li>
+								  </ul>
+								</div>
+							</div>
+
+
+						</div><!-- /.white-row -->
+
+
+						<div class="white-row" id="map">
 
 							<!-- PROPERTY MAP -->
 							<h3 class="page-header margin-bottom40">
 								RH1001 <strong class="styleColor">Google Map</strong>
 							</h3>
 
-							<div id="gmap_default"><!-- google map --></div>
+                            <!--  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
+							<div id="gmap_default">
+							   <map center="{{map.center.longitude}},{{map.center.latitude}}" zoom="15">
+							      <marker position="{{map.center.longitude}},{{map.center.latitude}}" ></marker>
+							   </map>
+							</div>
 
-							<!-- <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true&amp;#038;ver=3.8.1"></script>
-							<script type="text/javascript">
-								function initialize_property_map(){
-									var propertyLocation = new google.maps.LatLng(34.019372, -118.45169299999998);
-									var propertyMapOptions = {
-										center: propertyLocation,
-										zoom: 15,
-										mapTypeId: google.maps.MapTypeId.ROADMAP,
-										scrollwheel: false
-									};
-									var propertyMap = new google.maps.Map(document.getElementById("gmap_default"), propertyMapOptions);
-									var propertyMarker = new google.maps.Marker({
-										position: propertyLocation,
-										map: propertyMap
-										//, icon: "assets/images/icons/realestate/map.png"
-									});
-								}
-
-								window.onload = initialize_property_map();
-							</script> -->
 
 						</div><!-- /.white-row -->
 

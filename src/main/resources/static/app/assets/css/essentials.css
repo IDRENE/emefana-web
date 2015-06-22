@@ -1303,7 +1303,7 @@ div.tabs ul.nav-tabs a i.fa {
 }
 
 .panel {
-	border: 0;
+	/* border: 0; */
 	background: transparent;
 
 	-webkit-box-shadow: none;

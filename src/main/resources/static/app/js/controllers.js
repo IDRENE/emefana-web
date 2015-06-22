@@ -1,7 +1,7 @@
 (function() {
 
 	var publicControllers = angular.module('publicControllers', ['cordovaGeolocationModule']);
-	
+
 	   publicControllers .animation('.slide', function() {
 			var NG_HIDE_CLASS = 'ng-hide';
 			return {
@@ -78,12 +78,12 @@
 	   
 	   publicControllers.controller('ProvidersController',
 				  ['$scope','$rootScope' ,'$cookieStore',
-				   '$state','$filter',
+				   '$state','$filter','$location','$anchorScroll',
 				    'cordovaGeolocationService',
 				    'MetadataService',
 				    'ProvidersContainer',
 				    'ProviderServiceByTerm',
-				   function($scope, $rootScope, $cookieStore,$state,$filter,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
+				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
 					 
 					  $scope.currentPage = 1;
 					  $scope.pageSize = 10;
@@ -176,6 +176,9 @@
                              
 							   $scope.listingSearch = ProvidersContainer.$promise.then(function(result){
 								   $scope.currentProvider = result;
+								   //-2.0185322,%2033.874615199999994
+								   $scope.map = { center: { latitude: $scope.currentProvider.providerLocation[0], longitude: $scope.currentProvider.providerLocation[1] }};
+								   //$scope.map = { center: { latitude: 33.874615199999994, longitude: -2.0185322 }};
 							   });
 							   
 						   }else{
@@ -228,6 +231,12 @@
 									                  
 									 } );
 							 };
+							 
+							 $scope.scrollTo = function(id) {
+								    $location.hash(id);
+								    console.log($location.hash());
+								    $anchorScroll();
+								  };
 							 
 							 /*
 							  * To be used in as provider filter pass prov item
