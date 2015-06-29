@@ -20,6 +20,7 @@
 				</div>
 			</header>
 
+
 		<section class="container">
 
 			<div class="row">
@@ -38,7 +39,7 @@
 				  </div> 
 					<!-- center column -->
 			
-					<div class="col-md-9">
+					<div class="col-md-12">
 				
 					<div class="pr_nav_bar_wrapper">
 					 <ul id="pr_nav_bar " class="nav navbar-nav">
@@ -114,6 +115,7 @@
 
 							<p class="lead text-center">{{currentProvider.providerName}}</p>
 							<p>{{currentProvider.businessDescription}}</p>
+							
 
 							<!-- PROPERTY FEATURES -->
 							<h3 class="page-header margin-bottom40" id="events">
@@ -139,7 +141,7 @@
 
 
 						</div><!-- /.white-row -->
-
+                   
 
 
 					<div class="row white-row"  id="features">
@@ -203,88 +205,6 @@
 
 						</div><!-- /.white-row -->
 
-
-						<div class="white-row">
-
-							<!-- PROPERTY CONTACT -->
-							<h3 class="page-header margin-bottom40">
-								RH1001 <strong class="styleColor">Contact</strong>
-							</h3>
-
-							<div class="row">
-
-								<!-- AGENT -->
-								<div class="col-md-7 col-sm-7">
-									<!-- agent name -->
-
-									<!-- agent image -->
-									<figure class="agent-figure pull-left hidden-xs">
-										<img src="/app/assets/images/demo/people/6.jpg" height="210" alt="agent" />
-									</figure>
-
-									<!-- agent detail -->
-									<p>
-										<strong class="styleSecondColor fsize17">Jessica Doe</strong>
-									</p>
-									<p>
-
-										<span class="block">
-											<strong>Office:</strong> 0800-123-12345
-										</span>
-										<span class="block">
-											<strong>Mobile:</strong> 0800-123-12345
-										</span>
-
-									</p>
-
-									<p class="fsize13">
-										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-										sed diam nonummy nibh euismod tincidunt ut laoreet 
-										dolore magna aliquam erat volutpat. Ut wisi enim ad...
-									</p>
-
-									<hr class="half-margins" />
-
-									<div class="hidden-xs">
-										<a href="#" class="social fa fa-facebook"></a>
-										<a href="#" class="social fa fa-google-plus"></a>
-										<a href="#" class="social fa fa-twitter"></a>
-										<a href="#" class="social fa fa-linkedin"></a>
-									</div>
-
-								</div>
-
-								<!-- AGENT CONTACT -->
-								<div class="col-md-5 col-sm-5">
-									<p>
-										<strong class="styleSecondColor fsize17">Contact</strong>
-									</p>
-
-									<form method="post" action="#" class="input-group fullwidth">
-
-										<div class="form-group">
-											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
-										</div>
-
-										<div class="form-group">
-											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
-										</div>
-
-										<div class="form-group">
-											<textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message"></textarea>
-										</div>
-
-										<button class="btn btn-primary fullwidth noborder">SEND MESSAGE</button>
-
-									</form>
-
-								</div>
-
-							</div>
-
-						</div><!-- /.white-row -->
-
-
 						<hr /><!-- divider -->
 
 
@@ -296,15 +216,15 @@
 					</div>
 
 					<!-- side column -->
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 
 
 
 						<form id="re-filter" action="realestate-list.html" method="get" class="white-row">
 
-							<!-- FILTER / SEARCH -->
+							FILTER / SEARCH
 							<h3 class="page-header nomargin-top margin-bottom40">
-								Find The Best <strong class="styleColor">Providers</strong>
+								Find <strong class="styleColor">Providers</strong>
 							</h3>
 
 							<div class="row">
@@ -312,40 +232,33 @@
 
 									<div class="col-md-12 col-sm-6">
 										<label>Where</label>
-										<input type="text" class="form-control" name="re_id" />
+										<input type="text" id="Autocomplete" class="form-control" ng-autocomplete="city"
+									     details="cityDetails" options="optionsCities" />
 									</div>
 
 									<div class="col-md-12 col-sm-6">
-										<label>Location</label>
-										<select class="form-control" name="re_location">
-											<option value="0">Any</option>
-											<option value="1">New York</option>
-											<option value="2">Los Angeles</option>
-											<option value="3">Las Vegas</option>
-											<option value="4">Palo Alto, SA</option>
-											<option value="5">Silcon Valey, SA</option>
-										</select>
+										<label>Looking for</label>
+										<select class="form-control " name="service"
+											ng-model="providerCategory"
+											ng-options="service.type for service in provider_categories" required>
+											<option value="">Select Service type</option>
+								       </select>
 									</div>
 									<div class="col-md-12 col-sm-6">
-										<label>Type</label>
-										<select class="form-control" name="re_type">
-											<option value="0">Any</option>
-											<option value="1">Apartment</option>
-											<option value="2">Villa</option>
-											<option value="3">Family House</option>
-											<option value="4">Condo</option>
-											<option value="5">Cottage</option>
-											<option value="6">Building Area</option>
-											<option value="7">Single Home</option>
-										</select>
+										<label>Event Date</label>
+										 <p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate" />
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-info">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</p> 
 									</div>
 									<div class="col-md-12 col-sm-6">
-										<label>Property Status</label>
-										<select class="form-control" name="re_status">
-											<option value="0">Any</option>
-											<option value="1">Rent</option>
-											<option value="2">Sale</option>
-										</select>
+										<label>Days</label>
+										<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
 									</div>
 								</div>
 							</div>
@@ -353,156 +266,19 @@
 							<div class="row">
 								<div class="form-group">
 
-									<div class="col-md-6 col-sm-6 col-xs-6">
-										<label>Beds</label>
-										<select class="form-control" name="re_beds">
-											<option value="0">Any</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10+">10+</option>
-										</select>
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6">
-										<label>Baths</label>
-										<select class="form-control" name="re_baths">
-											<option value="0">Any</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10+">10+</option>
-										</select>
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6">
-										<label>Price From</label>
-										<select class="form-control" name="re_price_from">
-											<option value="0">Any</option>
-											<option value="1000">$1000</option>
-											<option value="2000">$2000</option>
-											<option value="3000">$3000</option>
-											<option value="5000">$5000</option>
-											<option value="10000">$10000</option>
-											<option value="2000">$2000</option>
-											<option value="100000">$100000</option>
-											<option value="300000">$300000</option>
-											<option value="1000000+">1000000+</option>
-										</select>
-									</div>
-									<div class="col-md-6 col-sm-6 col-xs-6">
-										<label>Price To</label>
-										<select class="form-control" name="re_price_to">
-											<option value="0">Any</option>
-											<option value="1000">$1000</option>
-											<option value="2000">$2000</option>
-											<option value="3000">$3000</option>
-											<option value="5000">$5000</option>
-											<option value="10000">$10000</option>
-											<option value="2000">$2000</option>
-											<option value="100000">$100000</option>
-											<option value="300000">$300000</option>
-											<option value="1000000+">1000000+</option>
-										</select>
-									</div>
-
 									<div class="col-md-12">
 										<label>&nbsp;</label>
-										<button class="btn btn-primary fullwidth">SEARCH NOW</button>
+										<button class="btn btn-primary fullwidth" ng-click="search()">SEARCH NOW</button>
 									</div>
 								</div>
 							</div>
 
 						</form>
 
-						<!-- HOT -->
-						<h3 class="page-header">
-							Today's <strong class="styleColor">Hot</strong>
-						</h3>
-
-						<!-- No #1 Hot -->
-						<div class="item-box nomargin-top">
-							<figure>
-								<a class="item-hover" href="realestate-single.html">
-									<span class="overlay color2"></span>
-									<span class="inner">
-										<span class="block fa fa-plus fsize20"></span>
-										<strong>VEW</strong> OFFER
-									</span>
-								</a>
-								<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/1.jpg" />
-							</figure>
-							<div class="item-box-desc">
-								<h4 class="wrap"><a class="styleColor" href="#">1903 Hollywood Blvd, FL</a></h4>
-								<small class="font300 text-center block">~ $112.000 ~</small>
-							</div>
-						</div>
-						<!-- /No #1 Hot -->
-
 						
 
-						<!-- small articles -->
-						<div class="row">
-							<div class="col-xs-6 col-md-6">
-								<a href="#">
-									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/3.jpg" />
-									<h6 class="fsize12 font300 padding6 styleSecondColor">Horses hypnotized by the sea</h6>
-								</a>							
-							</div>
-							<div class="col-xs-6 col-md-6">
-								<a href="#">
-									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/thumb/4.jpg" />
-									<h6 class="fsize12 font300 padding6 styleSecondColor">Sochi protesters fight to be heard</h6>
-								</a>							
-							</div>
-						</div>
-						<!-- /small articles -->
 
-
-
-						<!-- TWEETS -->
-						<h3 class="page-header">
-							<i class="fa fa-twitter"></i> 
-							Latest <strong class="styleColor">Tweets</strong> 
-						</h3>
-
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-						<p>
-							<a href="#">@tweetuser</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-							<small class="block styleColor">12 hours ago</small>
-						</p>
-
-						<!-- SOCIALS -->
-						<h3 class="page-header">
-							<i class="fa fa-twitter"></i> 
-							<strong class="styleColor">Follow</strong> Us
-						</h3>
-
-						<a href="#" class="social fa fa-facebook"></a>
-						<a href="#" class="social fa fa-twitter"></a>
-						<a href="#" class="social fa fa-google-plus"></a>
-						<a href="#" class="social fa fa-linkedin"></a>
-						<a href="#" class="social fa fa-pinterest"></a>
-						<a href="#" class="social fa fa-flickr"></a>
-
-					</div>
+					</div> -->
 
 				</div>
 
@@ -512,3 +288,22 @@
 		</div>
 		<!-- /WRAPPER -->
 
+<script type="text/javascript">
+	$(function() {
+	    $('input[name="eventDate"]').daterangepicker({
+	        minDate: '06/01/2015',
+	        singleDatePicker: true,
+	        timePicker: true,
+	        format: 'MM/DD/YYYY h:mm ',
+	        timePickerIncrement: 30,
+	        timePicker12Hour: false,
+	        timePickerSeconds: false
+	       
+	    });
+
+	    
+	});
+	
+	 
+	
+</script>

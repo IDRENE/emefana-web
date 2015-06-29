@@ -4,9 +4,11 @@
 /* Services */
 (function() {
  var publicServices = angular.module('publicServices', ['ngResource']);
+ 
+ var host = "http://"+ providerAppConfig.host;
 
 publicServices.factory('MetaService', ['$resource',function($resource){
-    return $resource('http://10.0.0.17:8080/api/metadata', {},{
+    return $resource(host+'/api/metadata', {},{
 			    query : {
 					method : 'GET',
 					headers : {'Accept': 'application/json'},
@@ -17,7 +19,7 @@ publicServices.factory('MetaService', ['$resource',function($resource){
 }]);
 
 publicServices.factory('ListingService', ['$resource',function($resource){
-    return $resource('http://10.0.0.17:8080/api/provider', {},{
+    return $resource(host+'/api/provider', {},{
 			    save : {
 					method : 'POST',
 					headers : {
@@ -30,7 +32,7 @@ publicServices.factory('ListingService', ['$resource',function($resource){
 }]);
     
     publicServices.factory('ProviderService', ['$resource',function($resource){
-        return $resource('http://10.0.0.17:8080/api/search/providers/:referenceId', 
+        return $resource(host+'/api/search/providers/:referenceId', 
         		{
         	      referenceId: '@referenceId',
         	      
@@ -53,7 +55,7 @@ publicServices.factory('ListingService', ['$resource',function($resource){
 }]);
     
     publicServices.factory('ProviderServiceByTerm', ['$resource',function($resource){
-        return $resource('http://10.0.0.17:8080/api/search-term/providers', {},
+        return $resource(host+'/api/search-term/providers', {},
         		{
     			 query : {
     					method : 'GET',
