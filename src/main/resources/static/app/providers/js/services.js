@@ -3,8 +3,10 @@
 /* Services */
 var providerServices = angular.module('providerServices', ['ngResource']);
 
+var host = "http://"+ providerAppConfig.host;
+
 providerServices.factory('MetaService', ['$resource',function($resource){
-    return $resource('http://localhost:8080/api/metadata', {},{
+    return $resource(host+'/api/metadata', {},{
 			    query : {
 					method : 'GET',
 					headers : {'Accept': 'application/json'},
@@ -15,7 +17,7 @@ providerServices.factory('MetaService', ['$resource',function($resource){
 }]);
 
 providerServices.factory('ListingService', ['$resource',function($resource){
-    return $resource('http://localhost:8080/api/provider', {},{
+    return $resource(host+'/api/provider', {},{
 			    save : {
 					method : 'POST',
 					headers : {

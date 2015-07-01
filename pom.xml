@@ -44,6 +44,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>e-mefana-web</finalName>
 	</build>
+	
 
 </project>
