@@ -14,6 +14,18 @@
 			   function($scope,$rootScope,$geolocation,$state,$filter,cordovaGeolocationService, MetadataService,ListingService) {
 			
 		     $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
+		     
+		     var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude for tz
+			    var NE = new google.maps.LatLng(33.854, -5.307); 
+			    var boundss = new google.maps.LatLngBounds(SW, NE);
+				  
+				  $scope.city = '';
+				    $scope.optionsCities = {
+					  bounds: boundss,
+				      country: 'tz',
+				      types: '(cities)'
+				    };  
+				    $scope.cityDetails = '';
 
 		     
 		     MetadataService.$promise.then(function(result){
@@ -55,6 +67,24 @@
 				   * 
 				   */
 				  $scope.canGoNext = function() {
+					  if($state.includes("register.features")){// Set Provider city, as it not possible for google places to persist values btn pages
+						 
+						var cityArray = $state.params.incity.split(",");
+						var strLocation = $state.params.location;
+
+						  $scope.provider.city= {
+								    "cid": cityArray[0],
+								    "region":cityArray.length > 2 ? cityArray[1] : cityArray[0]  ,
+								    "country": cityArray[cityArray.length -1],
+								    "location": [0,0],
+								    "strLocation" : strLocation
+						   }
+						  
+						 // console.log($scope.provider.city);//TODO on Server
+						  
+
+					  }
+					 
 					    return $scope.listingForm.$valid && $scope.listingForm.$dirty ;
 					};
 					  

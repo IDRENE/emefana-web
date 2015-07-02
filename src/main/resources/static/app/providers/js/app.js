@@ -2,6 +2,7 @@
 angular.module('providerApp', [
         'ui.bootstrap',
 		'ui.router',
+		'ngAutocomplete',
 		'ngCookies', 
 		'checklist-model',
 		'ngGeolocation',
@@ -40,7 +41,7 @@ angular.module('providerApp', [
 					    
 					  })
 					  .state('register.features', {
-					    url: '/listing-features',
+					    url: '/listing-features/:incity?location',
 					    templateUrl: '/app/providers/partials/provider-features.html'
 					  })
 					   .state('register.location', {

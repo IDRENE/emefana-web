@@ -24,7 +24,9 @@
 											<div class="control-group">
 											<label>City</label>
 											<i class="glyphicon glyphicon-star star" ng-show="showError(listingForm.city, 'required')" ></i>
-											<input type="text" name="city" class="form-control" ng-model="provider.city" typeahead="city as city.cid for city in cities | filter:{cid:$viewValue}" typeahead-editable="false" required/>
+											<input type="text" id="Autocomplete" class="form-control" ng-autocomplete="city" details="cityDetails" options="optionsCities" required/>
+							      </div>
+											<!-- <input type="text" name="city" class="form-control" ng-model="provider.city" typeahead="city as city.cid for city in cities | filter:{cid:$viewValue}" typeahead-editable="false" required/> -->
 											</div>
 										</div>
 									</div>
@@ -129,4 +131,4 @@
 						
 		     <button class="btn btn-primary btn-lg" type="submit" ui-sref="register.start" ><i class="fa fa-hand-o-left"></i> &nbsp; Previous</button>
 
-			  <button class="btn btn-primary btn-lg" type="submit" ui-sref="register.features"  ng-disabled="!canGoNext() || !isVenuesWithVenueSpace()"><i class="fa fa-right"></i>  Next Section &nbsp;<i class="fa fa-hand-o-right"></i></button>
+			  <button class="btn btn-primary btn-lg" type="submit" ui-sref="register.features({incity :city, location:cityDetails.geometry.location })"  ng-disabled="!canGoNext() || !isVenuesWithVenueSpace()"><i class="fa fa-right"></i>  Next Section &nbsp;<i class="fa fa-hand-o-right"></i></button>
