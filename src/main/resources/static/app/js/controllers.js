@@ -1,6 +1,6 @@
 (function() {
 
-	var publicControllers = angular.module('publicControllers', ['cordovaGeolocationModule']);
+	var publicControllers = angular.module('publicControllers', ['cordovaGeolocationModule','ngTextTruncate']);
 
 	   publicControllers .animation('.slide', function() {
 			var NG_HIDE_CLASS = 'ng-hide';
@@ -274,6 +274,10 @@
 						   $scope.eventCount = function(event)  {
 							   return $scope.countries = $filter('filter')($scope.eventsCounts, { key: event })[0].count;
 						   };
+						   
+						   $scope.hasThumbnailPhoto = function(prov){
+							   return prov.hasOwnProperty('thumnailPhoto');
+						   }; 
 					  
 		} ]);
 	   
