@@ -1005,6 +1005,7 @@ div.e404 {
 .book-row {
 	padding:20px; margin-bottom:20px;
 	background: #ffbb39; 
+	background-color: rgba(0,0,.1,.1);
 	color: #003580;
 	border: 1px solid #daa300;
 
