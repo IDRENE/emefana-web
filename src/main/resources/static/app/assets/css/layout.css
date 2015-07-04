@@ -1001,6 +1001,18 @@ div.e404 {
 			border-radius:6px;
 }
 
+
+.book-row {
+	padding:20px; margin-bottom:20px;
+	background: #ffbb39; 
+	color: #003580;
+	border: 1px solid #daa300;
+
+	-webkit-border-radius:6px;
+	   -moz-border-radius:6px;
+			border-radius:6px;
+}
+
 /* General Page Title */
 header.page-title h1,
 h1.page-title {
