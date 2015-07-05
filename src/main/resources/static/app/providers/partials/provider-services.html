@@ -22,31 +22,46 @@
  <div class="panel panel-warning"">
      <div class="panel-heading"><h5>BUSINESS SERVICE OFFERING </h5></div>
 			  <div class="panel-body">
-								<p>Does <strong>{{provider.name}}</strong> offer any of the following?, tick all that apply</p>
-								<span ng-hide="hasServices()" class="help-inline">You must select at least one type of  service</span>
-				<div class="row">
-				  <ul class="list-group">
-				   <div class="col-md-6 ">
-					<li class="list-group-item" ng-repeat="service in services|filter:{providerTypes:provider.category}" ng-if="$odd">
-						<div class="checkbox">
-							<label> <input type="checkbox" checklist-model="provider.services" checklist-value="service"> {{service.sid}}</label>
-						</div>
-					</li>
-				  </div>
-				  <div class="col-md-6 ">
-				  <li class="list-group-item" ng-repeat="service in services|filter:{providerTypes:provider.category}" ng-if="$even">
-						<div class="checkbox">
-							<label> <input type="checkbox" checklist-model="provider.services" checklist-value="service"> {{service.sid}}</label>
-						</div>
-					</li>
-				 </div>
-						</ul>
-						<p>&nbsp;</p>
-			<p>
-				<button type="button" class="btn btn-primary btn-xs"ng-click="checkAll('S')"><i class="fa fa-check"></i>Check all Services</button>
-				<button type="button" class="btn btn-default btn-xs" ng-click="uncheckAll('S')"><i class="fa fa-times"></i>Uncheck all</button>
-			</p>
-		 </div>
+								<p>Does <strong>{{provider.name}}</strong> offer any service?, add  all that apply</p>
+								<span ng-hide="hasServices()" class="help-inline">You must add at least one type of  service</span>
+
+		 <div class="row" >
+						 <div class="form-group" ng-repeat="service in provider.services">
+							<div class="col-md-2" >
+									<label>Type</label>
+									<i class="glyphicon glyphicon-star star" ></i>
+									<!-- <input type="text" name="venuename" class="form-control" ng-minlength="1" ng-model="service.service.sid" required/> -->
+									<select class="form-control pointer" name="serviceType" ng-model="service.service"  ng-options="sv.sid for sv in services|filter:{providerTypes:provider.category}" required>
+												<option value="">Select One</option>
+											</select>
+							</div>
+							<div class="col-md-5">
+									<label>Description</label>
+									<i class="glyphicon glyphicon-star star" ></i>
+									<!-- <input type="number"  name="venuecapacity" class="form-control" ng-minlength="2" ng-model="venue.capacity" ng-model="venue.price" min="10" max="5000" required/> -->
+									<textarea maxlength="5000" name="description" data-msg-required="Breafly decribe this service" rows="2" class="form-control" ng-minlength="15" ng-maxlength="500" maxlength="520" ng-model="service.description" required ></textarea>
+							</div>
+							   <div class="col-md-2" >
+									<label>Price <i class="glyphicon glyphicon-star star"></i></label>
+
+									<input type="number" name="venueprice" class="form-control" ng-model="service.price.price" min="10"  required/>
+								</div>
+								 <div class="col-md-2" >
+								<label>Currency</label>
+								<i class="glyphicon glyphicon-star star" ></i>
+											<select name="servicecurrency" class="form-control pointer" ng-model="service.price.currency"  required>
+												<option value="TZS">TZS</option>
+												<option value="USD">USD</option>
+											</select>
+									</div>
+							
+							<div class="col-md-1">
+							       <label>&nbsp;</label>
+									<button type="button" class="btn btn-xs  form-control"  ng-click="removeService($index)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+							</div>
+						 </div>
+						</div> 
+							<button type="button" class="btn btn-xs" ng-click="addService()"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> You have additional Services , list them here</button>
 		 
 		</div>
 		</div>	

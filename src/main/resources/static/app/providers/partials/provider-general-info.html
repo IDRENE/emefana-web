@@ -83,7 +83,7 @@
 										<div class="control-group">
 											<label>Tell us more about this business </label>
 											<i class="glyphicon glyphicon-star star" ng-show="showError(listingForm.description, 'required')" ></i>
-											<textarea maxlength="5000" name="description" data-msg-required="Breafly decribe your business." rows="5" class="form-control" ng-minlength="250" ng-maxlength="5000" maxlength="5020" ng-model="provider.description" required ></textarea>
+											<textarea maxlength="5000" name="description" data-msg-required="Breafly decribe your business." rows="5" class="form-control" ng-minlength="200" ng-maxlength="5000" maxlength="5020" ng-model="provider.description" required ></textarea>
 											<span ng-show="showError(listingForm.description, 'minlength')" class="help-inline">Breafly decribe your business in atleast  200 characters</span>
 											<span ng-show="showError(listingForm.description, 'maxlength')" class="help-inline">Breafly decribe your business in not more than 5000 characters</span>
 										</div>

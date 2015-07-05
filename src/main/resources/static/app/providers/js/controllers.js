@@ -174,8 +174,32 @@
 				 $scope.provider.venues.push({name : '',capacity : '',price : ''});
 			 };
 			 
+			 
 			 $scope.removeVenue = function(index){
 				 $scope.provider.venues.splice(index, 1);
+			 };
+			 
+			 $scope.addService = function(){
+				
+				 $scope.provider.services.push( { service :{
+				      sid: '',
+				      providerTypes: [
+				        {
+				          type: ''
+				        }
+				      ]
+				    },
+				   description: '',
+				   price :{
+					    price: '',
+				        currency: ''
+				        }
+				   
+			    });
+			 };
+			 
+			 $scope.removeService = function(index){
+				 $scope.provider.services.splice(index, 1);
 			 };
 			 
 			 // services

@@ -113,7 +113,7 @@
 						  <a href="" class="selected"  ng-click="scrollTo('events')">Events</a>
 						</li>
 						<li class="divider-vertical"></li>
-						<li ><a href="" class="selected" ng-click="servicesActive= true">Services</a></li>
+						<li ><a href="" class="selected" ng-click="scrollTo('services')">Services</a></li>
 						<li class="divider-vertical"></li>
 						<li >
 						  <a href="" class="selected" ng-click="scrollTo('map')"> Map</a>
@@ -223,21 +223,54 @@
                               <h3 class="page-header margin-bottom40">
 								OUR <strong class="styleColor">Venues</strong>
 							</h3>
-							     <div ng-repeat="venue in currentProvider.providerVenues"  class="col-md-6 col-sm-6 col-xs-12">
-						          <div class="panel panel-info"  >
-									  <div class="panel-heading">
-									    <h3 class="panel-title">{{venue.name}} </h3>
-									  </div>
-									  <div class="panel-body">
-									     <p>Venue specific description goes here</p>
-									  </div>
-									  <!-- List group -->
-								  <ul class="list-group">
-								    <li class="list-group-item">Capacity : {{venue.capacity}} </li>
-								    <li class="list-group-item">Price : {{venue.price.price |currency : venue.price.currency}}</li>
-								  </ul>
-								</div>
-							</div>
+							<div class="table-responsive"> 
+					        <table class="table table-bordered">
+					            <thead>
+					                <tr>
+					                   <th>No</th>
+					                    <th>Name</th>
+					                    <th>Capacity</th>
+					                    <th>Price</th>
+					                    <th>Description</th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr ng-repeat="venue in currentProvider.providerVenues">
+					                   <td>{{$index + 1}}</td>
+					                    <td>{{venue.name}}</td>
+					                    <td>{{venue.capacity}}</td>
+					                    <td>{{venue.price.price |currency : venue.price.currency}}</td>
+					                    <td>Venue specific description goes here</td>
+					                </tr>
+					            </tbody>
+					        </table>
+					    </div>
+
+						</div><!-- /.white-row -->
+						
+						<div class="row white-row"  id="services">
+                              <h3 class="page-header margin-bottom40">
+								SERVICE <strong class="styleColor">Offerings</strong>
+							</h3>
+							
+							<div class="table-responsive"> 
+					        <table class="table table-bordered">
+					            <thead>
+					                <tr>
+					                    <th>Type</th>
+					                    <th>Price</th>
+					                    <th>Description</th>
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr ng-repeat="service in currentProvider.providerServices">
+					                    <td>{{service.serviceId}}</td>
+					                    <td>{{service.price.price | currency : service.price.currency}}</td>
+					                    <td>{{service.description}}</td>
+					                </tr>
+					            </tbody>
+					        </table>
+					    </div>
 
 
 						</div><!-- /.white-row -->

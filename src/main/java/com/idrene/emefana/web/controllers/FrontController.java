@@ -17,5 +17,14 @@ public class FrontController {
 		return "forward:app/providers/index.html";
 		
 	}
+	
+	/* TODO
+	 *  ----  fine print
+     *   ---- filters by price 
+     *   ---- filters by capacity
+     *   ---- Reviews  
+     *   --- Booking
+     *     
+	 */
 
 }
