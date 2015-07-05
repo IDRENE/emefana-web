@@ -278,6 +278,10 @@
 						   $scope.hasThumbnailPhoto = function(prov){
 							   return prov.hasOwnProperty('thumnailPhoto');
 						   }; 
+						   
+						   $scope.hasPhotos = function(prov){
+							   return prov.hasOwnProperty('gallaryPhotos');
+						   };
 					  
 		} ]);
 	   

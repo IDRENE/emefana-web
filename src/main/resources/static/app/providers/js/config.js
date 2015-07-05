@@ -5,5 +5,5 @@ var providerAppConfig = {
 	useAuthTokenHeader: true,
 	authToken: "QEZJ22pp9OKN0C8yLmnG+NqXxlMtHosO1VASCHId5+0LesiUmIxXiD6gc1wh9h9U2TAwRNIAJ0gTxwj51EppKuZNndautmFaWf5zaK5w0A8=",
 	//host: "52.5.231.243:8000"	
-	host:"10.0.0.11:8080"
+	host:"10.0.0.14:8080"
 };

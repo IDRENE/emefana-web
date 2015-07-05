@@ -132,34 +132,27 @@
 								900px images required!
 							-->
 							<carousel interval="5000">
-								<slide>
+								<slide ng-if="hasPhotos(currentProvider)" ng-repeat="photo in currentProvider.gallaryPhotos">
 									<div class="owl-caption text-left">
-										<p class="hidden-xs">hide on mobile
-											Lorem Ipsum Dolor Sit Amet... hahahhahah
+										<p class="hidden-xs">
+										  Our beautiful photos ...
 										</p>
 									</div>
-									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/1.jpg" width="900" style="margin:auto;" />
+									<img alt="" class="img-responsive" ng-src="{{photo.image}}" width="900" style="margin:auto;" />
 								</slide>
-								<slide>
+
+								<slide ng-if="!hasPhotos(currentProvider)">
 									<div class="owl-caption text-left">
 										<p class="hidden-xs">hide on mobile
-											Lorem Ipsum Dolor Sit Amet...
-										</p>
-									</div>
-									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/6.jpg" width="900" style="margin:auto;" />
-								</slide>
-								<slide>
-									<div class="owl-caption text-left">
-										<p class="hidden-xs">hide on mobile
-											Lorem Ipsum Dolor Sit Amet...
+											Sample photos for providers without one...
 										</p>
 									</div>
 									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/3.jpg" width="900" style="margin:auto;" />
 								</slide>
-								<slide>
+								<slide ng-if="!hasPhotos(currentProvider)">
 									<div class="owl-caption text-left">
 										<p class="hidden-xs">hide on mobile
-											Lorem Ipsum Dolor Sit Amet...
+											Sample photos for providers without one...
 										</p>
 									</div>
 									<img alt="" class="img-responsive" src="/app/assets/images/demo/realestate/images/5.jpg" width="900" style="margin:auto;"/>
