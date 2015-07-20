@@ -111,7 +111,7 @@
 
 								
 								<label for="Autocomplete">Where in Tanzania</label> 
-								<input type="text" id="Autocomplete"
+								<input type="text" id="Autocomplete" placeholder="Enter Event location here "
 									class="form-control" ng-autocomplete="city"
 									details="cityDetails" options="optionsCities" />
 							      </div>
@@ -138,17 +138,47 @@
 											</p>
 
 
-									</div>
-									
-							<div class="col-md-1 col-sm-12 col-xs-12">
-								<label>Days</label>
-								<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
 							</div>
+							
+							<div class="col-md-3 col-sm-12 col-xs-12"  >
+										<label>Event End Date </label>
+									      <p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate" />
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-default" disabled="disabled">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</p>
+							</div>
+									
+							<div class="col-md-6 col-sm-12 col-xs-12">
 								
-
-									<div class="col-md-2 col-sm-12 col-xs-12">
-								<label>&nbsp;</label>
+								 <label>
+										<input type="checkbox" ng-model="uselocation" data-for="use-location"   style="height: 15px; padding: 6px;"/>
+										Use my current location as the Event location and search for the nearest service providers 
+									 </label>
+								</div>
+								
+								<div class="col-md-3 col-sm-6 col-xs-12">
+										<select class="form-control " name="maxDistance"
+											ng-model="maxDistance"  required>
+											<option value="20000">All Providers around </option>
+											<option value="15">15 KILOMETERS</option>
+											<option value="50">50 KILOMETERS</option>
+											<option value="100">100 KILOMETERS</option>
+											<option value="200">200 KILOMETERS</option>
+											<option value="350">350 KILOMETERS</option>
+											<option value="500">500 KILOMETERS</option>
+											<option value="1000">1000+ KILOMETERS</option>
+								</select>
+									</div>
+                  
+								<div class="col-md-3 col-sm-12 col-xs-12">
+                                 <br class="hidden-md hidden-lg"/>
 								<button class="btn btn-primary fullwidth" ng-click="search()">SEARCH NOW</button>
+
 							</div>
 						</div>
 					</div>

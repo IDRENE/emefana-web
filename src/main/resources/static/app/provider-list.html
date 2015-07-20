@@ -102,7 +102,7 @@
 
 						<!-- article summary -->
 						<!--  "provider in providerResult.providers | filter:q | itemsPerPage: pageSize" -->
-						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:provType | filter:prvEvents | itemsPerPage: pageSize)" current-page="currentPage"  >
+						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:provType | filter:prvEvents | filter:fromCity| itemsPerPage: pageSize)" current-page="currentPage"  >
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
@@ -214,6 +214,21 @@
 								     <span class="filterCount">(0)</span>
 	                           </div>
 						</div>
+						
+						<div class="filtercategory"> 
+								   <h5><a ng-click="citing = !citing" >
+								   <span ng-show="!citing"><i class="fa fa-caret-right fa-lg"></i></span>
+								 <span ng-show="citing"><i class="fa fa-caret-down fa-lg"></i></span>
+								 <strong class="styleColor"> Cities</strong></span>
+								  </a></h5>
+								   <div class="slide" ng-show="citing">
+								<div ng-repeat="citiz in citiestz" class="filterelement" style="color: #009fe3;font-size:12px">
+								   <input  class="filterelement" type="checkbox" checklist-model="cityfilter" checklist-value="citiz" ng-click="updateTotalCountAfterFilter()" >
+								   <span class="filterLabel">  {{citiz.cid}} </span> 
+								     <span class="filterCount">({{cityCount(citiz.cid)}})</span>
+	                             </div>
+	                              </div>
+							   </div>
 
 
 							<div class="filtercategory"> 

@@ -58,13 +58,30 @@
 					    	 
 					     });
 					   // var res = str.replace(/blue|house|car/gi, function myFunction(x){return x.toUpperCase();});
+					    
+						  $scope.uselocation = false;
+						  $scope.location = [];
+						  $scope.maxDistance = 20000;
+						  
+						  $scope.captureUserLocation = function(){
+								cordovaGeolocationService.getCurrentPosition(function(position){
+									$scope.location[0] = position.coords.latitude;
+									$scope.location[1] = position.coords.longitude;
+									
+							    });
+
+							};
 						   
 						 $scope.search = function(){
-							 $state.go("search",{ city : $scope.city,
+							 //var locat = $scope.uselocation ? $scope.location[0] +','+ $scope.location[1] :''
+							 $state.go("search",{ city : $scope.uselocation ? '' : $scope.city,
 								                  eventDate : $scope.eventDate,
-								                  eventDays : $scope.days,
+								                  toDate : $scope.eventToDate,
 								                  providerCategory : $scope.providerCategory.type,
-								                  nearLocationStr : $scope.cityDetails.geometry.location
+								                  nearLocationStr :$scope.uselocation ? '' : $scope.cityDetails.geometry.location,
+								                  nearLocation: $scope.uselocation ?  $scope.location[0] +','+ $scope.location[1]: '' ,
+								                  maxDistance : $scope.maxDistance,
+								                  uselocation: $scope.uselocation
 								                  
 								 } );
 						 };
@@ -73,7 +90,7 @@
 							 $state.go("searchByTerm",{ searchTerm : searchingTerm });
 						 };
 						 
-						   
+						 $scope.captureUserLocation(); // load user location		   
 		} ]);
 	   
 	   publicControllers.controller('ProvidersController',
@@ -96,6 +113,7 @@
 					  
 					  $scope.typefilter = [];
 					  $scope.eventfilter =[];
+					  $scope.cityfilter =[];
 					  
 					  
 					  
@@ -132,7 +150,7 @@
 						   MetadataService.$promise.then(function(result){
 							  //console.log(JSON.stringify(result));
 						    	 //$scope.meatadata = angular.toJson(result, true);PROVIDER_REP_ROLES
-						    	// $scope.citiestz = $filter('filter')(result, { key: "CITIES" })[0].value;
+						    	$scope.citiestz = $filter('filter')(result, { key: "CITIES" })[0].value;
 						    	// $scope.listingRoles = $filter('filter')(result, { key: "PROVIDER_REP_ROLES" })[0].value;
 						    	 $scope.countries = $filter('filter')(result, { key: "COUNTRIES" })[0].value;
 						    	 $scope.provider_categories = $filter('filter')(result, { key: "PROVIDER_CATEGORIES" })[0].value;
@@ -149,12 +167,17 @@
 						    		 return {key : p.type, count : 0}
 						    	 });
 						    	 
+						    	 $scope.providerCityCounts = $scope.citiestz.map(function(c){
+						    		 return {key : c.cid, count : 0}
+						    	 });
+						    	 
 
 						     });
 						   
 						   function updateCounts(providers){
 							   /*
 							    * update provider category Count
+							    * Filter Providers, using key
 							    */
 							   for(index in $scope.providerCounts){
 								   $scope.providerCounts[index].count = $filter('filter')(providers, {providerCategories :{type: $scope.providerCounts[index].key}}).length;
@@ -165,6 +188,15 @@
 							    */
 							   for(index in $scope.eventsCounts ){
 								   $scope.eventsCounts[index].count = $filter('filter')(providers, {providerEvents :{eventId: $scope.eventsCounts[index].key}}).length;
+							   }
+							   
+							   /*
+							    * update provider city Count
+							    */
+							   for(index in providers ){
+								  var c = providers[index].providerAddress.city.cid;
+								  var  pos = $scope.providerCityCounts.map(function(e) { return e.key; }).indexOf(c); // index of city in city count
+								  if(pos >= 0) $scope.providerCityCounts[pos].count += 1;
 							   }
 
 						   }
@@ -189,7 +221,11 @@
 									   $scope.total =  $scope.providerResult.providers.length;
 									   $scope.resultTo = $scope.resultTo > $scope.total ? $scope.total : $scope.resultTo;
 									   updateCounts($scope.providerResult.providers)
-								   });
+								   },
+								   function(httpResponse){
+									   $scope.httpResponse = httpResponse.data;
+									  // console.log($scope.httpResponse); // Deal with Errors here
+									   });
 							   }else {
 								   $scope.listingSearch = ProviderServiceByTerm.query({searchingTerm : $state.params.searchTerm}).$promise.then(function(results){
 									   $scope.providerResult = results;
@@ -246,6 +282,10 @@
 								 return $scope.typefilter.length > 0 ? $filter('filter')($scope.typefilter, provider.providerCategories[0]).length > 0 : true;
 							 };
 							 
+							 $scope.fromCity = function(provider){
+								 return $scope.cityfilter.length > 0 ? $filter('filter')($scope.cityfilter, provider.providerAddress.city.cid).length > 0 : true;
+							 };
+							 
 							 $scope.prvEvents = function(provider){
 								 if ($scope.eventfilter.length == 0 ) return true;
 
@@ -268,11 +308,15 @@
 								  
 							//Results count
 						   $scope.typeCount	= function(type)  {
-							   return $scope.countries = $filter('filter')($scope.providerCounts, { key: type })[0].count;
+							   return  $filter('filter')($scope.providerCounts, { key: type })[0].count;
+						   };
+						   
+						   $scope.cityCount	= function(city)  {
+							   return $filter('filter')($scope.providerCityCounts, { key: city })[0].count;
 						   };
 						   
 						   $scope.eventCount = function(event)  {
-							   return $scope.countries = $filter('filter')($scope.eventsCounts, { key: event })[0].count;
+							   return  $filter('filter')($scope.eventsCounts, { key: event })[0].count;
 						   };
 						   
 						   $scope.hasThumbnailPhoto = function(prov){
