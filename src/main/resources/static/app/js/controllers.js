@@ -137,8 +137,8 @@
 						    console.log($scope.cityDetails);
 						   
 						 // set available range
-						    $scope.minPrice = 100;//TODO populate this from back-end providers
-						    $scope.maxPrice = 999;//TODO populate this from back-end providers
+						    $scope.minPrice = 0;//TODO populate this from back-end providers
+						    $scope.maxPrice = 5000000;//TODO populate this from back-end providers
 
 						    // default the user's values to the available range
 						    $scope.userMinPrice = $scope.minPrice;
@@ -259,13 +259,16 @@
 							 };
 							 
 							 $scope.search = function(){
-								 $state.go("search",{ city : $scope.city,
-									                  eventDate : $scope.eventDate,
-									                  eventDays : $scope.days,
-									                  providerCategory : $scope.providerCategory.type,
-									                  nearLocationStr : $scope.cityDetails.geometry.location
-									                  
-									 } );
+								 $state.go("search",{ city : $scope.uselocation ? '' : $scope.city,
+						                  eventDate : $scope.eventDate,
+						                  toDate : $scope.eventToDate,
+						                  providerCategory : $scope.providerCategory.type,
+						                  nearLocationStr :$scope.uselocation ? '' : $scope.cityDetails.geometry.location,
+						                  nearLocation: $scope.uselocation ?  $scope.location[0] +','+ $scope.location[1]: '' ,
+						                  maxDistance : $scope.maxDistance,
+						                  uselocation: $scope.uselocation
+						                  
+						        } );
 							 };
 							 
 							 $scope.scrollTo = function(id) {
@@ -279,7 +282,19 @@
 							  * ng-repeat='item in items|filter:priceRange'
 							  */
 							 $scope.provType = function(provider){
-								 return $scope.typefilter.length > 0 ? $filter('filter')($scope.typefilter, provider.providerCategories[0]).length > 0 : true;
+								 if ($scope.typefilter.length == 0) return true;
+								 
+								 
+								//Map provider categories to Array of String for easy comparison
+								 var providerCategories = provider.providerCategories.map(function(e){
+									return e.type;
+								});
+								 //check that provider categories contains all checked type(s)
+								 for(index in $scope.typefilter){
+									 if ($filter('filter')(providerCategories, $scope.typefilter[index].type).length == 0) return false;
+								 }
+								 
+								 return true;
 							 };
 							 
 							 $scope.fromCity = function(provider){
@@ -302,9 +317,9 @@
 								 return true;
 							 };
 							 
-							 $scope.priceRange = function(item) {
-								    return (parseInt(item['min-acceptable-price']) >= $scope.minPrice && parseInt(item['max-acceptable-price']) <= $scope.maxPrice);
-								  };
+							 $scope.priceRange = function(provider) {
+								    return (parseInt(provider.priceRange.priceFrom) >= $scope.userMinPrice && parseInt(provider.priceRange.priceTo) <= $scope.userMaxPrice);
+							 };
 								  
 							//Results count
 						   $scope.typeCount	= function(type)  {

@@ -15,45 +15,91 @@
 							</h5>
 
 							<div class="row">
-								<div class="form-group">
+						<div class="form-group">
 
-									<div class="col-md-3 col-sm-6">
-										<label for="Autocomplete">Where in Tanzania</label> 
-								<input type="text" id="Autocomplete" 
+							<!-- <div class="col-md-2 col-sm-12 col-xs-12">
+								<label >Event</label>
+								<select class="form-control " name="event"
+											ng-model="search.event"
+											ng-options="event.eid for event in events" required>
+											<option value="">Select Event type</option>
+										</select>
+							</div> -->
+								<div class="col-md-3 col-sm-12 col-xs-12 ">
+
+								
+								<label for="Autocomplete">Where in Tanzania</label> 
+								<input type="text" id="Autocomplete" placeholder="Enter Event location here "
 									class="form-control" ng-autocomplete="city"
 									details="cityDetails" options="optionsCities" />
-									</div>
-
-									<div class="col-md-3 col-sm-6">
-										<label>Looking for</label>
-										<select class="form-control " name="service"
+							      </div>
+							
+							<div class="col-md-3 col-sm-12 col-xs-12">
+								<label>Looking for</label>
+								<select class="form-control " name="service"
 											ng-model="providerCategory"
 											ng-options="service.type for service in provider_categories" required>
 											<option value="">Select Service type</option>
 								</select>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<label>Event Date</label>
-										 <p class="input-group">
+							</div>
+							
+							<div class="col-md-3 col-sm-12 col-xs-12"  >
+										<label>Event Date </label>
+									      <p class="input-group">
 											<input type="text" class="form-control well well-sm" 
 												 ng-model="eventDate" name="eventDate" />
 												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info">
+												<button type="button" class="btn btn-default" disabled="disabled">
 													<i class="glyphicon glyphicon-calendar"></i>
 												</button>
 											</span>
-											</p>  
-									</div>
-									<div class="col-md-1 col-sm-6">
-										<label>Days</label>
-										<input type="number" ng-model="days" class="form-control" min="1" max="99"/>
-									</div>
-									<div class="col-md-2">
-										<label>&nbsp;</label>
-										<button class="btn btn-info fullwidth" ng-click="search()">SEARCH NOW</button>
-									</div>
-								</div>
+											</p>
+
+
 							</div>
+							
+							<div class="col-md-3 col-sm-12 col-xs-12"  >
+										<label>Event End Date </label>
+									      <p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate" />
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-default" disabled="disabled">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</p>
+							</div>
+									
+							<div class="col-md-6 col-sm-12 col-xs-12">
+								
+								 <label>
+										<input type="checkbox" ng-model="uselocation" data-for="use-location"   style="height: 15px; padding: 6px;"/>
+										Use my current location as the Event location and search for the nearest service providers 
+									 </label>
+								</div>
+								
+								<div class="col-md-3 col-sm-6 col-xs-12">
+										<select class="form-control " name="maxDistance"
+											ng-model="maxDistance"  required>
+											<option value="20000">All Providers around </option>
+											<option value="15">15 KILOMETERS</option>
+											<option value="50">50 KILOMETERS</option>
+											<option value="100">100 KILOMETERS</option>
+											<option value="200">200 KILOMETERS</option>
+											<option value="350">350 KILOMETERS</option>
+											<option value="500">500 KILOMETERS</option>
+											<option value="1000">1000+ KILOMETERS</option>
+								</select>
+									</div>
+                  
+								<div class="col-md-3 col-sm-12 col-xs-12">
+                                 <br class="hidden-md hidden-lg"/>
+								<button class="btn btn-primary fullwidth" ng-click="search()">SEARCH NOW</button>
+
+							</div>
+						</div>
+					</div>
 
 						</form>
 						</div>
@@ -102,7 +148,7 @@
 
 						<!-- article summary -->
 						<!--  "provider in providerResult.providers | filter:q | itemsPerPage: pageSize" -->
-						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:provType | filter:prvEvents | filter:fromCity| itemsPerPage: pageSize)" current-page="currentPage"  >
+						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:priceRange | filter:provType | filter:prvEvents | filter:fromCity | itemsPerPage: pageSize)" current-page="currentPage"  >
 						  <div class="item-box-list">
 							<div class="col-md-4 text-center">
 							<figure>
@@ -123,7 +169,7 @@
 							<div class="col-md-8">
 								<h4><a class="styleColor"  ng-click="viewDetails(provider.providerId)">{{provider.providerName}}</a></h4>
 								<p>
-									<small class="block styleSecondColor fsize17">$350.000</small>
+									<small class="block styleSecondColor fsize17">{{provider.priceRange.priceFrom | currency : provider.priceRange.currency}} - {{provider.priceRange.priceTo | currency : provider.priceRange.currency}}</small>
 									 <span ng-text-truncate="provider.businessDescription" ng-tt-chars-threshold="200"></span> 
 									<!-- {{provider.businessDescription}} -->
 
@@ -191,7 +237,7 @@
 							       	    
 							<div class="filtercategory"> 
 							       <h5><strong class="styleColor">  Price</strong></h5>
-                                       <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="10" filter="currency" filter-options="USD$" show-values="true"></div>
+                                       <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="100000" filter="currency" filter-options="TZS" show-values="true" ></div>
 							 </div>
 							
 							<span>&nbsp;</span>
