@@ -25,7 +25,7 @@
 											<option value="">Select Event type</option>
 										</select>
 							</div> -->
-								<div class="col-md-3 col-sm-12 col-xs-12 ">
+								<div class="col-md-3 col-sm-6 col-xs-12 ">
 
 								
 								<label for="Autocomplete">Where in Tanzania</label> 
@@ -34,7 +34,7 @@
 									details="cityDetails" options="optionsCities" />
 							      </div>
 							
-							<div class="col-md-3 col-sm-12 col-xs-12">
+							<div class="col-md-3 col-sm-6 col-xs-12">
 								<label>Looking for</label>
 								<select class="form-control " name="service"
 											ng-model="providerCategory"
@@ -43,7 +43,7 @@
 								</select>
 							</div>
 							
-							<div class="col-md-3 col-sm-12 col-xs-12"  >
+							<div class="col-md-3 col-sm-6 col-xs-12"  >
 										<label>Event Date </label>
 									      <p class="input-group">
 											<input type="text" class="form-control well well-sm" 
@@ -58,7 +58,7 @@
 
 							</div>
 							
-							<div class="col-md-3 col-sm-12 col-xs-12"  >
+							<div class="col-md-3 col-sm-6 col-xs-12"  >
 										<label>Event End Date </label>
 									      <p class="input-group">
 											<input type="text" class="form-control well well-sm" 
@@ -71,7 +71,7 @@
 											</p>
 							</div>
 									
-							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-6 col-sm-6 col-xs-12">
 								
 								 <label>
 										<input type="checkbox" ng-model="uselocation" data-for="use-location"   style="height: 15px; padding: 6px;"/>
@@ -93,7 +93,7 @@
 								</select>
 									</div>
                   
-								<div class="col-md-3 col-sm-12 col-xs-12">
+								<div class="col-md-3 col-sm-6 col-xs-12">
                                  <br class="hidden-md hidden-lg"/>
 								<button class="btn btn-primary fullwidth" ng-click="search()">SEARCH NOW</button>
 
@@ -120,7 +120,7 @@
 				<div class="row">
 
 					<!-- center column -->
-					<div class="col-md-9" >
+					<div class="col-md-9 col-sm-9 " >
 
 						<!-- CATEGORY TITLE -->
 						<!-- <h3 class="page-header nomargin-top">
@@ -150,7 +150,7 @@
 						<!--  "provider in providerResult.providers | filter:q | itemsPerPage: pageSize" -->
 						<div class="row " dir-paginate="provider in filteredResult = (providerResult.providers | filter:priceRange | filter:provType | filter:prvEvents | filter:fromCity | itemsPerPage: pageSize)" current-page="currentPage"  >
 						  <div class="item-box-list">
-							<div class="col-md-4 text-center">
+							<div class="col-md-4 col-sm-4 col-xs-4 text-center">
 							<figure>
 							    <a class="item-hover" ng-click="viewDetails(provider.providerId)">
 											<span class="overlay color2"></span>
@@ -166,7 +166,7 @@
 							
 
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-8 col-sm-8 col-xs-8">
 								<h4><a class="styleColor"  ng-click="viewDetails(provider.providerId)">{{provider.providerName}}</a></h4>
 								<p>
 									<small class="block styleSecondColor fsize17">{{provider.priceRange.priceFrom | currency : provider.priceRange.currency}} - {{provider.priceRange.priceTo | currency : provider.priceRange.currency}}</small>
@@ -192,13 +192,13 @@
 						<!-- PAGINATION -->
 						<div class="row">
 
-							<div class="col-md-6 text-left" ng-show="filteredResult.length > 0">
+							<div class="col-md-6 col-sm -6  text-left" ng-show="filteredResult.length > 0">
 								<p class="hidden-xs pull-left nomargin padding20">Showing {{resultFrom}} - {{resultTo }} of {{total}} providers.</p>
 							</div>
 		
 
 
-							<div class="col-md-6 responsive-text-center text-right">
+							<div class="col-md-6 col-sm-6 responsive-text-center text-right">
 								<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="app/dirPagination.tpl.html"></dir-pagination-controls>
 							</div>
 
@@ -209,13 +209,13 @@
 					</div>
 					
 					<!-- side column -->
-					<div class="col-md-3">
+					<div class="col-md-3 col-sm-3">
 
 						
 						<!-- HOT -->
 						<form id="re-filter"  >
 						<div class="row">
-						  <div class="col-md-12 col-sm-6">
+						  <div class="col-md-12 col-sm-12">
 								<label>Search By Provider Name</label>
 								<p class="input-group">
 								<input class="form-control " ng-model="searchterm" 

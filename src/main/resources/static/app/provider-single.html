@@ -36,66 +36,12 @@
 						 <span class="phone-number"> Expert: <span >1-855-809-3512</span> </span>
 					  </div> 
 				  </div> 
-				  <!-- side column -->
-					 <div class="col-md-3">
-
-                             <p>&nbsp;</p>
-
-						<form id="re-filter"  method="get" class="book-row">
-
-							<div class="row">
-								<div class="form-group">
-									<div class="col-md-12 col-sm-6">
-										<label>Event Start Date</label>
-										 <p class="input-group">
-											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate">
-												 
-												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info" disabled="disabled">
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-											</p> 
-									</div>
-									<div class="col-md-12 col-sm-6">
-										<label>Event End Date</label>
-										 <div class="input-group">
-											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate">
-												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info" disabled="disabled" >
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-											</div> 
-									</div>
-									
-
-									<div class="col-md-12">
-										<label>&nbsp;</label>
-										<button class="btn btn-info fullwidth" >BOOK NOW</button>
-									</div>
-
-
-								</div>
-							</div>
-
-
-						</form>
-						
-						<div class="white-row">
-							<div id="gmaps"><!-- google map -->
-							   <img alt="" ng-src="http://maps.googleapis.com/maps/api/staticmap?center={{currentProvider.providerLocation[1]}},{{currentProvider.providerLocation[0]}}&zoom=13&size=230x200&sensor=true&markers=label:PR%7C{{currentProvider.providerLocation[1]}},{{currentProvider.providerLocation[0]}}"/>
-							</div>
-
-						</div>
-
-					</div> 	 <!-- /side column -->
+				  
 					
 					<!-- center column -->
 			
-					<div class="col-md-9">
+					<div class="col-md-12 col-sm-12">
+					<div class="col-md-8 col-sm-6">
 					
 				
 					<div class="pr_nav_bar_wrapper">
@@ -163,10 +109,66 @@
 							<!-- /carousel -->
 							<!-- /carousel -->
 
-							<!-- PROPERTY ID -->
-							<hr class="half-margins" /><!-- divider -->
+							
+						</div><!-- /.white-row -->
+						
+						</div>
+						  <!-- side column -->
+					 <div class="col-md-4 col-sm-6 hidden-xs">
 
-							<p class="lead text-center">{{currentProvider.providerName}}</p>
+                             <p>&nbsp;</p>
+
+						<form id="re-filter"  method="get" class="book-row">
+
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-12 col-sm-12">
+										<label>Event Start Date</label>
+										 <p class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate">
+												 
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-info" disabled="disabled">
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</p> 
+									</div>
+									<div class="col-md-12 col-sm-12">
+										<label>Event End Date</label>
+										 <div class="input-group">
+											<input type="text" class="form-control well well-sm" 
+												 ng-model="eventDate" name="eventDate">
+												 <span class="input-group-btn">
+												<button type="button" class="btn btn-info" disabled="disabled" >
+													<i class="glyphicon glyphicon-calendar"></i>
+												</button>
+											</span>
+											</div> 
+									</div>
+									
+
+									<div class="col-md-12 col-sm-12">
+										<label>&nbsp;</label>
+										<button class="btn btn-info fullwidth" >BOOK NOW</button>
+									</div>
+
+
+								</div>
+							</div>
+
+
+						</form>
+
+
+					</div> 	 <!-- /side column -->
+						</div>
+						
+						
+                     <div class="col-md-12 col-sm-12"> 
+                       <div class="white-row"  id="info">
+                           <p class="lead text-center">{{currentProvider.providerName}}</p>
 							<p>{{currentProvider.businessDescription}}</p>
 							
 
@@ -192,14 +194,8 @@
 								<!-- col 3 -->
 
 							</div>
-
-
-						</div><!-- /.white-row -->
-						
-						
-
-
-					<div class="row white-row"  id="features">
+                     </div>
+					<div class="white-row"  id="features">
                               <h3 class="page-header margin-bottom40">
 								UNIQUE <strong class="styleColor">Features</strong>
 							</h3>
@@ -219,7 +215,7 @@
 
 						</div><!-- /.white-row -->
 						
-						<div class="row white-row"  id="venues">
+						<div class="white-row"  id="venues">
                               <h3 class="page-header margin-bottom40">
 								OUR <strong class="styleColor">Venues</strong>
 							</h3>
@@ -248,7 +244,7 @@
 
 						</div><!-- /.white-row -->
 						
-						<div class="row white-row"  id="services">
+						<div class="white-row"  id="services">
                               <h3 class="page-header margin-bottom40">
 								SERVICE <strong class="styleColor">Offerings</strong>
 							</h3>
@@ -292,14 +288,86 @@
 
 
 						</div><!-- /.white-row -->
-					</div>
-					 
-
-						<hr /><!-- divider -->
-
-
-						<!-- RELATED -->
 						
+						<div class="white-row">
+
+							<!-- PROPERTY CONTACT -->
+							<h3 class="page-header margin-bottom40">
+								RH1001 <strong class="styleColor">Contact</strong>
+							</h3>
+
+							<div class="row">
+
+								<!-- AGENT -->
+								<div class="col-md-7 col-sm-7">
+									<!-- agent name -->
+
+									<!-- agent image -->
+									
+
+									<!-- agent detail -->
+									<p>
+										<strong class="styleSecondColor fsize17">Jessica Doe</strong>
+									</p>
+									<p>
+
+										<span class="block">
+											<strong>Office:</strong> 0800-123-12345
+										</span>
+										<span class="block">
+											<strong>Mobile:</strong> 0800-123-12345
+										</span>
+
+									</p>
+
+									<p class="fsize13">
+										Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+										sed diam nonummy nibh euismod tincidunt ut laoreet 
+										dolore magna aliquam erat volutpat. Ut wisi enim ad...
+									</p>
+
+									<hr class="half-margins" />
+
+									<div class="hidden-xs">
+										<a href="#" class="social fa fa-facebook"></a>
+										<a href="#" class="social fa fa-google-plus"></a>
+										<a href="#" class="social fa fa-twitter"></a>
+										<a href="#" class="social fa fa-linkedin"></a>
+									</div>
+
+								</div>
+
+								<!-- AGENT CONTACT -->
+								<div class="col-md-5 col-sm-5">
+									<p>
+										<strong class="styleSecondColor fsize17">Contact</strong>
+									</p>
+
+									<form method="post" action="#" class="input-group fullwidth">
+
+										<div class="form-group">
+											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+										</div>
+
+										<div class="form-group">
+											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										</div>
+
+										<div class="form-group">
+											<textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message"></textarea>
+										</div>
+
+										<button class="btn btn-primary fullwidth noborder">SEND MESSAGE</button>
+
+									</form>
+
+								</div>
+
+							</div>
+
+						</div><!-- /.white-row -->
+					</div>
+
 
 						<!-- /RELATED -->
 
