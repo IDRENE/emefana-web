@@ -175,13 +175,16 @@
 
 								</p>
 								<p>
-									<span class="fsize12 pull-right">
-										<i class="bed-ico" title="beds"></i> 3 , 
-										<i class="garage-ico" title="garage"></i> 1 , 
-										<i class="furnished-ico" title="furnished"></i>
+									<span class="fsize12 ">
+										<a class="more-info-btn btn btn-secondary"  href="#">Check Availability</a>
 									</span>
-
-									<i class="home-ico"></i> {{provider.distance.value | distance}}
+									
+									<span class="prop-info-links pull-right">
+									 <i class="fa fa-exchange"></i> {{provider.distance.value | distance}} <br/>
+									 
+                                     <a ng-click="viewDetails(provider.providerId)" style=" color: #1b75bb;"> View More Info</a>
+								   
+								   </span>
 								</p>
 							 </div>
 							</div>
