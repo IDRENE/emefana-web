@@ -66,8 +66,13 @@
 						</li>
 						<li class="divider-vertical"></li>
 						<li >
-						  <a href="" class="selected" > See all <strong>verified reviews</strong></a>
+						  <a href="" class="selected" > See all <strong>Verified reviews</strong></a>
 						</li>
+						<li class="divider-vertical hidden-sm hidden-md hidden-lg"></li>
+						<li class="hidden-sm hidden-md hidden-lg">
+						  <a href="" class="selected" ng-click="scrollTo('contact')" > <strong>Check Availability</strong></a>
+						</li>
+						
 						
 					 </ul>
 					</div>
@@ -114,44 +119,48 @@
 						
 						</div>
 						  <!-- side column -->
-					 <div class="col-md-4 col-sm-6 hidden-xs">
+					 <div class="col-md-4 col-sm-6 hidden-xs ">
 
-                             <p>&nbsp;</p>
-
-						<form id="re-filter"  method="get" class="book-row">
-
+						<form id="re-filter"  method="get" class="book-row input-group ">
+						<div class="row " style="border-bottom:1px solid #fff;">
+					   <h6><strong class="styleColor">Contact this provider</strong> <br/>Call (804) 729-5650 or send an email</h6>
+					  </div>
+					  <br/>
 							<div class="row">
 								<div class="form-group">
-									<div class="col-md-12 col-sm-12">
-										<label>Event Start Date</label>
-										 <p class="input-group">
+								<div class=" col-md-12 col-sm-12">
+                                          <label ><strong class="styleColor fsize17">To : </strong> 
+                                          <strong> {{currentProvider.providerName}}</strong></label> 
+                                 </div>
+                                 <div class="col-md-12 col-sm-12 form-group">
+                                   <textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message" style="height: auto; "></textarea>
+                                 </div>
+
+
+									<div class="col-md-12 col-sm-12 form-group" >
 											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate">
-												 
-												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info" disabled="disabled">
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-											</p> 
+												 ng-model="eventDate" name="eventDate" placeholder="Event start date &amp; time"/>
+
 									</div>
-									<div class="col-md-12 col-sm-12">
-										<label>Event End Date</label>
-										 <div class="input-group">
-											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate">
-												 <span class="input-group-btn">
-												<button type="button" class="btn btn-info" disabled="disabled" >
-													<i class="glyphicon glyphicon-calendar"></i>
-												</button>
-											</span>
-											</div> 
+									<div class="col-md-12 col-sm-12 form-group">
+											<input type="text" class="form-control well well-sm" placeholder="Event end date &amp; time" 
+												 ng-model="eventDate" name="eventDate"/>
+
 									</div>
+
+										<div class=" col-md-12 col-sm-12 form-group">
+											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+										</div>
+                                       
+
+										<div class="col-md-12 col-sm-12 form-group">
+											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										</div>
 									
 
 									<div class="col-md-12 col-sm-12">
-										<label>&nbsp;</label>
-										<button class="btn btn-info fullwidth" >BOOK NOW</button>
+										<button class="btn btn-info fullwidth" >SEND MESSAGE</button>
+										<p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
 									</div>
 
 
@@ -276,7 +285,7 @@
 
 							<!-- PROPERTY MAP -->
 							<h3 class="page-header margin-bottom40">
-								RH1001 <strong class="styleColor">Google Map</strong>
+								Google <strong class="styleColor"> Map</strong>
 							</h3>
 
                             <!--  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
@@ -289,17 +298,17 @@
 
 						</div><!-- /.white-row -->
 						
-						<div class="white-row">
+						<div class="white-row" id="contact">
 
 							<!-- PROPERTY CONTACT -->
 							<h3 class="page-header margin-bottom40">
-								RH1001 <strong class="styleColor">Contact</strong>
+								Contact <strong class="styleColor">Provider</strong>
 							</h3>
 
 							<div class="row">
 
 								<!-- AGENT -->
-								<div class="col-md-7 col-sm-7">
+								<div class="col-md-4 col-sm-4 col-xs-12">
 									<!-- agent name -->
 
 									<!-- agent image -->
@@ -338,28 +347,68 @@
 								</div>
 
 								<!-- AGENT CONTACT -->
-								<div class="col-md-5 col-sm-5">
-									<p>
-										<strong class="styleSecondColor fsize17">Contact</strong>
-									</p>
-
-									<form method="post" action="#" class="input-group fullwidth">
-
-										<div class="form-group">
-											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
-										</div>
-
-										<div class="form-group">
-											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
-										</div>
-
-										<div class="form-group">
+								<div class="col-md-8 col-sm-8 col-xs-12">
+								    <div class=" col-md-3 col-sm-3 col-xs-3">
+                                          <label class="contact-label"><strong class="styleSecondColor fsize17">To :</strong></label> 
+                                        </div>
+									 <div class=" col-md-9 col-sm-9 col-xs-9">
+										<strong>{{currentProvider.providerName}}</strong>
+									</div>
+            
+									<form method="post" action="#" class="input-group fullwidth ">
+									  <div class="col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs">Subject :</label> 
+                                        </div>
+										<div class="col-md-9 col-sm-9 form-group">
 											<textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message"></textarea>
 										</div>
+										
+										<div class="col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs">Start Date &amp; Time :</label> 
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 form-group">
+                                          <input type="text" class="form-control well well-sm" ng-model="eventDate" name="eventDate"  placeholder="Select Event start date and time">
+                                        </div>
+                                        
+                                        <div class="col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs">End Date &amp; Time :</label> 
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 form-group">
+                                          <input type="text" class="form-control well well-sm" ng-model="eventDate" name="eventDate"  placeholder="Select Event end date and time">
+                                        </div>
+										
+                                        <div class=" col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs">Name :</label> 
+                                        </div>
+										<div class=" col-md-9 col-sm-9 form-group">
+											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+										</div>
+                                       
+                                        <div class=" col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs" >Email :</label> 
+                                        </div>
+										<div class="col-md-9 col-sm-9 form-group">
+											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										</div>
+										
+										<div class=" col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs" >Mobile :</label> 
+                                        </div>
+										<div class="col-md-9 col-sm-9 form-group">
+											<input required type="text" ng-model="messageToProvider.mobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										</div>
+										
+										<div class="col-md-3 col-sm-3">
+                                          <label class="contact-label hidden-xs">&nbsp</label> 
+                                        </div>
+                                        <div class="col-md-9 col-sm-9">
+										   <button class="btn btn-primary fullwidth noborder">SEND MESSAGE</button>
+										   
+										   <p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
+										</div>
 
-										<button class="btn btn-primary fullwidth noborder">SEND MESSAGE</button>
-
-									</form>
+									</form> 
+									
 
 								</div>
 

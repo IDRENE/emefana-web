@@ -1698,6 +1698,19 @@ fieldset {
   font-weight: 700;
 }
 
+.lead-disclaimer {
+  padding: 15px 0 0;
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  color: #888;
+}
+
+.contact-label{
+	display:block;
+	text-align:right;
+}
+
 .list-view-results .prop .prop-info .prop-details .btn-srp-hotlead {
   display: block;
   padding: .4em 0;

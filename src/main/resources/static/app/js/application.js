@@ -11,6 +11,7 @@ angular.module('mainApp', [
 		'checklist-model',
 		'naif.base64',
 		'cgBusy',
+		'angularModalService',
         'publicFilters',
         'publicServices',
         'publicControllers',

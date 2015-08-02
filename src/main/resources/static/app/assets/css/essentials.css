@@ -1621,11 +1621,11 @@ figure {
 			border-radius: 6px;
 }
 .modal-header {
-	background-color:#333;
+	background-color:#fff;
 }
 .modal-header  button,
 h4.modal-title {
-	color:#fff !important;
+	color:#333 !important;
 	opacity:1;
 }
 .modal-header  button {

@@ -96,11 +96,12 @@
 	   publicControllers.controller('ProvidersController',
 				  ['$scope','$rootScope' ,'$cookieStore',
 				   '$state','$filter','$location','$anchorScroll',
+				   'ModalService',
 				    'cordovaGeolocationService',
 				    'MetadataService',
 				    'ProvidersContainer',
 				    'ProviderServiceByTerm',
-				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
+				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,ModalService,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
 					 
 					  $scope.currentPage = 1;
 					  $scope.pageSize = 10;
@@ -341,6 +342,31 @@
 						   $scope.hasPhotos = function(prov){
 							   return prov.hasOwnProperty('gallaryPhotos');
 						   };
+						   
+						  //show model window
+						   $scope.messageToProvider = {
+								   eventEndDate : $state.params.toDate ,
+								   eventStartDate : $state.params.eventDate,
+								   category : $state.params.providerCategory
+						   };
+						   
+						   $scope.show = function(provider) {
+						        ModalService.showModal({
+						            templateUrl: 'availabilityModelContent.html',
+						            controller: "ModalController",
+						            inputs: {
+						                contactProvider: provider,
+						                messageToProvider:  $scope.messageToProvider
+
+						              }
+						        }).then(function(modal) {
+						            modal.element.modal();
+						            modal.close.then(function(result) {
+						                $scope.message = "You said " + result;
+						                console.log( $scope.message);
+						            });
+						        });
+						    };
 					  
 		} ]);
 	   
@@ -349,6 +375,17 @@
 				  ['$scope','$rootScope','$location', '$cookieStore',
 				   function($scope, $rootScope, $location, $cookieStore) {
 		} ]);
+		   
+		   publicControllers.controller('ModalController',
+					  ['$scope','contactProvider', 'messageToProvider', 'close',function($scope, contactProvider, messageToProvider, close) {
+						  $scope.contactProvider =  contactProvider;
+						  $scope.messageToProvider = messageToProvider;
+						  $scope.close = function(result) {
+							  console.log(JSON.stringify($scope.messageToProvider));
+							 	close(result, 500); // close, but give 500ms for bootstrap to animate
+							 };
+
+			} ]);
 		   
 		
 })();
