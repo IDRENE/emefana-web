@@ -344,10 +344,12 @@
 						   };
 						   
 						  //show model window
+						   var serv = $state.params.providerCategory === undefined ? "(--service--name--)":$state.params.providerCategory ;
 						   $scope.messageToProvider = {
 								   eventEndDate : $state.params.toDate ,
 								   eventStartDate : $state.params.eventDate,
-								   category : $state.params.providerCategory
+								   category : $state.params.providerCategory,
+								   subject: "Hi, I found your  "+  serv +"  listing on Emefana.com and I'd like to know it's availability for my upcoming --event-name-- on the dates  below. Thanks!"
 						   };
 						   
 						   $scope.show = function(provider) {
@@ -367,6 +369,10 @@
 						            });
 						        });
 						    };
+						    
+					$scope.contactProvider = function(){
+						console.log(JSON.stringify($scope.messageToProvider));
+					};	    
 					  
 		} ]);
 	   

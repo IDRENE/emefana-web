@@ -121,46 +121,50 @@
 						  <!-- side column -->
 					 <div class="col-md-4 col-sm-6 hidden-xs ">
 
-						<form id="re-filter"  method="get" class="book-row input-group ">
+						<form id="re-filter"  method="get" class="book-row input-group input-group-sm">
 						<div class="row " style="border-bottom:1px solid #fff;">
 					   <h6><strong class="styleColor">Contact this provider</strong> <br/>Call (804) 729-5650 or send an email</h6>
 					  </div>
 					  <br/>
 							<div class="row">
-								<div class="form-group">
-								<div class=" col-md-12 col-sm-12">
+								<div class="form-group form-group-sm">
+								<div class=" col-md-12 col-sm-12 form-group form-group-sm">
                                           <label ><strong class="styleColor fsize17">To : </strong> 
                                           <strong> {{currentProvider.providerName}}</strong></label> 
                                  </div>
-                                 <div class="col-md-12 col-sm-12 form-group">
-                                   <textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message" style="height: auto; "></textarea>
+                                 <div class="col-md-12 col-sm-12 form-group form-group-sm">
+                                   <textarea required maxlength="5000" ng-model="messageToProvider.subject" placeholder="Message" data-msg-required="Please enter your message." rows="4" class="form-control" name="message" id="message" style="height: auto; "></textarea>
                                  </div>
 
 
-									<div class="col-md-12 col-sm-12 form-group" >
+									<div class="col-md-12 col-sm-12 form-group form-group-sm" >
 											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate" placeholder="Event start date &amp; time"/>
+												ng-model="messageToProvider.eventStartDate" name="eventDate" placeholder="Event start date &amp; time"/>
 
 									</div>
-									<div class="col-md-12 col-sm-12 form-group">
+									<div class="col-md-12 col-sm-12 form-group form-group-sm">
 											<input type="text" class="form-control well well-sm" placeholder="Event end date &amp; time" 
-												 ng-model="eventDate" name="eventDate"/>
+												 ng-model="messageToProvider.eventEndDate" name="eventDate"/>
 
 									</div>
 
-										<div class=" col-md-12 col-sm-12 form-group">
-											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+										<div class=" col-md-12 col-sm-12 form-group form-group-sm">
+											<input required type="text" ng-model="messageToProvider.senderName"  placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
 										</div>
                                        
 
-										<div class="col-md-12 col-sm-12 form-group">
-											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										<div class="col-md-12 col-sm-12 form-group form-group-sm">
+											<input required type="email" ng-model="messageToProvider.senderEmail" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+										</div>
+										
+										<div class="col-md-12 col-sm-12 form-group form-group-sm">
+											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile Number" data-msg-required="Please enter your phone address." data-msg-email="Please enter a valid phone number" maxlength="100" class="form-control" name="phone" id="phone">
 										</div>
 									
 
-									<div class="col-md-12 col-sm-12">
-										<button class="btn btn-info fullwidth" >SEND MESSAGE</button>
-										<p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
+									<div class="col-md-12 col-sm-12 form-group form-group-sm">
+										<button class="btn btn-info fullwidth" type="button" ng-click="contactProvider()" >SEND MESSAGE</button>
+										<span class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></span>
 									</div>
 
 
@@ -360,49 +364,49 @@
                                           <label class="contact-label hidden-xs">Subject :</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<textarea required maxlength="5000" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message"></textarea>
+											<textarea required maxlength="5000" ng-model="messageToProvider.subject" placeholder="Message" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message"></textarea>
 										</div>
 										
 										<div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">Start Date &amp; Time :</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9 form-group">
-                                          <input type="text" class="form-control well well-sm" ng-model="eventDate" name="eventDate"  placeholder="Select Event start date and time">
+                                          <input type="text" class="form-control well well-sm" ng-model="messageToProvider.eventStartDate" name="eventDate"  placeholder="Select Event start date and time">
                                         </div>
                                         
                                         <div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">End Date &amp; Time :</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9 form-group">
-                                          <input type="text" class="form-control well well-sm" ng-model="eventDate" name="eventDate"  placeholder="Select Event end date and time">
+                                          <input type="text" class="form-control well well-sm" ng-model="messageToProvider.eventEndDate" name="eventDate"  placeholder="Select Event end date and time">
                                         </div>
 										
                                         <div class=" col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">Name :</label> 
                                         </div>
 										<div class=" col-md-9 col-sm-9 form-group">
-											<input required type="text" value="" placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
+											<input required type="text" ng-model="messageToProvider.senderName"  placeholder="Name" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name">
 										</div>
                                        
                                         <div class=" col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs" >Email :</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<input required type="email" value="" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+											<input required type="email" ng-model="messageToProvider.senderEmail" placeholder="Email" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
 										</div>
 										
 										<div class=" col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs" >Mobile :</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<input required type="text" ng-model="messageToProvider.mobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your phone number." data-msg-email="Please enter a valid phone number." maxlength="20" class="form-control" name="phone" id="phone">
 										</div>
 										
 										<div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">&nbsp</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9">
-										   <button class="btn btn-primary fullwidth noborder">SEND MESSAGE</button>
+										   <button class="btn btn-primary fullwidth noborder" type="button" ng-click="contactProvider()">SEND MESSAGE</button>
 										   
 										   <p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
 										</div>

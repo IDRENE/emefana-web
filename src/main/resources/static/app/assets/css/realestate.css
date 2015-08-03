@@ -73,9 +73,9 @@
 
 /* custom form */ 
 #re-filter .form-control {
-	height:40px;
-	line-height:40px;
-	padding:6px;
+	height:30px;
+	/* line-height:30px; */
+	padding:5px;
 }
 
 #re-filter select {

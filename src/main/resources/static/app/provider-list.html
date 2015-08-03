@@ -62,7 +62,7 @@
 										<label>Event End Date </label>
 									      <p class="input-group">
 											<input type="text" class="form-control well well-sm" 
-												 ng-model="eventDate" name="eventDate" />
+												 ng-model="eventToDate" name="eventDate" />
 												 <span class="input-group-btn">
 												<button type="button" class="btn btn-default" disabled="disabled">
 													<i class="glyphicon glyphicon-calendar"></i>
@@ -221,7 +221,7 @@
 						  <div class="col-md-12 col-sm-12">
 								<label>Search By Provider Name</label>
 								<p class="input-group">
-								<input class="form-control " ng-model="searchterm" 
+								<input class="form-control " style="height: 40px;line-height: 40px;padding: 6px;" ng-model="searchterm" 
 									ng-model="providerName"/>
 									 <span class="input-group-btn">
 									<button class="btn btn-info "  ng-click="searchByTerm(searchterm)">GO</button>
@@ -388,7 +388,7 @@
                                           <label class="contact-label hidden-xs" >Mobile:</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<input required type="text" ng-model="messageToProvider.mobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
 										</div>
 										
 										<div class="col-md-3 col-sm-3">
@@ -397,7 +397,7 @@
                                         <div class="col-md-9 col-sm-9">
 										   <button type="button" ng-click="close('Yes')" class="btn btn-primary fullwidth noborder" data-dismiss="modal" >SEND MESSAGE</button>
 										   
-										   <p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
+										   <span class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></span>
 										</div>
 
 									</form> 
