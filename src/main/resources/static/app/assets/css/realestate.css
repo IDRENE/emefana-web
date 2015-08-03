@@ -72,9 +72,9 @@
 
 
 /* custom form */ 
-#re-filter .form-control {
-	height:30px;
-	/* line-height:30px; */
+#re-filter .form-control  {
+	height:40px;
+	line-height:40px; 
 	padding:5px;
 }
 
