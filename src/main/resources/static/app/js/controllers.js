@@ -102,7 +102,9 @@
 				    'ProvidersContainer',
 				    'ProviderServiceByTerm',
 				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,ModalService,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
-					 
+					  
+					  $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
+					  
 					  $scope.currentPage = 1;
 					  $scope.pageSize = 10;
 
@@ -372,7 +374,15 @@
 						    
 					$scope.contactProvider = function(){
 						console.log(JSON.stringify($scope.messageToProvider));
-					};	    
+					};
+					
+					$scope.canContactProvider = function(){
+	                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty ;
+	                };
+	                
+	                $scope.canContactProvider1 = function(){
+	                	return $scope.contactProviderForm1.$valid && $scope.contactProviderForm1.$dirty ;
+	                };
 					  
 		} ]);
 	   
@@ -384,12 +394,18 @@
 		   
 		   publicControllers.controller('ModalController',
 					  ['$scope','contactProvider', 'messageToProvider', 'close',function($scope, contactProvider, messageToProvider, close) {
+						  $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
 						  $scope.contactProvider =  contactProvider;
 						  $scope.messageToProvider = messageToProvider;
+						  
 						  $scope.close = function(result) {
 							  console.log(JSON.stringify($scope.messageToProvider));
 							 	close(result, 500); // close, but give 500ms for bootstrap to animate
 							 };
+							 
+                $scope.canContactProvider = function(){
+                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty ;
+                };
 
 			} ]);
 		   

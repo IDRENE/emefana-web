@@ -121,7 +121,7 @@
 						  <!-- side column -->
 					 <div class="col-md-4 col-sm-6 hidden-xs ">
 
-						<form id="re-filter"  method="get" class="book-row input-group input-group-sm">
+						<form id="re-filter"  class="book-row input-group input-group-sm" name="contactProviderForm">
 						<div class="row " style="border-bottom:1px solid #fff;">
 					   <h6><strong class="styleColor">Contact this provider</strong> <br/>Call (804) 729-5650 or send an email</h6>
 					  </div>
@@ -133,17 +133,17 @@
                                           <strong> {{currentProvider.providerName}}</strong></label> 
                                  </div>
                                  <div class="col-md-12 col-sm-12 form-group form-group-sm">
-                                   <textarea required maxlength="5000" ng-model="messageToProvider.subject" placeholder="Message" data-msg-required="Please enter your message." rows="4" class="form-control" name="message" id="message" style="height: auto; "></textarea>
+                                   <textarea required maxlength="500" ng-model="messageToProvider.subject" placeholder="Message" data-msg-required="Please enter your message." rows="4" class="form-control" name="message" id="message" style="height: auto; "></textarea>
                                  </div>
 
 
 									<div class="col-md-12 col-sm-12 form-group form-group-sm" >
-											<input type="text" class="form-control well well-sm" 
+											<input required type="text" class="form-control well well-sm" 
 												ng-model="messageToProvider.eventStartDate" name="eventDate" placeholder="Event start date &amp; time"/>
 
 									</div>
 									<div class="col-md-12 col-sm-12 form-group form-group-sm">
-											<input type="text" class="form-control well well-sm" placeholder="Event end date &amp; time" 
+											<input required type="text" class="form-control well well-sm" placeholder="Event end date &amp; time" 
 												 ng-model="messageToProvider.eventEndDate" name="eventDate"/>
 
 									</div>
@@ -158,12 +158,12 @@
 										</div>
 										
 										<div class="col-md-12 col-sm-12 form-group form-group-sm">
-											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile Number" data-msg-required="Please enter your phone address." data-msg-email="Please enter a valid phone number" maxlength="100" class="form-control" name="phone" id="phone">
+											<input  type="text" ng-pattern="phone_pattern"  ng-model="messageToProvider.senderMobile" placeholder="Mobile Number" data-msg-required="Please enter your phone address." data-msg-email="Please enter a valid phone number" maxlength="100" class="form-control" name="phone" id="phone">
 										</div>
 									
 
 									<div class="col-md-12 col-sm-12 form-group form-group-sm">
-										<button class="btn btn-info fullwidth" type="button" ng-click="contactProvider()" >SEND MESSAGE</button>
+										<button class="btn btn-info fullwidth" type="button" ng-click="contactProvider()" ng-disabled="!canContactProvider()">SEND MESSAGE</button>
 										<span class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></span>
 									</div>
 
@@ -359,7 +359,7 @@
 										<strong>{{currentProvider.providerName}}</strong>
 									</div>
             
-									<form method="post" action="#" class="input-group fullwidth ">
+									<form class="input-group fullwidth " name="contactProviderForm1">
 									  <div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">Subject :</label> 
                                         </div>
@@ -371,14 +371,14 @@
                                           <label class="contact-label hidden-xs">Start Date &amp; Time :</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9 form-group">
-                                          <input type="text" class="form-control well well-sm" ng-model="messageToProvider.eventStartDate" name="eventDate"  placeholder="Select Event start date and time">
+                                          <input required type="text" class="form-control well well-sm" ng-model="messageToProvider.eventStartDate" name="eventDate"  placeholder="Select Event start date and time">
                                         </div>
                                         
                                         <div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">End Date &amp; Time :</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9 form-group">
-                                          <input type="text" class="form-control well well-sm" ng-model="messageToProvider.eventEndDate" name="eventDate"  placeholder="Select Event end date and time">
+                                          <input required type="text" class="form-control well well-sm" ng-model="messageToProvider.eventEndDate" name="eventDate"  placeholder="Select Event end date and time">
                                         </div>
 										
                                         <div class=" col-md-3 col-sm-3">
@@ -399,14 +399,14 @@
                                           <label class="contact-label hidden-xs" >Mobile :</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your phone number." data-msg-email="Please enter a valid phone number." maxlength="20" class="form-control" name="phone" id="phone">
+											<input type="text" ng-pattern="phone_pattern"  ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your phone number." data-msg-email="Please enter a valid phone number." maxlength="20" class="form-control" name="phone" id="phone">
 										</div>
 										
 										<div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">&nbsp</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9">
-										   <button class="btn btn-primary fullwidth noborder" type="button" ng-click="contactProvider()">SEND MESSAGE</button>
+										   <button class="btn btn-primary fullwidth noborder" type="button" ng-click="contactProvider()" ng-disabled="!canContactProvider1()">SEND MESSAGE</button>
 										   
 										   <p class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></p>
 										</div>

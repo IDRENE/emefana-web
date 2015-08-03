@@ -348,7 +348,7 @@
 										<strong>{{contactProvider.providerName}}</strong>
 									</div>
             
-									<form method="post" action="#" class="input-group fullwidth ">
+									<form name="contactProviderForm" class="input-group fullwidth ">
 									  <div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">Subject :</label> 
                                         </div>
@@ -388,14 +388,14 @@
                                           <label class="contact-label hidden-xs" >Mobile:</label> 
                                         </div>
 										<div class="col-md-9 col-sm-9 form-group">
-											<input required type="text" ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
+											<input type="text" ng-pattern="phone_pattern" ng-model="messageToProvider.senderMobile" placeholder="Mobile number" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email">
 										</div>
 										
 										<div class="col-md-3 col-sm-3">
                                           <label class="contact-label hidden-xs">&nbsp</label> 
                                         </div>
                                         <div class="col-md-9 col-sm-9">
-										   <button type="button" ng-click="close('Yes')" class="btn btn-primary fullwidth noborder" data-dismiss="modal" >SEND MESSAGE</button>
+										   <button type="button" ng-click="close('Yes')" ng-disabled="!canContactProvider()" class="btn btn-primary fullwidth noborder" data-dismiss="modal" >SEND MESSAGE</button>
 										   
 										   <span class="lead-disclaimer">By sending, you agree to emefana.com's <a ui-sref="terms">Terms of Use</a> and <a ui-sref="privacy">Privacy Policy.</a></span>
 										</div>
