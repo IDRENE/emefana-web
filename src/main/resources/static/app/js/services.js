@@ -30,6 +30,19 @@ publicServices.factory('ListingService', ['$resource',function($resource){
 			  }
 	  });
 }]);
+
+publicServices.factory('SiteVerifyService', ['$resource',function($resource){
+    return $resource('/api/siteverify', {},{
+			    save : {
+					method : 'POST',
+					headers : {
+						       'Accept': 'application/json',
+						       'Content-Type': 'application/json'
+						},
+					isArray: false
+			  }
+	  });
+}]);
     
     publicServices.factory('ProviderService', ['$resource',function($resource){
         return $resource(host+'/api/search/providers/:referenceId', 

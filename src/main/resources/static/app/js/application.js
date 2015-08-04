@@ -12,6 +12,7 @@ angular.module('mainApp', [
 		'naif.base64',
 		'cgBusy',
 		'angularModalService',
+		'vcRecaptcha',
         'publicFilters',
         'publicServices',
         'publicControllers',

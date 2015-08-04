@@ -3,6 +3,7 @@
  */
 package com.idrene.emefana.web.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -14,10 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * @since 1.0
  */
 @Configuration
+@ComponentScan(basePackages = { "com.idrene.emefana.web.service"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	
-
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		//registry.addInterceptor(new RequestResponseLogger());

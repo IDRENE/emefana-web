@@ -97,11 +97,11 @@
 				  ['$scope','$rootScope' ,'$cookieStore',
 				   '$state','$filter','$location','$anchorScroll',
 				   'ModalService',
-				    'cordovaGeolocationService',
+				    'cordovaGeolocationService','vcRecaptchaService','SiteVerifyService',
 				    'MetadataService',
 				    'ProvidersContainer',
 				    'ProviderServiceByTerm',
-				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,ModalService,cordovaGeolocationService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
+				   function($scope, $rootScope, $cookieStore,$state,$filter,$location,$anchorScroll,ModalService,cordovaGeolocationService, vcRecaptchaService, SiteVerifyService,MetadataService,ProvidersContainer,ProviderServiceByTerm) {
 					  
 					  $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
 					  
@@ -345,6 +345,56 @@
 							   return prov.hasOwnProperty('gallaryPhotos');
 						   };
 						   
+						   //Robot Verification
+						   
+						   $scope.response = null;
+			                $scope.widgetId = null;
+			                $scope.siteResponseSucess = false;
+
+			                $scope.model = {
+			                    key: '6LcisAoTAAAAAE5Zn6Iejv1GxJaxNDNeLxoBolAz'
+			                };
+			                
+			                $scope.setResponse = function (response , id) {
+			                	//console.log(($scope.widgetId == id));
+			                    $scope.response = response;
+			                    $scope.verifyRequest={"gCaptchaResponse" : vcRecaptchaService.getResponse(id)};
+			                    SiteVerifyService.save({},$scope.verifyRequest, function(httpResponse,responseHeaders){
+			        				$scope.httpResponse = httpResponse;
+			        				 $scope.siteResponseSucess = $scope.httpResponse.success;
+			        				 console.info($scope.httpResponse);
+			        				 if(!$scope.siteResponseSucess){
+			        					 // In case of a failed validation you need to reload the captcha
+			                             // because each response can be checked just once
+			                             vcRecaptchaService.reload($scope.widgetId);
+			                             vcRecaptchaService.reload(0);
+			        				 }
+			        			},function(httpResponse){
+			                         console.log(httpResponse.data);
+			                         $scope.siteResponseSucess = false;
+			        			});
+			                    
+			                };
+			                
+			               
+
+
+			                $scope.setWidgetId = function (widgetId) {
+			                    console.info('Created widget ID: %s', widgetId);
+			                    $scope.siteResponseSucess = false;
+			                    $scope.widgetId = widgetId;
+			                };
+			                
+			              
+
+
+			                $scope.cbExpiration = function() {
+			                    console.info('Captcha expired. Resetting response object');
+			                    $scope.siteResponseSucess = false;
+			                    $scope.response = null;
+			                 };
+			                 
+
 						  //show model window
 						   var serv = $state.params.providerCategory === undefined ? "(--service--name--)":$state.params.providerCategory ;
 						   $scope.messageToProvider = {
@@ -373,15 +423,20 @@
 						    };
 						    
 					$scope.contactProvider = function(){
+						$scope.siteResponseSucess = false;
+	                    $scope.response = null;
+						vcRecaptchaService.reload($scope.widgetId);
+						vcRecaptchaService.reload(0);
+						
 						console.log(JSON.stringify($scope.messageToProvider));
 					};
 					
 					$scope.canContactProvider = function(){
-	                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty ;
+	                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty && $scope.siteResponseSucess;
 	                };
 	                
 	                $scope.canContactProvider1 = function(){
-	                	return $scope.contactProviderForm1.$valid && $scope.contactProviderForm1.$dirty ;
+	                	return $scope.contactProviderForm1.$valid && $scope.contactProviderForm1.$dirty && $scope.siteResponseSucess;
 	                };
 					  
 		} ]);
@@ -393,7 +448,7 @@
 		} ]);
 		   
 		   publicControllers.controller('ModalController',
-					  ['$scope','contactProvider', 'messageToProvider', 'close',function($scope, contactProvider, messageToProvider, close) {
+					  ['$scope','contactProvider', 'messageToProvider', 'vcRecaptchaService','SiteVerifyService','close',function($scope, contactProvider, messageToProvider, vcRecaptchaService, SiteVerifyService,close) {
 						  $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
 						  $scope.contactProvider =  contactProvider;
 						  $scope.messageToProvider = messageToProvider;
@@ -404,8 +459,48 @@
 							 };
 							 
                 $scope.canContactProvider = function(){
-                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty ;
+                	return $scope.contactProviderForm.$valid && $scope.contactProviderForm.$dirty && $scope.siteResponseSucess;
                 };
+                
+                $scope.response = null;
+                $scope.widgetId = null;
+                $scope.siteResponseSucess = false;
+
+                $scope.model = {
+                    key: '6LcisAoTAAAAAE5Zn6Iejv1GxJaxNDNeLxoBolAz'
+                };
+
+                $scope.setResponse = function (response) {
+                    $scope.response = response;
+                    $scope.verifyRequest={"gCaptchaResponse" : vcRecaptchaService.getResponse($scope.widgetId)};
+                    SiteVerifyService.save({},$scope.verifyRequest, function(httpResponse,responseHeaders){
+        				$scope.httpResponse = httpResponse;
+        				 $scope.siteResponseSucess = $scope.httpResponse.success;
+        				 console.info($scope.httpResponse);
+        				 if(!$scope.siteResponseSucess){
+        					 // In case of a failed validation you need to reload the captcha
+                             // because each response can be checked just once
+                             vcRecaptchaService.reload($scope.widgetId);
+        				 }
+        			},function(httpResponse){
+                         console.log(httpResponse.data);
+                         $scope.siteResponseSucess = false;
+        			});
+                    
+                };
+
+                $scope.setWidgetId = function (widgetId) {
+                    console.info('Created widget ID: %s', widgetId);
+                    $scope.siteResponseSucess = false;
+                    $scope.widgetId = widgetId;
+                };
+
+                $scope.cbExpiration = function() {
+                    console.info('Captcha expired. Resetting response object');
+                    $scope.siteResponseSucess = false;
+                    $scope.response = null;
+                 };
+
 
 			} ]);
 		   
