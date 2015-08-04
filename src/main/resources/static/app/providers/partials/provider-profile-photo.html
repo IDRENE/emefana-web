@@ -22,6 +22,7 @@
 							<img class="img-responsive" ng-src="data:{{provider.photo.filetype}};base64,{{provider.photo.base64}}" width="260" height="260" alt=""><!-- thumb -->
 						</a>
 				</div>
+				
 						 
 				</div>
 			 </div>
@@ -31,14 +32,18 @@
 		</div>				
 		     <!-- AGREE -->
 				<div class="row white-row">
-					<div class="col-md-12">
+					<div class="col-md-12 ">
 						<label class="pointer shop-cart-agree">
 							<input type="checkbox" ng-model="provider.agree" /> I understand and agree the <a href="page-terms-and-conditions.html" target="_blank">terms and conditions</a>.
 							 Check this box to certify that you are an official representative of the property for which you are submitting this listing and that the information you have submitted is correct. In submitting a photo, you also certify that you have the right to use the photo on the web and agree to hold E-mefana harmless for any and all copyright issues arising from your use of the image
 						</label>
+						<hr class="half-margins">
 					</div>
+					
+					 <div class="col-md-12 col-sm-12 form-group "  vc-recaptcha key="model.key" on-create="setWidgetId(widgetId)" on-success="setResponse(response)" on-expire="cbExpiration()" ></div>
 				</div>
 				<!-- /AGREE -->		
+
 				
 			
 		     <button class="btn btn-primary btn-lg" type="submit" ui-sref="register.services" ><i class="fa fa-hand-o-left"></i> &nbsp; Previous</button>

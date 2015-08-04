@@ -11,9 +11,19 @@
 			   'cordovaGeolocationService',
 			   'MetadataService',
 			   'ListingService', 
-			   function($scope,$rootScope,$geolocation,$state,$filter,cordovaGeolocationService, MetadataService,ListingService) {
+			   'vcRecaptchaService',
+			   'SiteVerifyService',
+			   function($scope,$rootScope,$geolocation,$state,$filter,cordovaGeolocationService, MetadataService,ListingService,vcRecaptchaService,SiteVerifyService) {
 			
 		     $scope.phone_pattern=/^((\+)|(00)|(\*)|())[0-9]{10,14}((\#)|())$/;
+		     
+		     $scope.response = null;
+	         $scope.widgetId = null;
+	         $scope.siteResponseSuccess = false;
+
+	         $scope.model = {
+	             key: providerAppConfig.siteKey
+	         };
 		     
 		     var SW = new google.maps.LatLng(34.854, -6.307); //latitude, longitude for tz
 			    var NE = new google.maps.LatLng(33.854, -5.307); 
@@ -38,6 +48,8 @@
 		    	 $scope.services = $filter('filter')(result, { key: "SERVICES" })[0].value;
 		    	 
 		     });
+		     
+		     
 			
 			 $scope.features = [];
 			 
@@ -89,7 +101,7 @@
 					};
 					  
 				  $scope.canSave = function(){
-					  return $scope.provider.agree && $scope.canGoNext() && $scope.hasEventtypes() && $scope.isVenuesWithVenueSpace();
+					  return $scope.provider.agree && $scope.canGoNext() && $scope.hasEventtypes() && $scope.isVenuesWithVenueSpace() && $scope.siteResponseSuccess;
 				  }	;  
 				  
 				  $scope.toJSON = function(obj) {
@@ -273,6 +285,40 @@
 			});
 			
 		};	 
+		
+
+         $scope.setResponse = function (response) {
+             $scope.response = response;
+             $scope.verifyRequest={"gCaptchaResponse" : vcRecaptchaService.getResponse($scope.widgetId)};
+             SiteVerifyService.save({},$scope.verifyRequest, function(httpResponse,responseHeaders){
+ 				$scope.httpResponse = httpResponse;
+ 				$scope.siteResponseSuccess = $scope.httpResponse.success;
+ 				 console.info($scope.httpResponse);
+ 				 if(!$scope.siteResponseSuccess){
+ 					 // In case of a failed validation you need to reload the captcha
+                      // because each response can be checked just once
+                      vcRecaptchaService.reload($scope.widgetId);
+ 				 }
+ 			},function(httpResponse){
+                  console.log(httpResponse.data);
+                  $scope.siteResponseSuccess = false;
+ 			});
+             
+         };
+
+         $scope.setWidgetId = function (widgetId) {
+             console.info('Created widget ID: %s', widgetId);
+             $scope.siteResponseSuccess = false;
+             $scope.widgetId = widgetId;
+         };
+
+         $scope.cbExpiration = function() {
+             console.info('Captcha expired. Resetting response object');
+             $scope.siteResponseSuccess = false;
+             $scope.response = null;
+          };
+
+
 		
 			 
 	} ]);

@@ -29,3 +29,16 @@ providerServices.factory('ListingService', ['$resource',function($resource){
 	  });
   
 }]);
+
+providerServices.factory('SiteVerifyService', ['$resource',function($resource){
+    return $resource('providers/api/siteverify', {},{
+			    save : {
+					method : 'POST',
+					headers : {
+						       'Accept': 'application/json',
+						       'Content-Type': 'application/json'
+						},
+					isArray: false
+			  }
+	  });
+}]);

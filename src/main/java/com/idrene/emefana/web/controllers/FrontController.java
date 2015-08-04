@@ -30,7 +30,7 @@ public class FrontController {
 		
 	}
 	
-	@RequestMapping(value="/api/siteverify", method=RequestMethod.POST, consumes={MediaType.APPLICATION_JSON_VALUE}, produces={MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value={"/api/siteverify","/providers/api/siteverify"}, method=RequestMethod.POST, consumes={MediaType.APPLICATION_JSON_VALUE}, produces={MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<SiteVerify> verifyUser(@RequestBody SiteUserRequest request){
 		SiteVerify  response = service.verify(request);
 		return ResponseEntity.ok(response);

@@ -8,6 +8,7 @@ angular.module('providerApp', [
 		'ngGeolocation',
 		'naif.base64',
 		'cgBusy',
+		'vcRecaptcha',
         'providerControllers',
         'providerFilters',
         'providerServices',

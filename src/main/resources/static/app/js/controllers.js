@@ -352,7 +352,7 @@
 			                $scope.siteResponseSucess = false;
 
 			                $scope.model = {
-			                    key: '6LcisAoTAAAAAE5Zn6Iejv1GxJaxNDNeLxoBolAz'
+			                    key: providerAppConfig.siteKey
 			                };
 			                
 			                $scope.setResponse = function (response , id) {
@@ -467,7 +467,7 @@
                 $scope.siteResponseSucess = false;
 
                 $scope.model = {
-                    key: '6LcisAoTAAAAAE5Zn6Iejv1GxJaxNDNeLxoBolAz'
+                    key: providerAppConfig.siteKey
                 };
 
                 $scope.setResponse = function (response) {
